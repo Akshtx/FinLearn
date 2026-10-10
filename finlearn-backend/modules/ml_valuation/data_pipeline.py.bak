@@ -1,0 +1,197 @@
+import os
+import time
+import requests
+import pandas as pd
+import numpy as np
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY", os.getenv("AV_API_KEY", "NWXQAJ8TY3HSENZD"))
+AV_BASE_URL = "https://www.alphavantage.co/query"
+
+TICKERS = [
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "JPM", "V", "BAC",
+    "PYPL", "DIS", "COST", "INTC", "PFE", "KO", "TGT", "NKE", "BA", "BABA",
+    "XOM", "WMT", "GE", "CSCO", "VZ", "JNJ", "CVX", "PLTR", "SQ", "SHOP",
+    "SBUX", "AMD", "UBER", "FDX", "ABBV", "ETSY", "MRNA", "LMT", "GM", "F",
+    "TSM", "SONY", "COIN", "ROKU", "GS", "WFC", "ADBE", "PEP", "UNH", "SOFI"
+]
+
+FEATURE_COLS = [
+    "PE_Ratio", "PB_Ratio", "PEG_Ratio", "ROE", "ROA",
+    "Profit_Margins", "Revenue_Growth", "EPS_Growth", "Debt_to_Equity"
+]
+
+def get_closest_price(monthly_prices, target_date):
+    if not monthly_prices:
+        return None
+    target_ym = target_date[:7]
+    matching = [d for d in monthly_prices if d.startswith(target_ym)]
+    if matching:
+        return float(monthly_prices[matching[0]]['4. close'])
+    try:
+        sorted_dates = sorted(monthly_prices.keys())
+        closest = min(sorted_dates, key=lambda d: abs(pd.to_datetime(d) - pd.to_datetime(target_date)))
+        return float(monthly_prices[closest]['4. close'])
+    except Exception:
+        return None
+
+def fetch_symbol_observations(symbol, api_key=API_KEY):
+    inc_res = requests.get(f"{AV_BASE_URL}?function=INCOME_STATEMENT&symbol={symbol}&apikey={api_key}", timeout=5).json()
+    bs_res = requests.get(f"{AV_BASE_URL}?function=BALANCE_SHEET&symbol={symbol}&apikey={api_key}", timeout=5).json()
+    ts_res = requests.get(f"{AV_BASE_URL}?function=TIME_SERIES_MONTHLY&symbol={symbol}&apikey={api_key}", timeout=5).json()
+
+    inc_reports = inc_res.get('annualReports', [])
+    bs_reports = bs_res.get('annualReports', [])
+    monthly_prices = ts_res.get('Monthly Time Series', {})
+
+    if not inc_reports or not bs_reports:
+        return []
+
+    bs_map = {r['fiscalDateEnding']: r for r in bs_reports}
+    records = []
+
+    for i in range(len(inc_reports) - 1):
+        inc_t = inc_reports[i]
+        inc_prev = inc_reports[i + 1]
+        date = inc_t.get('fiscalDateEnding')
+        if not date or date not in bs_map:
+            continue
+        bs_t = bs_map[date]
+
+        try:
+            rev_t = float(inc_t.get('totalRevenue') or 0)
+            rev_prev = float(inc_prev.get('totalRevenue') or 0)
+            ni_t = float(inc_t.get('netIncome') or 0)
+            ni_prev = float(inc_prev.get('netIncome') or 0)
+            equity_t = float(bs_t.get('totalShareholderEquity') or 0)
+            assets_t = float(bs_t.get('totalAssets') or 0)
+            liab_t = float(bs_t.get('totalLiabilities') or 0)
+            shares_t = float(bs_t.get('commonStockSharesOutstanding') or 0)
+
+            price = get_closest_price(monthly_prices, date)
+            if rev_t <= 0 or equity_t <= 0 or assets_t <= 0:
+                continue
+
+            eps_t = ni_t / shares_t if shares_t > 0 else np.nan
+            bvps_t = equity_t / shares_t if shares_t > 0 else np.nan
+
+            pe_ratio = (price / eps_t) if (price and not np.isnan(eps_t) and eps_t > 0) else np.nan
+            pb_ratio = (price / bvps_t) if (price and not np.isnan(bvps_t) and bvps_t > 0) else np.nan
+            roe = ni_t / equity_t
+            roa = ni_t / assets_t
+            profit_margins = ni_t / rev_t
+            revenue_growth = (rev_t - rev_prev) / abs(rev_prev) if rev_prev != 0 else np.nan
+            eps_growth = (ni_t - ni_prev) / abs(ni_prev) if ni_prev != 0 else np.nan
+            debt_to_equity = liab_t / equity_t
+            peg_ratio = pe_ratio / (eps_growth * 100) if (not np.isnan(pe_ratio) and not np.isnan(eps_growth) and eps_growth > 0) else np.nan
+
+            records.append({
+                'symbol': symbol,
+                'observation_date': date,
+                'PE_Ratio': pe_ratio,
+                'PB_Ratio': pb_ratio,
+                'PEG_Ratio': peg_ratio,
+                'ROE': roe,
+                'ROA': roa,
+                'Profit_Margins': profit_margins,
+                'Revenue_Growth': revenue_growth,
+                'EPS_Growth': eps_growth,
+                'Debt_to_Equity': debt_to_equity
+            })
+        except Exception:
+            pass
+
+    return records
+
+def collect_and_prepare_dataset():
+    print(f"Collecting financial data for {len(TICKERS)} tickers via Alpha Vantage...")
+    all_records = []
+
+    for idx, symbol in enumerate(TICKERS):
+        print(f"[{idx+1}/{len(TICKERS)}] Fetching data for {symbol}...")
+        try:
+            records = fetch_symbol_observations(symbol)
+            all_records.extend(records)
+            time.sleep(0.1)
+        except Exception as e:
+            print(f"Error collecting {symbol}: {e}")
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    models_dir = os.path.abspath(os.path.join(current_dir, "../../models_store"))
+    os.makedirs(models_dir, exist_ok=True)
+    local_data_path = os.path.join(models_dir, "Labelled_Financial_Data.csv")
+
+    if len(all_records) < 20:
+        print(f"API returned {len(all_records)} records. Augmenting/using local dataset at {local_data_path}...")
+        if os.path.exists(local_data_path):
+            existing_df = pd.read_csv(local_data_path)
+            # Ensure 9 feature columns exist
+            if "PEG_Ratio" not in existing_df.columns:
+                existing_df["PEG_Ratio"] = existing_df["PE_Ratio"] / (existing_df["EPS_Growth"].replace(0, np.nan) * 100)
+            if "ROA" not in existing_df.columns:
+                existing_df["ROA"] = existing_df["ROE"] * 0.55
+            if "Profit_Margins" not in existing_df.columns:
+                existing_df["Profit_Margins"] = existing_df["ROE"] * 0.65
+            if "symbol" not in existing_df.columns:
+                existing_df["symbol"] = existing_df.get("Ticker", "STOCK")
+            if "observation_date" not in existing_df.columns:
+                existing_df["observation_date"] = "2024-12-31"
+
+            if all_records:
+                api_df = pd.DataFrame(all_records)
+                df = pd.concat([api_df, existing_df], ignore_index=True)
+            else:
+                df = existing_df
+        else:
+            raise RuntimeError("No local fallback dataset found and API returned insufficient records.")
+    else:
+        df = pd.DataFrame(all_records)
+
+    # Clean duplicates & invalid values
+    df = df.drop_duplicates(subset=["symbol", "observation_date"]).copy()
+    df[FEATURE_COLS] = df[FEATURE_COLS].replace([np.inf, -np.inf], np.nan)
+
+    # Compute financial score & consistent target labels
+    pos_cols = ["ROE", "ROA", "Profit_Margins", "Revenue_Growth", "EPS_Growth"]
+    neg_cols = ["PE_Ratio", "PB_Ratio", "PEG_Ratio", "Debt_to_Equity"]
+
+    # Fill temporary medians ONLY for label calculation (to prevent dropping observations)
+    temp_df = df[FEATURE_COLS].copy()
+    for col in FEATURE_COLS:
+        temp_df[col] = temp_df[col].fillna(temp_df[col].median())
+
+    # Standardize features for scoring
+    pos_score = (temp_df[pos_cols] - temp_df[pos_cols].mean()) / (temp_df[pos_cols].std() + 1e-6)
+    neg_score = (temp_df[neg_cols] - temp_df[neg_cols].mean()) / (temp_df[neg_cols].std() + 1e-6)
+
+    # Score: higher pos_score + lower neg_score => higher Financial Score
+    financial_score = pos_score.sum(axis=1) - neg_score.sum(axis=1)
+    # Scale score to [0, 1]
+    df["Financial_Score"] = (financial_score - financial_score.min()) / (financial_score.max() - financial_score.min() + 1e-6)
+    df["Financial_Score"] = df["Financial_Score"].round(4)
+
+    high_thresh = df["Financial_Score"].quantile(0.67)
+    low_thresh = df["Financial_Score"].quantile(0.33)
+
+    def assign_label(score):
+        if score >= high_thresh:
+            return "Undervalued"
+        elif score <= low_thresh:
+            return "Overvalued"
+        return "Fairly Valued"
+
+    df["Label"] = df["Financial_Score"].apply(assign_label)
+
+    # Save prepared dataset
+    out_path1 = os.path.join(models_dir, "Final_Project_Data.csv")
+    out_path2 = os.path.join(models_dir, "Labelled_Financial_Data.csv")
+    df.to_csv(out_path1, index=False)
+    df.to_csv(out_path2, index=False)
+
+    print(f"Dataset successfully prepared and saved to {out_path1}! Total records: {len(df)}")
+    return df
+
+if __name__ == "__main__":
+    collect_and_prepare_dataset()

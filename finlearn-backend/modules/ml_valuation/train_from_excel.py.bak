@@ -1,0 +1,390 @@
+"""
+FINLEARN AI — Excel Dataset Training Pipeline
+============================================================
+Dataset: Screener_Query_Results_Page1.xlsx (Indian stocks, Screener.in)
+
+Column Mapping (Excel → Internal Name):
+  'P/E'              → PE_Ratio        (Price-to-Earnings Ratio)
+  'CMP / BV'         → PB_Ratio        (Price-to-Book Ratio)
+  'PEG'              → PEG_Ratio       (Price/Earnings-to-Growth Ratio)
+  'ROE %'            → ROE             (Return on Equity, %)
+  'ROA 12M %'        → ROA             (Return on Assets, %)
+  'OPM %'            → Profit_Margins  (Operating Profit Margin, %)
+  'Profit Growth %'  → Revenue_Growth  (Profit Growth as Revenue Growth proxy, %)
+  'EPS Var 5Yrs %'   → EPS_Growth      (EPS Growth 5-Year CAGR, %)
+  'Debt / Eq'        → Debt_to_Equity  (Debt-to-Equity Ratio)
+
+Target Label Methodology (no pre-existing labels in dataset):
+  A composite financial health score is calculated from the 9 indicators.
+  The score rewards: high ROE, high ROA, high Profit Margins, high EPS Growth,
+  high Revenue Growth (capped), low P/E, low P/B, low PEG, low Debt/Eq.
+  Each indicator is clipped to remove extreme outliers (1st-99th percentile),
+  then min-max scaled to [0, 1] within training data only.
+  Final score = weighted average of indicator scores.
+  Labels are assigned via percentile thresholds on the score:
+    Top 33%    → Undervalued
+    Middle 34% → Fairly Valued
+    Bottom 33% → Overvalued
+  LIMITATION: Labels are relative to this dataset's universe (Indian mid/small-caps
+  from Screener.in). They reflect financial strength ranking, not true market
+  valuation analysis. Results are appropriate for learning but should not be
+  used as investment advice without domain validation.
+"""
+
+import os
+import time
+import json
+import joblib
+import warnings
+import pandas as pd
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.metrics import (
+    accuracy_score, balanced_accuracy_score, precision_score, recall_score,
+    f1_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
+)
+from xgboost import XGBClassifier
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# ─── Paths ────────────────────────────────────────────────────────────────────
+EXCEL_PATH = r"C:\Users\yeshw\Downloads\Screener_Query_Results_Page1.xlsx"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.abspath(os.path.join(current_dir, "../../models_store"))
+os.makedirs(MODELS_DIR, exist_ok=True)
+
+# ─── Column Mapping ────────────────────────────────────────────────────────────
+COL_MAP = {
+    'P/E':             'PE_Ratio',
+    'CMP / BV':        'PB_Ratio',
+    'PEG':             'PEG_Ratio',
+    'ROE %':           'ROE',
+    'ROA 12M %':       'ROA',
+    'OPM %':           'Profit_Margins',
+    'Profit Growth %': 'Revenue_Growth',
+    'EPS Var 5Yrs %':  'EPS_Growth',
+    'Debt / Eq':       'Debt_to_Equity',
+}
+
+FEATURE_COLS = list(COL_MAP.values())
+
+# Indicators where LOWER = better (inverted for scoring)
+NEG_INDICATORS = ['PE_Ratio', 'PB_Ratio', 'PEG_Ratio', 'Debt_to_Equity']
+# Indicators where HIGHER = better
+POS_INDICATORS = ['ROE', 'ROA', 'Profit_Margins', 'Revenue_Growth', 'EPS_Growth']
+
+# Score weights
+WEIGHTS = {
+    'PE_Ratio':       0.12,
+    'PB_Ratio':       0.08,
+    'PEG_Ratio':      0.08,
+    'ROE':            0.20,
+    'ROA':            0.15,
+    'Profit_Margins': 0.15,
+    'Revenue_Growth': 0.12,
+    'EPS_Growth':     0.10,
+}
+# Debt_to_Equity gets remainder
+WEIGHTS['Debt_to_Equity'] = round(1.0 - sum(WEIGHTS.values()), 4)
+
+# Outlier clip percentiles
+CLIP_LOW, CLIP_HIGH = 1, 99
+
+# ─── Phase 1: Load & Inspect ──────────────────────────────────────────────────
+print("=" * 65)
+print("PHASE 1 — DATASET INSPECTION")
+print("=" * 65)
+
+df_raw = pd.read_excel(EXCEL_PATH, header=3)
+print(f"Raw shape: {df_raw.shape}")
+print(f"Columns: {df_raw.columns.tolist()}\n")
+
+# Rename columns using mapping
+df = df_raw.rename(columns=COL_MAP).copy()
+
+# Force numeric conversion
+for col in FEATURE_COLS:
+    if col in df.columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+company_col = 'Company'
+df_companies = df[company_col].astype(str).str.strip() if company_col in df.columns else pd.Series(["UNKNOWN"] * len(df))
+df['Company'] = df_companies
+
+print("Missing values per feature column (before cleaning):")
+for col in FEATURE_COLS:
+    n_null = df[col].isna().sum()
+    pct = 100 * n_null / len(df)
+    print(f"  {col:20s}: {n_null:4d} missing ({pct:.1f}%)")
+
+print(f"\nDuplicate company rows: {df.duplicated(subset=[company_col]).sum()}")
+
+# ─── Phase 2: Data Preparation ────────────────────────────────────────────────
+print("\n" + "=" * 65)
+print("PHASE 2 — DATA PREPARATION")
+print("=" * 65)
+
+# Drop duplicate companies, keep first occurrence
+df = df.drop_duplicates(subset=[company_col], keep='first').reset_index(drop=True)
+print(f"After deduplication: {len(df)} rows")
+
+# Check which features have >60% missing → document, do not zero-fill
+available_features = []
+for col in FEATURE_COLS:
+    pct_missing = 100 * df[col].isna().sum() / len(df)
+    if pct_missing <= 60.0:
+        available_features.append(col)
+        print(f"  INCLUDE {col:20s} ({pct_missing:.1f}% missing)")
+    else:
+        print(f"  EXCLUDE {col:20s} ({pct_missing:.1f}% missing — too sparse)")
+
+print(f"\nUsable features: {available_features}")
+
+# Retain only rows with at least 5 of the available features present
+df_feat = df[['Company'] + available_features].copy()
+min_required = max(3, len(available_features) // 2)
+df_feat['_n_available'] = df_feat[available_features].notna().sum(axis=1)
+df_feat = df_feat[df_feat['_n_available'] >= min_required].drop(columns=['_n_available'])
+df_feat = df_feat.reset_index(drop=True)
+print(f"Rows with >= {min_required} features: {len(df_feat)}")
+
+# ─── Outlier-aware percentile clipping (computed on full dataset) ──────────────
+# (Will refit only on training set during train/test — here used for labelling only)
+clip_stats = {}
+for col in available_features:
+    lo = np.nanpercentile(df_feat[col].dropna(), CLIP_LOW)
+    hi = np.nanpercentile(df_feat[col].dropna(), CLIP_HIGH)
+    clip_stats[col] = (lo, hi)
+    df_feat[col] = df_feat[col].clip(lo, hi)
+
+# ─── Label Generation (Financial Composite Score) ─────────────────────────────
+print("\nGenerating target labels via composite financial score ...")
+
+# Scale each feature to [0,1] on full dataset for scoring
+score_parts = pd.DataFrame(index=df_feat.index)
+for col in available_features:
+    s = df_feat[col].copy()
+    s_min, s_max = s.min(), s.max()
+    if s_max - s_min < 1e-9:
+        scaled = pd.Series(0.5, index=s.index)
+    else:
+        scaled = (s - s_min) / (s_max - s_min)
+    # Invert negative indicators (lower is better)
+    if col in NEG_INDICATORS:
+        scaled = 1.0 - scaled
+    score_parts[col] = scaled
+
+# Compute weighted composite score (only for features we have)
+weight_sum = sum(WEIGHTS[c] for c in available_features)
+composite = sum(
+    score_parts[col] * (WEIGHTS[col] / weight_sum)
+    for col in available_features
+)
+df_feat['Financial_Score'] = composite.round(4)
+
+# Label via tertile thresholds
+lo_thresh = df_feat['Financial_Score'].quantile(0.33)
+hi_thresh = df_feat['Financial_Score'].quantile(0.67)
+
+def assign_label(score):
+    if score >= hi_thresh:
+        return 'Undervalued'
+    elif score <= lo_thresh:
+        return 'Overvalued'
+    return 'Fairly Valued'
+
+df_feat['Label'] = df_feat['Financial_Score'].apply(assign_label)
+print(f"Label distribution:\n{df_feat['Label'].value_counts().to_string()}")
+
+# ─── Train / Test Split ───────────────────────────────────────────────────────
+# Dataset: single snapshot per stock → use stratified split
+X = df_feat[available_features]
+y_raw = df_feat['Label']
+
+encoder = LabelEncoder()
+y = encoder.fit_transform(y_raw)
+class_names = list(encoder.classes_)
+print(f"\nEncoded classes: {class_names}")
+
+X_train_raw, X_test_raw, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+print(f"Train size: {len(X_train_raw)}, Test size: {len(X_test_raw)}")
+
+# ─── Phase 3: Preprocessing (fit on train only) ───────────────────────────────
+print("\n" + "=" * 65)
+print("PHASE 3 — PREPROCESSING & TRAINING")
+print("=" * 65)
+
+# Impute with median (train-fit only)
+imputer = SimpleImputer(strategy='median')
+X_train_imp = imputer.fit_transform(X_train_raw)
+X_test_imp  = imputer.transform(X_test_raw)
+
+# Scale (train-fit only)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train_imp)
+X_test  = scaler.transform(X_test_imp)
+
+# ─── Model Definitions ────────────────────────────────────────────────────────
+models = {
+    'RandomForest': RandomForestClassifier(
+        n_estimators=200, max_depth=None, min_samples_leaf=2,
+        class_weight='balanced', random_state=42, n_jobs=-1
+    ),
+    'XGBoost': XGBClassifier(
+        n_estimators=200, max_depth=5, learning_rate=0.05,
+        subsample=0.8, colsample_bytree=0.8,
+        use_label_encoder=False, eval_metric='mlogloss',
+        random_state=42
+    ),
+    'AdaBoost': AdaBoostClassifier(
+        n_estimators=150, learning_rate=0.1, random_state=42
+    ),
+}
+
+all_stats = {}
+
+for model_name, model in models.items():
+    print(f"\n--- Training {model_name} ---")
+    t0 = time.time()
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        model.fit(X_train, y_train)
+    train_time = round(time.time() - t0, 4)
+
+    y_pred = model.predict(X_test)
+
+    acc          = float(accuracy_score(y_test, y_pred))
+    bal_acc      = float(balanced_accuracy_score(y_test, y_pred))
+    prec_mac     = float(precision_score(y_test, y_pred, average='macro',    zero_division=0))
+    prec_wt      = float(precision_score(y_test, y_pred, average='weighted', zero_division=0))
+    rec_mac      = float(recall_score(y_test,    y_pred, average='macro',    zero_division=0))
+    rec_wt       = float(recall_score(y_test,    y_pred, average='weighted', zero_division=0))
+    f1_mac       = float(f1_score(y_test,         y_pred, average='macro',    zero_division=0))
+    f1_wt        = float(f1_score(y_test,         y_pred, average='weighted', zero_division=0))
+    report       = classification_report(y_test, y_pred, target_names=class_names, output_dict=True, zero_division=0)
+    cm           = confusion_matrix(y_test, y_pred).tolist()
+
+    if hasattr(model, 'feature_importances_'):
+        fi = {col: float(imp) for col, imp in zip(available_features, model.feature_importances_)}
+    else:
+        fi = {col: 1.0/len(available_features) for col in available_features}
+
+    # Save per-model confusion matrix
+    fig, ax = plt.subplots(figsize=(6, 5))
+    ConfusionMatrixDisplay.from_predictions(y_test, y_pred, display_labels=class_names, cmap='Blues', ax=ax)
+    plt.title(f'{model_name} — Confusion Matrix')
+    plt.tight_layout()
+    plt.savefig(os.path.join(MODELS_DIR, f'confusion_matrix_{model_name.lower()}.png'), dpi=150)
+    plt.close()
+    if model_name == 'RandomForest':
+        plt.figure(figsize=(6, 5))
+        ConfusionMatrixDisplay.from_predictions(y_test, y_pred, display_labels=class_names, cmap='Blues')
+        plt.title('Model Valuation Confusion Matrix')
+        plt.tight_layout()
+        plt.savefig(os.path.join(MODELS_DIR, 'confusion_matrix.png'), dpi=150)
+        plt.close()
+
+    # Save model
+    model_path = os.path.join(MODELS_DIR, f'{model_name}_Model.pkl')
+    joblib.dump(model, model_path)
+    print(f"  Accuracy: {acc*100:.2f}%  |  Macro F1: {f1_mac:.4f}  |  Time: {train_time}s")
+
+    all_stats[model_name] = {
+        'accuracy':              acc,
+        'balanced_accuracy':     bal_acc,
+        'precision_macro':       prec_mac,
+        'precision_weighted':    prec_wt,
+        'recall_macro':          rec_mac,
+        'recall_weighted':       rec_wt,
+        'f1_score_macro':        f1_mac,
+        'f1_score_weighted':     f1_wt,
+        'training_time_seconds': train_time,
+        'train_dataset_size':    len(X_train),
+        'test_dataset_size':     len(X_test),
+        'confusion_matrix':      cm,
+        'classification_report': report,
+        'feature_importances':   fi,
+        'last_trained':          time.strftime('%Y-%m-%d %H:%M:%S'),
+    }
+
+# ─── Phase 4: Save Preprocessing Artifacts ────────────────────────────────────
+print("\n" + "=" * 65)
+print("PHASE 4 — SAVING ARTIFACTS")
+print("=" * 65)
+
+joblib.dump(imputer, os.path.join(MODELS_DIR, 'imputer.pkl'))
+joblib.dump(scaler,  os.path.join(MODELS_DIR, 'scaler.pkl'))
+joblib.dump(encoder, os.path.join(MODELS_DIR, 'LabelEncoder.pkl'))
+
+# Feature schema
+feature_schema = {
+    'feature_names':      available_features,
+    'feature_count':      len(available_features),
+    'column_mapping':     COL_MAP,
+    'neg_indicators':     NEG_INDICATORS,
+    'pos_indicators':     POS_INDICATORS,
+    'score_weights':      WEIGHTS,
+    'label_classes':      class_names,
+    'label_hi_thresh':    float(hi_thresh),
+    'label_lo_thresh':    float(lo_thresh),
+    'clip_percentiles':   [CLIP_LOW, CLIP_HIGH],
+    'clip_stats':         {k: list(v) for k, v in clip_stats.items()},
+}
+with open(os.path.join(MODELS_DIR, 'feature_schema.json'), 'w') as f:
+    json.dump(feature_schema, f, indent=2)
+
+# Dataset stats
+dataset_stats = {
+    'excel_file':          os.path.basename(EXCEL_PATH),
+    'total_raw_rows':      len(df_raw),
+    'usable_rows':         len(df_feat),
+    'unique_stocks':       int(df_feat['Company'].nunique()),
+    'train_rows':          len(X_train),
+    'test_rows':           len(X_test),
+    'available_features':  available_features,
+    'label_distribution':  df_feat['Label'].value_counts().to_dict(),
+    'label_methodology':   'Composite financial score → tertile thresholds',
+    'data_source':         'Screener.in (Indian listed stocks)',
+}
+
+# Consolidated model stats
+best_model = max(all_stats, key=lambda m: all_stats[m]['f1_score_weighted'])
+consolidated = {
+    'models':               all_stats,
+    'best_model':           best_model,
+    'dataset':              dataset_stats,
+    # Legacy top-level keys for backward compatibility
+    'accuracy':             all_stats['RandomForest']['accuracy'],
+    'precision':            all_stats['RandomForest']['precision_weighted'],
+    'recall':               all_stats['RandomForest']['recall_weighted'],
+    'f1_score':             all_stats['RandomForest']['f1_score_weighted'],
+    'classification_report':all_stats['RandomForest']['classification_report'],
+    'feature_importances':  all_stats['RandomForest']['feature_importances'],
+    'last_trained':         time.strftime('%Y-%m-%d %H:%M:%S'),
+}
+with open(os.path.join(MODELS_DIR, 'model_stats.json'), 'w') as f:
+    json.dump(consolidated, f, indent=2)
+
+# Save prepared dataset
+df_feat.to_csv(os.path.join(MODELS_DIR, 'Final_Project_Data.csv'), index=False)
+df_feat.to_csv(os.path.join(MODELS_DIR, 'Labelled_Financial_Data.csv'), index=False)
+
+print(f"\nAll artifacts saved to: {MODELS_DIR}")
+print(f"\nBest performing model: {best_model}")
+print("\n=== MODEL COMPARISON ===")
+print(f"{'Metric':<28} {'RandomForest':>14} {'XGBoost':>12} {'AdaBoost':>12}")
+print("-" * 70)
+for metric in ['accuracy', 'balanced_accuracy', 'precision_macro', 'recall_macro', 'f1_score_macro', 'f1_score_weighted']:
+    print(f"{metric:<28} {all_stats['RandomForest'][metric]:>14.4f} {all_stats['XGBoost'][metric]:>12.4f} {all_stats['AdaBoost'][metric]:>12.4f}")
+print("=" * 70)
+print("\nTraining complete!")

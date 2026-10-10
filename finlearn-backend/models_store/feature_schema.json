@@ -1,0 +1,50 @@
+{
+  "feature_names": [
+    "PE_Ratio",
+    "PB_Ratio",
+    "PEG_Ratio",
+    "ROE",
+    "ROA",
+    "Operating_Profit_Margin",
+    "Debt_to_Equity",
+    "ROCE",
+    "EPS_Variation_5Yrs",
+    "Profit_Growth_Screener"
+  ],
+  "feature_count": 10,
+  "column_mapping": {
+    "P/E": "PE_Ratio",
+    "CMP / BV": "PB_Ratio",
+    "PEG": "PEG_Ratio",
+    "ROE %": "ROE",
+    "ROA 12M %": "ROA",
+    "OPM %": "Operating_Profit_Margin",
+    "Profit Growth %": "Profit_Growth_Screener",
+    "EPS Var 5Yrs %": "EPS_Variation_5Yrs",
+    "Debt / Eq": "Debt_to_Equity",
+    "ROCE %": "ROCE",
+    "Mar Cap (Rs.Cr.)": "Market_Cap",
+    "CMP (Rs.)": "CMP"
+  },
+  "neg_indicators": [
+    "PE_Ratio",
+    "PB_Ratio",
+    "PEG_Ratio",
+    "Debt_to_Equity"
+  ],
+  "pos_indicators": [
+    "ROE",
+    "ROA",
+    "Operating_Profit_Margin",
+    "ROCE",
+    "EPS_Variation_5Yrs",
+    "Profit_Growth_Screener"
+  ],
+  "label_classes": [
+    "Fairly Valued",
+    "Overvalued",
+    "Undervalued"
+  ],
+  "label_hi_thresh": 0.36548796339032086,
+  "label_lo_thresh": -0.21311570112275885
+}
