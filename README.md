@@ -84,90 +84,116 @@ $$\text{Composite Financial Score} = \frac{\text{Valuation} + \text{Profitabilit
 
 ---
 
-## 4. Repository Structure & Research Artifacts
+## 4. Repository Structure & Directory Map
+
+The project is structured into clear, self-contained directories so you can immediately find models, outputs, data, notebooks, and runner scripts:
 
 ```
 finlearn-ai/
-├── collab work/
-│   └── minipro1.py                   # Original end-to-end research notebook code
 │
-├── finlearn-backend/
-│   ├── server.py                     # Flask REST application entry point
-│   ├── modules/ml_valuation/
-│   │   ├── indian_market_pipeline.py # Full execution pipeline (EDA, scaling, 3 models, plots)
-│   │   ├── train_from_excel.py       # Standalone training script for 2,001 Indian stocks
-│   │   ├── data_pipeline.py          # Data ingestion and deduplication module
-│   │   ├── feature_pipeline.py       # 4-pillar calculation and preprocessing
-│   │   ├── model_loader.py           # Model deserialization and inference engine
-│   │   └── routes.py                 # REST API endpoints for predictions and plots
-│   │
-│   └── models_store/
-│       ├── Screener_Query_Results_Page1.xlsx # Raw Indian equities snapshot (2,650 rows)
-│       ├── Final_Project_Data.csv    # Cleaned & labelled dataset (2,001 rows)
-│       ├── RandomForest_Model.pkl    # Serialized Random Forest classifier
-│       ├── XGBoost_Model.pkl         # Serialized XGBoost classifier
-│       ├── AdaBoost_Model.pkl        # Serialized AdaBoost classifier
-│       ├── LabelEncoder.pkl          # Class label mapping
-│       ├── scaler.pkl                # Preprocessing RobustScaler
-│       ├── imputer.pkl               # SimpleImputer
-│       │
-│       ├── outputs/                  # Numerical Evaluation Artifacts
-│       │   ├── model_comparison.csv
-│       │   ├── cross_validation_results.csv
-│       │   ├── classification_reports.csv
-│       │   ├── all_model_predictions.csv
-│       │   ├── model_disagreements.csv
-│       │   ├── feature_availability_report.csv
-│       │   ├── feature_importance_xgboost.csv
-│       │   ├── feature_importance_randomforest.csv
-│       │   └── feature_importance_adaboost.csv
-│       │
-│       └── reports/                  # High-Resolution Publication Plots (13 charts)
-│           ├── score_distribution.png
-│           ├── class_distribution.png
-│           ├── eda_correlation_heatmap.png
-│           ├── eda_boxplots.png
-│           ├── eda_histograms.png
-│           ├── eda_pairplot.png
-│           ├── eda_outlier_summary.csv
-│           ├── model_comparison.png
-│           ├── feature_importance_xgboost.png
-│           ├── feature_importance_randomforest.png
-│           ├── feature_importance_adaboost.png
-│           ├── confusion_matrix_xgboost.png
-│           ├── confusion_matrix_randomforest.png
-│           └── confusion_matrix_adaboost.png
+├── 📁 data/                           # All Market Datasets (Raw & Processed)
+│   ├── raw/
+│   │   └── Screener_Query_Results_Page1.xlsx   # 2,650 Indian stock snapshot from Screener.in
+│   ├── processed/
+│   │   ├── Final_Project_Data.csv             # 2,001 Unique deduplicated Indian stocks with 4-pillar scores
+│   │   └── Labelled_Financial_Data.csv        # Scored intermediate dataset
+│   └── README.md
 │
-├── pages/
-│   └── MLModelPage.tsx               # Interactive React ML Layer with Research Gallery
-├── components/                       # UI components (charts, cards, navigation)
-└── vite.config.ts                    # Vite dev server with proxy configuration
+├── 📁 models/                         # Trained ML Models, Pipelines & Schemas
+│   ├── XGBoost_Model.pkl                      # Champion Classifier (~85.3% accuracy, ~86.3% CV)
+│   ├── RandomForest_Model.pkl                 # 300 Balanced Trees Classifier (~84.5% accuracy)
+│   ├── AdaBoost_Model.pkl                     # Adaptive Boosting Classifier (~81.1% accuracy)
+│   ├── LabelEncoder.pkl                       # Class mappings (Undervalued, Fairly Valued, Overvalued)
+│   ├── scaler.pkl & imputer.pkl               # Leakage-resistant RobustScaler & SimpleImputer
+│   ├── feature_schema.json                    # 8 Fundamental indicators, weights, & percentile thresholds
+│   ├── model_stats.json                       # Comprehensive evaluation metrics & CV splits
+│   └── README.md
+│
+├── 📁 outputs/                        # Experimental Results, Metrics & Visualizations
+│   ├── tables/                                # Evaluation CSV tables & prediction logs
+│   │   ├── model_comparison.csv               # Head-to-head performance benchmarks
+│   │   ├── cross_validation_results.csv       # 5-fold stratified CV breakdown per fold
+│   │   ├── classification_reports.csv         # Class-level precision, recall, and F1
+│   │   ├── all_model_predictions.csv          # Holdout test set predictions & agreement flags
+│   │   ├── model_disagreements.csv            # Test samples where models differ from heuristic
+│   │   ├── feature_availability_report.csv    # Indicator coverage and missingness audit
+│   │   ├── feature_importance_xgboost.csv     # Champion XGBoost feature weightings
+│   │   └── feature_importance_randomforest.csv
+│   ├── charts/                                # 13 High-resolution publication figures & EDA plots
+│   │   ├── confusion_matrix_xgboost.png       # Normalized confusion matrices
+│   │   ├── confusion_matrix_randomforest.png
+│   │   ├── confusion_matrix_adaboost.png
+│   │   ├── model_comparison.png               # Multi-metric comparative bar plot
+│   │   ├── eda_correlation_heatmap.png        # Correlation matrix of financial indicators
+│   │   ├── score_distribution.png             # Directional percentile threshold distributions
+│   │   └── ... (boxplots, histograms, pairplots)
+│   └── README.md
+│
+├── 📁 notebooks/                      # Research Notebooks, Milestone Reports & Documentation
+│   ├── FinLearn_Minor_Project_Detailed_Three_Models.ipynb          # Master clean research notebook
+│   ├── FinLearn_Minor_Project_Detailed_Three_Models_Executed.ipynb # Pre-executed validation run
+│   ├── docs/FinLearn_10_Week_Project_Plan.docx                     # Official 10-week project plan
+│   ├── milestone_reports/                                          # Week 2 through Week 9 CSV reports
+│   └── README.md
+│
+├── 📁 scripts/                        # 1-Click Execution Runner Scripts
+│   ├── run_all.sh                             # Starts backend (:5001) + frontend (:3000) concurrently
+│   ├── run_frontend.sh                        # Starts React Vite dev server
+│   ├── run_backend.sh                         # Starts Flask REST API
+│   ├── run_training.sh                        # Retrains models & syncs all outputs
+│   └── README.md
+│
+├── 📁 finlearn-backend/               # Flask REST API Server & ML Pipelines
+│   ├── server.py                              # Flask application entry point
+│   ├── requirements.txt                       # Python dependencies
+│   ├── config/                                # API configurations
+│   └── modules/ml_valuation/                  # Indian market training pipeline, routes, loader
+│
+├── 📁 src/                            # Frontend React 19 + TypeScript + Vite UI
+│   ├── App.tsx                         # Application shell and routes
+│   ├── main.tsx                         # Frontend entrypoint
+│   ├── components/                      # Reusable UI components by feature
+│   ├── hooks/                           # Shared React hooks
+│   ├── pages/                           # Route-level screens
+│   ├── services/                        # API and integration services
+│   ├── constants.ts                     # Shared application constants
+│   └── types.ts                         # Shared TypeScript types
+├── QUICKSTART.md                      # Fast navigation and single-command cheat sheet
+└── README.md                          # Full academic & framework documentation
 ```
 
 ---
 
-## 5. How to Reproduce & Run Locally
+## 5. How to Run the Application
 
-### 5.1 Re-run Full ML Training & Generate All Artifacts
-To execute the complete research pipeline from scratch (loading the Excel file, performing EDA, calculating 4 pillars, training all 3 models, and rendering all 13 plots):
+For a quick cheat-sheet, see [`QUICKSTART.md`](file:///Users/akshathsugandhi/Desktop/finlearn-ai-main/QUICKSTART.md).
+
+### 5.1 Run Full Stack (Backend + Frontend Concurrently)
 ```bash
-cd finlearn-backend
-python3 modules/ml_valuation/indian_market_pipeline.py
+npm start
+# OR: bash scripts/run_all.sh
 ```
+- **Backend API**: `http://localhost:5001`
+- **Frontend App**: `http://localhost:3000`
+- **ML Valuation Layer**: `http://localhost:3000/#/ml-model`
 
-### 5.2 Launch the Backend API
+### 5.2 Run Frontend Only
 ```bash
-cd finlearn-backend
-python3 server.py
-# Backend runs at http://localhost:5001
-```
-
-### 5.3 Launch the Interactive Frontend App
-```bash
-npm install
 npm run dev
-# Frontend runs at http://localhost:3000
-# ML Valuation Layer: http://localhost:3000/#/ml-model
+# OR: bash scripts/run_frontend.sh
+```
+
+### 5.3 Run Backend API Only
+```bash
+npm run backend
+# OR: bash scripts/run_backend.sh
+```
+
+### 5.4 Re-Train Models & Regenerate All Outputs
+To re-run the research pipeline from scratch (EDA, 4-pillar formulation, 3-model training, 5-fold CV, and 13 plots):
+```bash
+npm run train
+# OR: bash scripts/run_training.sh
 ```
 
 ---

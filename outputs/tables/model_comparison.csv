@@ -1,0 +1,4 @@
+Model,Accuracy,Balanced_Accuracy,Precision_Weighted,Recall_Weighted,F1_Weighted,Precision_Macro,Recall_Macro,F1_Macro
+Random Forest,0.88,0.8771,0.886,0.88,0.8806,0.8939,0.8771,0.8832
+AdaBoost,0.7975,0.7785,0.8521,0.7975,0.7948,0.8722,0.7785,0.795
+XGBoost,0.91,0.9083,0.9128,0.91,0.9104,0.9186,0.9083,0.9125

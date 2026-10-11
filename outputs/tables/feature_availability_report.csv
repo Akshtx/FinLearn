@@ -1,0 +1,9 @@
+Original_Feature,Excel_Source,Status,Data_Type,Missing_%,Used_For_Scoring,Used_For_Model
+PE_Ratio,PE_Ratio,OK Available,float64,0.75,True,True
+Price_to_Book,Price_to_Book,OK Available,float64,11.07,True,True
+PEG,PEG,OK Available,float64,8.06,True,True
+ROE_pct,ROE_pct,OK Available,float64,1.35,True,True
+ROA_12M_pct,ROA_12M_pct,OK Available,float64,0.0,True,True
+Profit_Growth_pct,Profit_Growth_pct,OK Available,float64,49.92,True,True
+Debt_to_Equity,Debt_to_Equity,OK Available,float64,1.25,True,True
+ROCE_pct,ROCE_pct,OK Available,float64,0.0,True,True

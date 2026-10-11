@@ -9,6 +9,14 @@ from .model_loader import ModelLoader
 
 ml_blueprint = Blueprint('ml_valuation', __name__)
 
+def _find_path(*relative_candidates):
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    for rel in relative_candidates:
+        p = os.path.abspath(os.path.join(current_dir, rel))
+        if os.path.exists(p):
+            return p
+    return None
+
 def _get_loader():
     return ModelLoader()
 
@@ -152,12 +160,12 @@ def predict_custom_valuation():
         financial_score = compute_financial_score(feature_dict)
 
         # Get fi for selected model
-        stats_path = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)),
+        stats_path = _find_path(
+            "../../../models/model_stats.json",
             "../../models_store/model_stats.json"
         )
         fi = {}
-        if os.path.exists(stats_path):
+        if stats_path and os.path.exists(stats_path):
             with open(stats_path) as f:
                 stats = json.load(f)
             model_key = ModelLoader.MODEL_KEY_MAP.get(selected_model.lower(), "RandomForest")
@@ -179,25 +187,23 @@ def predict_custom_valuation():
 
 @ml_blueprint.route('/valuation/stats', methods=['GET'])
 def get_model_stats():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    models_dir  = os.path.abspath(os.path.join(current_dir, "../../models_store"))
-    stats_path  = os.path.join(models_dir, "model_stats.json")
-    schema_path = os.path.join(models_dir, "feature_schema.json")
-    data_path   = os.path.join(models_dir, "Final_Project_Data.csv")
+    stats_path  = _find_path("../../../models/model_stats.json", "../../models_store/model_stats.json")
+    schema_path = _find_path("../../../models/feature_schema.json", "../../models_store/feature_schema.json")
+    data_path   = _find_path("../../../data/processed/Final_Project_Data.csv", "../../models_store/Final_Project_Data.csv")
 
     stats_data = {}
-    if os.path.exists(stats_path):
+    if stats_path and os.path.exists(stats_path):
         with open(stats_path) as f:
             stats_data = json.load(f)
 
     schema = {}
-    if os.path.exists(schema_path):
+    if schema_path and os.path.exists(schema_path):
         with open(schema_path) as f:
             schema = json.load(f)
 
     sample_rows = []
     total_rows  = 0
-    if os.path.exists(data_path):
+    if data_path and os.path.exists(data_path):
         try:
             df = pd.read_csv(data_path)
             total_rows = len(df)
@@ -219,8 +225,8 @@ def get_model_stats():
 
     # Load 5-Fold Cross-Validation results
     cv_data = {}
-    cv_path = os.path.join(models_dir, "outputs", "cross_validation_results.csv")
-    if os.path.exists(cv_path):
+    cv_path = _find_path("../../../outputs/tables/cross_validation_results.csv", "../../models_store/outputs/cross_validation_results.csv")
+    if cv_path and os.path.exists(cv_path):
         try:
             cv_df = pd.read_csv(cv_path)
             for m in ["RandomForest", "XGBoost", "AdaBoost"]:
@@ -242,10 +248,10 @@ def get_model_stats():
     # Load Model Disagreements & Agreement Rates from test set predictions
     disagreements = []
     agreement_rates = {}
-    preds_path = os.path.join(models_dir, "outputs", "all_model_predictions.csv")
-    dis_path = os.path.join(models_dir, "outputs", "model_disagreements.csv")
+    preds_path = _find_path("../../../outputs/tables/all_model_predictions.csv", "../../models_store/outputs/all_model_predictions.csv")
+    dis_path = _find_path("../../../outputs/tables/model_disagreements.csv", "../../models_store/outputs/model_disagreements.csv")
 
-    if os.path.exists(preds_path):
+    if preds_path and os.path.exists(preds_path):
         try:
             preds_df = pd.read_csv(preds_path)
             total_test = len(preds_df)
@@ -263,7 +269,7 @@ def get_model_stats():
         except Exception as ex:
             print(f"Error calculating agreement from predictions: {ex}")
 
-    if os.path.exists(dis_path):
+    if dis_path and os.path.exists(dis_path):
         try:
             dis_df = pd.read_csv(dis_path)
             for _, r in dis_df.head(10).iterrows():
@@ -281,8 +287,8 @@ def get_model_stats():
 
     # Load EDA Outlier Summary
     eda_outliers = []
-    eda_path = os.path.join(models_dir, "reports", "eda_outlier_summary.csv")
-    if os.path.exists(eda_path):
+    eda_path = _find_path("../../../outputs/charts/eda_outlier_summary.csv", "../../models_store/reports/eda_outlier_summary.csv")
+    if eda_path and os.path.exists(eda_path):
         try:
             eda_df = pd.read_csv(eda_path)
             for _, r in eda_df.iterrows():
@@ -419,11 +425,11 @@ def get_model_stats():
 
 @ml_blueprint.route('/valuation/schema', methods=['GET'])
 def get_feature_schema():
-    schema_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
+    schema_path = _find_path(
+        "../../../models/feature_schema.json",
         "../../models_store/feature_schema.json"
     )
-    if os.path.exists(schema_path):
+    if schema_path and os.path.exists(schema_path):
         with open(schema_path) as f:
             return jsonify(json.load(f))
     return jsonify({"error": "Feature schema not found."}), 404
@@ -432,16 +438,15 @@ def get_feature_schema():
 @ml_blueprint.route('/valuation/confusion-matrix', methods=['GET'])
 def get_confusion_matrix():
     model_name = request.args.get('model', 'RandomForest').lower()
-    models_dir = os.path.abspath(os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "../../models_store"
-    ))
     target_file = f"confusion_matrix_{model_name}.png"
-    image_path  = os.path.join(models_dir, target_file)
-    if not os.path.exists(image_path):
-        image_path = os.path.join(models_dir, "reports", target_file)
-    if not os.path.exists(image_path):
-        image_path = os.path.join(models_dir, "confusion_matrix.png")
-    if os.path.exists(image_path):
+    image_path = _find_path(
+        f"../../../outputs/charts/{target_file}",
+        f"../../models_store/reports/{target_file}",
+        f"../../models_store/{target_file}",
+        "../../../outputs/charts/confusion_matrix_randomforest.png",
+        "../../models_store/confusion_matrix.png"
+    )
+    if image_path and os.path.exists(image_path):
         return send_file(image_path, mimetype='image/png')
     return jsonify({"success": False, "error": "Confusion matrix image not found."}), 404
 
@@ -449,16 +454,13 @@ def get_confusion_matrix():
 @ml_blueprint.route('/reports/plot/<path:filename>', methods=['GET'])
 @ml_blueprint.route('/valuation/plot/<path:filename>', methods=['GET'])
 def get_report_plot(filename):
-    models_dir = os.path.abspath(os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "../../models_store"
-    ))
-    filename = os.path.basename(filename)
-    # Check reports/ first, then models_store/
-    image_path = os.path.join(models_dir, "reports", filename)
-    if not os.path.exists(image_path):
-        image_path = os.path.join(models_dir, filename)
-
-    if os.path.exists(image_path) and filename.endswith('.png'):
+    basename = os.path.basename(filename)
+    image_path = _find_path(
+        f"../../../outputs/charts/{basename}",
+        f"../../models_store/reports/{basename}",
+        f"../../models_store/{basename}"
+    )
+    if image_path and os.path.exists(image_path) and basename.endswith('.png'):
         return send_file(image_path, mimetype='image/png')
     return jsonify({"success": False, "error": f"Plot {filename} not found."}), 404
 

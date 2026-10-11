@@ -22,6 +22,8 @@ def _load_dataset():
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         data_path = os.path.abspath(os.path.join(current_dir, "../../models_store/Final_Project_Data.csv"))
+        if not os.path.exists(data_path):
+            data_path = os.path.abspath(os.path.join(current_dir, "../../../data/processed/Final_Project_Data.csv"))
         if os.path.exists(data_path):
             _DATASET_CACHE = pd.read_csv(data_path)
             return _DATASET_CACHE

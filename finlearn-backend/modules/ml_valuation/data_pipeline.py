@@ -29,11 +29,21 @@ load_dotenv()
 _THIS_DIR    = os.path.dirname(os.path.abspath(__file__))
 _BACKEND_DIR = os.path.abspath(os.path.join(_THIS_DIR, "../.."))
 
-EXCEL_PATH = os.environ.get(
-    "SCREENER_EXCEL_PATH",
-    os.path.join(_BACKEND_DIR, "models_store",
-                 "Screener_Query_Results_Page1.xlsx"),
-)
+def _resolve_excel_path():
+    env_path = os.environ.get("SCREENER_EXCEL_PATH")
+    if env_path and os.path.exists(env_path):
+        return env_path
+    candidates = [
+        os.path.abspath(os.path.join(_BACKEND_DIR, "..", "data", "raw", "Screener_Query_Results_Page1.xlsx")),
+        os.path.join(_BACKEND_DIR, "models_store", "Screener_Query_Results_Page1.xlsx"),
+        os.path.join(_BACKEND_DIR, "models_store", "Screener_Query_Results_Page1 (1).xlsx"),
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    return candidates[0]
+
+EXCEL_PATH = _resolve_excel_path()
 MODELS_DIR = os.path.join(_BACKEND_DIR, "models_store")
 os.makedirs(MODELS_DIR, exist_ok=True)
 

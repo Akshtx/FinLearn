@@ -1,0 +1,327 @@
+{
+  "models": {
+    "RandomForest": {
+      "accuracy": 0.88,
+      "balanced_accuracy": 0.8770833333333333,
+      "precision_weighted": 0.8859958908925774,
+      "recall_weighted": 0.88,
+      "f1_score_weighted": 0.8806427452637859,
+      "precision_macro": 0.8939280185947487,
+      "recall_macro": 0.8770833333333333,
+      "f1_score_macro": 0.8831599207730428,
+      "classification_report": {
+        "Fairly Valued": {
+          "precision": 0.8146067415730337,
+          "recall": 0.90625,
+          "f1-score": 0.8579881656804734,
+          "support": 160.0
+        },
+        "Overvalued": {
+          "precision": 0.9519230769230769,
+          "recall": 0.825,
+          "f1-score": 0.8839285714285714,
+          "support": 120.0
+        },
+        "Undervalued": {
+          "precision": 0.9152542372881356,
+          "recall": 0.9,
+          "f1-score": 0.907563025210084,
+          "support": 120.0
+        },
+        "accuracy": 0.88,
+        "macro avg": {
+          "precision": 0.8939280185947487,
+          "recall": 0.8770833333333333,
+          "f1-score": 0.8831599207730428,
+          "support": 400.0
+        },
+        "weighted avg": {
+          "precision": 0.8859958908925774,
+          "recall": 0.88,
+          "f1-score": 0.8806427452637859,
+          "support": 400.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          145,
+          5,
+          10
+        ],
+        [
+          21,
+          99,
+          0
+        ],
+        [
+          12,
+          0,
+          108
+        ]
+      ],
+      "feature_importances": {
+        "PE_Ratio": 0.15870417028665654,
+        "Price_to_Book": 0.10281675712925677,
+        "PEG": 0.16413333746915992,
+        "ROE_pct": 0.08646472540318129,
+        "ROA_12M_pct": 0.18954455584780236,
+        "Profit_Growth_pct": 0.07105228549080486,
+        "Debt_to_Equity": 0.06382235869185515,
+        "ROCE_pct": 0.16346180968128313
+      },
+      "training_time_seconds": 0.1941,
+      "train_dataset_size": 1597,
+      "test_dataset_size": 400,
+      "last_trained": "2026-10-11 16:15:38",
+      "cv_scores": [
+        0.8875,
+        0.905,
+        0.8822,
+        0.9123,
+        0.9048
+      ],
+      "cv_mean": 0.8983,
+      "cv_std": 0.0115
+    },
+    "AdaBoost": {
+      "accuracy": 0.7975,
+      "balanced_accuracy": 0.7784722222222222,
+      "precision_weighted": 0.8520504423113118,
+      "recall_weighted": 0.7975,
+      "f1_score_weighted": 0.7948267475633205,
+      "precision_macro": 0.8721676391241608,
+      "recall_macro": 0.7784722222222222,
+      "f1_score_macro": 0.7950476223280997,
+      "classification_report": {
+        "Fairly Valued": {
+          "precision": 0.670995670995671,
+          "recall": 0.96875,
+          "f1-score": 0.7928388746803069,
+          "support": 160.0
+        },
+        "Overvalued": {
+          "precision": 0.9855072463768116,
+          "recall": 0.5666666666666667,
+          "f1-score": 0.7195767195767195,
+          "support": 120.0
+        },
+        "Undervalued": {
+          "precision": 0.96,
+          "recall": 0.8,
+          "f1-score": 0.8727272727272727,
+          "support": 120.0
+        },
+        "accuracy": 0.7975,
+        "macro avg": {
+          "precision": 0.8721676391241608,
+          "recall": 0.7784722222222222,
+          "f1-score": 0.7950476223280997,
+          "support": 400.0
+        },
+        "weighted avg": {
+          "precision": 0.8520504423113118,
+          "recall": 0.7975,
+          "f1-score": 0.7948267475633205,
+          "support": 400.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          155,
+          1,
+          4
+        ],
+        [
+          52,
+          68,
+          0
+        ],
+        [
+          24,
+          0,
+          96
+        ]
+      ],
+      "feature_importances": {
+        "PE_Ratio": 0.20529121891496255,
+        "Price_to_Book": 0.022266080492315935,
+        "PEG": 0.19152999477966484,
+        "ROE_pct": 0.03709879391461987,
+        "ROA_12M_pct": 0.26132489727628583,
+        "Profit_Growth_pct": 0.09142343480064344,
+        "Debt_to_Equity": 0.06433311214332742,
+        "ROCE_pct": 0.12673246767817992
+      },
+      "training_time_seconds": 0.2549,
+      "train_dataset_size": 1597,
+      "test_dataset_size": 400,
+      "last_trained": "2026-10-11 16:15:38",
+      "cv_scores": [
+        0.825,
+        0.795,
+        0.7995,
+        0.802,
+        0.8195
+      ],
+      "cv_mean": 0.8082,
+      "cv_std": 0.0118
+    },
+    "XGBoost": {
+      "accuracy": 0.91,
+      "balanced_accuracy": 0.9083333333333333,
+      "precision_weighted": 0.9127530727057728,
+      "recall_weighted": 0.91,
+      "f1_score_weighted": 0.9103714822754665,
+      "precision_macro": 0.918562845642073,
+      "recall_macro": 0.9083333333333333,
+      "f1_score_macro": 0.9124609508549361,
+      "classification_report": {
+        "Fairly Valued": {
+          "precision": 0.8604651162790697,
+          "recall": 0.925,
+          "f1-score": 0.891566265060241,
+          "support": 160.0
+        },
+        "Overvalued": {
+          "precision": 0.9545454545454546,
+          "recall": 0.875,
+          "f1-score": 0.9130434782608695,
+          "support": 120.0
+        },
+        "Undervalued": {
+          "precision": 0.940677966101695,
+          "recall": 0.925,
+          "f1-score": 0.9327731092436975,
+          "support": 120.0
+        },
+        "accuracy": 0.91,
+        "macro avg": {
+          "precision": 0.918562845642073,
+          "recall": 0.9083333333333333,
+          "f1-score": 0.9124609508549361,
+          "support": 400.0
+        },
+        "weighted avg": {
+          "precision": 0.9127530727057728,
+          "recall": 0.91,
+          "f1-score": 0.9103714822754665,
+          "support": 400.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          148,
+          5,
+          7
+        ],
+        [
+          15,
+          105,
+          0
+        ],
+        [
+          9,
+          0,
+          111
+        ]
+      ],
+      "feature_importances": {
+        "PE_Ratio": 0.16157160699367523,
+        "Price_to_Book": 0.08600274473428726,
+        "PEG": 0.16687040030956268,
+        "ROE_pct": 0.047362420707941055,
+        "ROA_12M_pct": 0.17338868975639343,
+        "Profit_Growth_pct": 0.06978492438793182,
+        "Debt_to_Equity": 0.06392871588468552,
+        "ROCE_pct": 0.23109053075313568
+      },
+      "training_time_seconds": 0.6465,
+      "train_dataset_size": 1597,
+      "test_dataset_size": 400,
+      "last_trained": "2026-10-11 16:15:39",
+      "cv_scores": [
+        0.92,
+        0.9175,
+        0.9173,
+        0.9023,
+        0.8997
+      ],
+      "cv_mean": 0.9114,
+      "cv_std": 0.0085
+    }
+  },
+  "best_model": "XGBoost",
+  "dataset": {
+    "excel_file": "Screener_Query_Results_Page1 (1).xlsx",
+    "total_raw_rows": 2000,
+    "usable_rows": 1997,
+    "unique_stocks": 1997,
+    "train_rows": 1597,
+    "test_rows": 400,
+    "available_features": [
+      "PE_Ratio",
+      "Price_to_Book",
+      "PEG",
+      "ROE_pct",
+      "ROA_12M_pct",
+      "Profit_Growth_pct",
+      "Debt_to_Equity",
+      "ROCE_pct"
+    ],
+    "label_distribution": {
+      "Fairly Valued": 799,
+      "Undervalued": 599,
+      "Overvalued": 599
+    },
+    "label_methodology": "Directional Percentile Ranking & 70th/30th Percentiles (Undervalued >= 0.576 / Overvalued <= 0.415)",
+    "data_source": "Screener.in Indian Listed Equities (2,001 Unique Companies)"
+  },
+  "accuracy": 0.91,
+  "precision": 0.9127530727057728,
+  "recall": 0.91,
+  "f1_score": 0.9103714822754665,
+  "classification_report": {
+    "Fairly Valued": {
+      "precision": 0.8604651162790697,
+      "recall": 0.925,
+      "f1-score": 0.891566265060241,
+      "support": 160.0
+    },
+    "Overvalued": {
+      "precision": 0.9545454545454546,
+      "recall": 0.875,
+      "f1-score": 0.9130434782608695,
+      "support": 120.0
+    },
+    "Undervalued": {
+      "precision": 0.940677966101695,
+      "recall": 0.925,
+      "f1-score": 0.9327731092436975,
+      "support": 120.0
+    },
+    "accuracy": 0.91,
+    "macro avg": {
+      "precision": 0.918562845642073,
+      "recall": 0.9083333333333333,
+      "f1-score": 0.9124609508549361,
+      "support": 400.0
+    },
+    "weighted avg": {
+      "precision": 0.9127530727057728,
+      "recall": 0.91,
+      "f1-score": 0.9103714822754665,
+      "support": 400.0
+    }
+  },
+  "feature_importances": {
+    "PE_Ratio": 0.16157160699367523,
+    "Price_to_Book": 0.08600274473428726,
+    "PEG": 0.16687040030956268,
+    "ROE_pct": 0.047362420707941055,
+    "ROA_12M_pct": 0.17338868975639343,
+    "Profit_Growth_pct": 0.06978492438793182,
+    "Debt_to_Equity": 0.06392871588468552,
+    "ROCE_pct": 0.23109053075313568
+  },
+  "last_trained": "2026-10-11 16:15:44"
+}

@@ -62,11 +62,19 @@ np.random.seed(RANDOM_STATE)
 # Resolve directory paths
 _THIS_DIR = Path(__file__).resolve().parent
 _BACKEND_DIR = _THIS_DIR.parent.parent
+_ROOT_DIR = _BACKEND_DIR.parent
+
 MODELS_DIR = _BACKEND_DIR / "models_store"
 OUTPUT_DIR = MODELS_DIR / "outputs"
 REPORTS_DIR = MODELS_DIR / "reports"
 
-for d in [MODELS_DIR, OUTPUT_DIR, REPORTS_DIR]:
+ROOT_MODELS_DIR = _ROOT_DIR / "models"
+ROOT_OUTPUTS_TABLES = _ROOT_DIR / "outputs" / "tables"
+ROOT_OUTPUTS_CHARTS = _ROOT_DIR / "outputs" / "charts"
+ROOT_DATA_PROCESSED = _ROOT_DIR / "data" / "processed"
+ROOT_DATA_RAW = _ROOT_DIR / "data" / "raw"
+
+for d in [MODELS_DIR, OUTPUT_DIR, REPORTS_DIR, ROOT_MODELS_DIR, ROOT_OUTPUTS_TABLES, ROOT_OUTPUTS_CHARTS, ROOT_DATA_PROCESSED]:
     d.mkdir(parents=True, exist_ok=True)
 
 # -----------------------------------------------------------------------------
@@ -113,10 +121,12 @@ def canonical_column(name):
 def load_and_clean_data(excel_path=None):
     if excel_path is None:
         candidates = [
-            MODELS_DIR / "Screener_Query_Results_Page1 (1).xlsx",
+            ROOT_DATA_RAW / "Screener_Query_Results_Page1.xlsx",
             MODELS_DIR / "Screener_Query_Results_Page1.xlsx",
+            MODELS_DIR / "Screener_Query_Results_Page1 (1).xlsx",
             _THIS_DIR / "Screener_Query_Results_Page1.xlsx",
-            _BACKEND_DIR.parent / "collab work" / "Screener_Query_Results_Page1 (1).xlsx",
+            _ROOT_DIR / "notebooks" / "Screener_Query_Results_Page1 (1).xlsx",
+            _ROOT_DIR / "collab work" / "Screener_Query_Results_Page1 (1).xlsx",
         ]
         for c in candidates:
             if c.exists():
@@ -681,6 +691,28 @@ def run_pipeline(excel_path=None):
 
     # Step 10: Generate all 13 plots
     generate_all_plots(model_base, score_features, low_th, high_th, models, X_test, y_test, class_names, test_metrics, cv_metrics)
+
+    # Step 11: Synchronize artifacts to top-level models/, outputs/, and data/
+    try:
+        import shutil
+        for p in MODELS_DIR.glob("*.pkl"):
+            shutil.copy2(p, ROOT_MODELS_DIR / p.name)
+        for p in MODELS_DIR.glob("*.joblib"):
+            shutil.copy2(p, ROOT_MODELS_DIR / p.name)
+        if (MODELS_DIR / "feature_schema.json").exists():
+            shutil.copy2(MODELS_DIR / "feature_schema.json", ROOT_MODELS_DIR / "feature_schema.json")
+        if (MODELS_DIR / "model_stats.json").exists():
+            shutil.copy2(MODELS_DIR / "model_stats.json", ROOT_MODELS_DIR / "model_stats.json")
+        for p in OUTPUT_DIR.glob("*.csv"):
+            shutil.copy2(p, ROOT_OUTPUTS_TABLES / p.name)
+        for p in REPORTS_DIR.glob("*.*"):
+            shutil.copy2(p, ROOT_OUTPUTS_CHARTS / p.name)
+        if (MODELS_DIR / "Final_Project_Data.csv").exists():
+            shutil.copy2(MODELS_DIR / "Final_Project_Data.csv", ROOT_DATA_PROCESSED / "Final_Project_Data.csv")
+        if (MODELS_DIR / "Labelled_Financial_Data.csv").exists():
+            shutil.copy2(MODELS_DIR / "Labelled_Financial_Data.csv", ROOT_DATA_PROCESSED / "Labelled_Financial_Data.csv")
+    except Exception as sync_err:
+        print(f"Warning during root directory sync: {sync_err}")
 
     elapsed = round(time.time() - start_time, 2)
     print("=" * 70)

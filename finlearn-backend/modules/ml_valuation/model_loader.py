@@ -31,13 +31,26 @@ class ModelLoader:
     def reload(self):
         self._load()
 
+    def _find_file(self, filename):
+        candidates = [
+            os.path.join(self.models_dir, filename),
+            os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../models", filename)),
+            os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../models_store", filename)),
+        ]
+        for c in candidates:
+            if os.path.exists(c):
+                return c
+        return None
+
     def _load(self):
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.models_dir = os.path.abspath(os.path.join(current_dir, "../../models_store"))
+        root_models = os.path.abspath(os.path.join(current_dir, "../../../models"))
+        store_models = os.path.abspath(os.path.join(current_dir, "../../models_store"))
+        self.models_dir = root_models if os.path.exists(root_models) else store_models
 
         # Load feature schema
-        schema_path = os.path.join(self.models_dir, "feature_schema.json")
-        if os.path.exists(schema_path):
+        schema_path = self._find_file("feature_schema.json")
+        if schema_path and os.path.exists(schema_path):
             with open(schema_path) as f:
                 self.schema = json.load(f)
             self.feature_names = self.schema.get("feature_names", [
@@ -54,15 +67,15 @@ class ModelLoader:
         # Load preprocessing
         self.imputer = self._load_artifact("imputer.pkl")
         self.scaler  = self._load_artifact("scaler.pkl")
-        self.encoder = self._load_artifact("LabelEncoder.pkl")
+        self.encoder = self._load_artifact("LabelEncoder.pkl") or self._load_artifact("label_encoder.joblib")
 
         # Load all three models
         self.models = {}
         for name in ["RandomForest", "XGBoost", "AdaBoost"]:
-            m = self._load_artifact(f"{name}_Model.pkl")
+            m = self._load_artifact(f"{name}_Model.pkl") or self._load_artifact(f"{name.lower()}_pipeline.joblib")
             if m is not None:
                 self.models[name] = m
-                print(f"{name}_Model.pkl loaded successfully.")
+                print(f"{name} model loaded successfully.")
 
         self.loaded = (
             len(self.models) > 0 and
@@ -71,12 +84,12 @@ class ModelLoader:
         self.model = self.models.get("RandomForest", next(iter(self.models.values()), None))
 
     def _load_artifact(self, filename):
-        path = os.path.join(self.models_dir, filename)
-        if os.path.exists(path):
+        path = self._find_file(filename)
+        if path and os.path.exists(path):
             try:
                 return joblib.load(path)
             except Exception as e:
-                print(f"Error loading {filename}: {e}")
+                print(f"Error loading {filename} from {path}: {e}")
         return None
 
     MODEL_KEY_MAP = {

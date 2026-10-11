@@ -24,6 +24,8 @@ FEATURE_ALIASES = {
 def load_schema():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     schema_path = os.path.abspath(os.path.join(current_dir, "../../models_store/feature_schema.json"))
+    if not os.path.exists(schema_path):
+        schema_path = os.path.abspath(os.path.join(current_dir, "../../../models/feature_schema.json"))
     if os.path.exists(schema_path):
         with open(schema_path) as f:
             return json.load(f)
