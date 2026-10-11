@@ -1,38 +1,38 @@
 """
 =============================================================================
-FINLEARN AI - Indian Stock Market Financial Analysis Pipeline
+FINLEARN AI - Indian Stock Market ML Pipeline (Colab Reference Implementation)
 =============================================================================
-Extension of the mini-project (minipro1.py / Colab work) to Indian equity
-data sourced from Screener.in via the provided Excel workbook.
+Direct implementation of the research methodology and pipeline from
+collab work/FinLearn_Minor_Project_Detailed_Three_Models.ipynb.
 
-Methodology preserved from minipro1.py:
-  - Four-category financial scoring (Valuation/Profitability/Growth/Health)
-    using RobustScaler normalisation
-  - Three score-derived labels (Undervalued / Fairly Valued / Overvalued)
-    via 70th/30th percentile thresholds
-  - 80:20 stratified train-test split, random_state=42
-  - RandomForestClassifier(n_estimators=300, class_weight='balanced')
-  - Cross-validation, confusion matrices, feature importance
-
-New additions:
-  - Reliable Excel ingestion with dynamic header detection
-  - Explicit Excel to internal feature mapping with availability report
-  - XGBoost Classifier
-  - AdaBoost Classifier
-  - Fair three-model comparison table
-  - Consolidated company-level prediction export
-  - Organised outputs/, reports/ directories
-
-LIMITATION: Target labels are derived from the same financial indicators
-used as model features. The models learn to reproduce scoring rules, not
-predict future stock returns. No fabricated historical data are present.
-
-API-key policy: No hard-coded credentials.
-Dataset: Screener_Query_Results_Page1.xlsx (Screener.in snapshot)
+Key Methodology:
+  - Robust Excel parsing with dynamic header detection
+  - Canonical column mapping across Indian Screener.in attributes
+  - Deduplication retaining 2,001 unique companies
+  - Directional percentile rank scoring (4 fundamental pillars)
+  - 30th / 70th percentile quantile ground-truth labeling:
+      <= 30th percentile -> Overvalued
+      >= 70th percentile -> Undervalued
+      in-between         -> Fairly Valued
+  - Stratified 80:20 train/test split (random_state=42)
+  - 3 Supervised Learning Pipelines with built-in SimpleImputer:
+      1. Random Forest (300 estimators, class_weight='balanced')
+      2. AdaBoost (200 estimators, DecisionTreeClassifier max_depth=1)
+      3. XGBoost (300 estimators, max_depth=3, lr=0.05, hist tree method)
+  - 5-Fold Stratified Cross-Validation
+  - High-resolution analytical plot generation (13 charts)
+  - Export to models_store/ (models, artifacts, reports, outputs)
 =============================================================================
 """
 
-import os, sys, json, time, warnings, shutil
+import os
+import sys
+import re
+import json
+import time
+import warnings
+from pathlib import Path
+
 warnings.filterwarnings("ignore")
 
 import numpy as np
@@ -43,1145 +43,652 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
 
-from sklearn.preprocessing   import RobustScaler, LabelEncoder
-from sklearn.impute           import SimpleImputer
-from sklearn.model_selection  import (train_test_split, StratifiedKFold,
-                                      cross_val_score)
-from sklearn.ensemble         import (RandomForestClassifier, AdaBoostClassifier)
-from sklearn.tree             import DecisionTreeClassifier
-from sklearn.metrics          import (accuracy_score, precision_score, recall_score,
-                                      f1_score, classification_report, confusion_matrix,
-                                      ConfusionMatrixDisplay, balanced_accuracy_score)
-from sklearn.inspection       import permutation_importance
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_validate
+from sklearn.preprocessing import LabelEncoder, RobustScaler
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
+from xgboost import XGBClassifier
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score, f1_score,
+    classification_report, confusion_matrix, ConfusionMatrixDisplay,
+    balanced_accuracy_score
+)
 
-try:
-    from xgboost import XGBClassifier
-    XGBOOST_AVAILABLE = True
-except ImportError:
-    XGBOOST_AVAILABLE = False
-    print("[WARN] xgboost not installed - XGBoost model will be skipped.")
+RANDOM_STATE = 42
+np.random.seed(RANDOM_STATE)
 
-# ---- Resolve paths ----------------------------------------------------------
-_THIS_DIR    = os.path.dirname(os.path.abspath(__file__))
-_BACKEND_DIR = os.path.abspath(os.path.join(_THIS_DIR, "../.."))
+# Resolve directory paths
+_THIS_DIR = Path(__file__).resolve().parent
+_BACKEND_DIR = _THIS_DIR.parent.parent
+MODELS_DIR = _BACKEND_DIR / "models_store"
+OUTPUT_DIR = MODELS_DIR / "outputs"
+REPORTS_DIR = MODELS_DIR / "reports"
 
-# =============================================================================
-# CONFIGURATION - all tuneable parameters in one place
-# =============================================================================
-CONFIG = {
-    "EXCEL_PATH": os.path.join(_BACKEND_DIR, "models_store",
-                               "Screener_Query_Results_Page1.xlsx"),
-    "OUTPUT_DIR":  os.path.join(_BACKEND_DIR, "models_store", "outputs"),
-    "REPORTS_DIR": os.path.join(_BACKEND_DIR, "models_store", "reports"),
-    "MODELS_DIR":  os.path.join(_BACKEND_DIR, "models_store"),
-    # Scoring thresholds (original minipro1.py: 70th/30th percentile)
-    "HIGH_PERCENTILE": 0.70,
-    "LOW_PERCENTILE":  0.30,
-    # Category weights - equal by default (original approach)
-    "CATEGORY_WEIGHTS": {
-        "Valuation":        0.25,
-        "Profitability":    0.25,
-        "Growth":           0.25,
-        "Financial_Health": 0.25,
-    },
-    "TEST_SIZE":    0.20,
-    "RANDOM_STATE": 42,
-    "CV_FOLDS": 5,
-    "MAX_MISSING_PCT": 60.0,
-    "MIN_CLASS_SAMPLES_FOR_CV": 5,
-    "CLIP_LOW":  1,
-    "CLIP_HIGH": 99,
-}
+for d in [MODELS_DIR, OUTPUT_DIR, REPORTS_DIR]:
+    d.mkdir(parents=True, exist_ok=True)
 
-# =============================================================================
-# EXCEL -> INTERNAL COLUMN MAPPING
-# =============================================================================
-EXCEL_COL_MAP = {
-    "P/E":             "PE_Ratio",
-    "CMP / BV":        "PB_Ratio",
-    "PEG":             "PEG_Ratio",
-    "ROE %":           "ROE",
-    "ROA 12M %":       "ROA",
-    "OPM %":           "Operating_Profit_Margin",
-    "Profit Growth %": "Profit_Growth_Screener",
-    "EPS Var 5Yrs %":  "EPS_Variation_5Yrs",
-    "Debt / Eq":       "Debt_to_Equity",
-    "ROCE %":          "ROCE",
-    "Mar Cap (Rs.Cr.)":"Market_Cap",
-    "CMP (Rs.)":       "CMP",
-}
+# -----------------------------------------------------------------------------
+# 1. Excel Parsing & Column Canonicalization (Colab Week 2)
+# -----------------------------------------------------------------------------
 
-UNAVAILABLE_FEATURES = {
-    "Net_Profit_Margin":  "Not in Excel - OPM is a substitute but differs in definition",
-    "Revenue_Growth":     "Not directly available - Profit_Growth_Screener is a proxy",
-    "EPS_Growth":         "Not in Excel - EPS_Variation_5Yrs is 5-year variation, not annual growth",
-    "Net_Income_Growth":  "Not available",
-    "Current_Ratio":      "Not available",
-}
+def normalize_header(value):
+    if pd.isna(value):
+        return ""
+    text = str(value).strip().lower().replace("\n", " ")
+    text = re.sub(r"[^a-z0-9%]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
 
-VALUATION_FEATURES     = ["PE_Ratio", "PB_Ratio", "PEG_Ratio"]
-PROFITABILITY_FEATURES = ["ROE", "ROA", "Operating_Profit_Margin", "ROCE"]
-GROWTH_FEATURES        = ["Profit_Growth_Screener", "EPS_Variation_5Yrs"]
-HEALTH_FEATURES        = ["Debt_to_Equity"]
+def looks_like_header(row):
+    values = [normalize_header(v) for v in row.tolist()]
+    has_company = "company" in values
+    has_serial = any(v in {"s no", "sno", "serial no", "serial number"} for v in values)
+    return has_company and has_serial
 
-NEG_INDICATORS = ["PE_Ratio", "PB_Ratio", "PEG_Ratio", "Debt_to_Equity"]
-POS_INDICATORS = ["ROE", "ROA", "Operating_Profit_Margin", "ROCE",
-                  "Profit_Growth_Screener", "EPS_Variation_5Yrs"]
-
-ALL_SCORE_FEATURES = (VALUATION_FEATURES + PROFITABILITY_FEATURES
-                      + GROWTH_FEATURES   + HEALTH_FEATURES)
-
-
-# =============================================================================
-# SECTION 1 - DATA LOADING & EXCEL PREPROCESSING
-# =============================================================================
-
-def load_excel_data(excel_path):
-    """Load Screener.in Excel with dynamic header detection."""
-    print("=" * 65)
-    print("PHASE 1 - EXCEL LOADING & INSPECTION")
-    print("=" * 65)
-
-    if not os.path.exists(excel_path):
-        raise FileNotFoundError(f"Excel file not found: {excel_path}")
-
-    # Probe rows 0-7 to find the real header
-    header_row = None
-    for trial in range(0, 8):
-        probe = pd.read_excel(excel_path, header=trial, nrows=2)
-        cols  = [str(c).strip() for c in probe.columns]
-        if any("company" in c.lower() for c in cols):
-            header_row = trial
-            break
-
-    if header_row is None:
-        header_row = 3
-        print(f"[WARN] Could not auto-detect header row. Using row index {header_row}.")
-    else:
-        print(f"[INFO] Header row detected at Excel row index {header_row}.")
-
-    df_raw = pd.read_excel(excel_path, header=header_row)
-    print(f"Raw shape after reading: {df_raw.shape}")
-
-    df_raw.columns = [str(c).strip() for c in df_raw.columns]
-    print(f"Raw columns ({len(df_raw.columns)}): {df_raw.columns.tolist()}")
-
-    # Rename company column
-    company_col_raw = next((c for c in df_raw.columns if "company" in c.lower()), None)
-    if company_col_raw and company_col_raw != "Company":
-        df_raw = df_raw.rename(columns={company_col_raw: "Company"})
-
-    df = df_raw.rename(columns=EXCEL_COL_MAP).copy()
-    df = df.dropna(how="all").dropna(axis=1, how="all")
-
-    # Coerce numeric columns
-    for col in list(EXCEL_COL_MAP.values()):
-        if col in df.columns:
-            df[col] = (df[col].astype(str)
-                       .str.replace(",", "", regex=False)
-                       .str.replace("%", "", regex=False)
-                       .str.replace("\u20b9", "", regex=False)
-                       .str.strip()
-                       .replace(["", "nan", "None", "NaN", "-", "N/A", "\u2014"], np.nan))
-            df[col] = pd.to_numeric(df[col], errors="coerce")
-
-    if "Company" in df.columns:
-        df["Company"] = df["Company"].astype(str).str.strip()
-        df = df[df["Company"].str.len() > 0]
-        df = df[~df["Company"].str.lower().isin(["nan", "none", ""])]
-
-    print(f"\nAfter basic cleaning: {len(df)} rows, {len(df.columns)} columns")
-    print(f"Columns present: {df.columns.tolist()}")
-    return df
-
-
-def clean_indian_market_data(df):
-    """Deduplication, infinite-value handling, missing-value report."""
-    print("\n" + "=" * 65)
-    print("PHASE 2 - CLEANING & DEDUPLICATION")
-    print("=" * 65)
-
-    before = len(df)
-    if "Company" in df.columns:
-        df = df.drop_duplicates(subset=["Company"], keep="first").reset_index(drop=True)
-        print(f"Duplicate companies removed: {before - len(df)}")
-    print(f"Valid rows after deduplication: {len(df)}")
-
-    numeric_cols = df.select_dtypes(include=np.number).columns
-    inf_count = np.isinf(df[numeric_cols].values).sum()
-    if inf_count > 0:
-        df[numeric_cols] = df[numeric_cols].replace([np.inf, -np.inf], np.nan)
-        print(f"Infinite values replaced with NaN: {inf_count}")
-
-    print("\nMissing-value summary for financial features:")
-    all_feat_cols = [c for c in ALL_SCORE_FEATURES if c in df.columns]
-    missing = df[all_feat_cols].isnull().sum()
-    pct     = 100 * missing / len(df)
-    mv_df   = pd.DataFrame({"Missing": missing, "Missing_%": pct.round(1)})
-    print(mv_df.to_string())
-    return df
-
-
-# =============================================================================
-# SECTION 2 - FEATURE AVAILABILITY REPORT
-# =============================================================================
-
-def validate_feature_availability(df):
-    """Maps original minipro1.py features to what the Excel file provides."""
-    print("\n" + "=" * 65)
-    print("PHASE 3 - FEATURE AVAILABILITY REPORT")
-    print("=" * 65)
-
-    original_features = {
-        "PE_Ratio":               "P/E",
-        "PB_Ratio":               "CMP / BV",
-        "PEG_Ratio":              "PEG",
-        "ROE":                    "ROE %",
-        "ROA":                    "ROA 12M %",
-        "Net_Profit_Margin":      "--- NOT in Excel",
-        "Operating_Profit_Margin":"OPM %",
-        "Revenue_Growth":         "--- NOT in Excel (Profit_Growth_Screener is a proxy)",
-        "EPS_Growth":             "--- NOT in Excel (EPS_Variation_5Yrs is 5-yr metric)",
-        "Net_Income_Growth":      "--- NOT in Excel",
-        "Debt_to_Equity":         "Debt / Eq",
-        "Current_Ratio":          "--- NOT in Excel",
-        "ROCE":                   "ROCE %",
-        "EPS_Variation_5Yrs":     "EPS Var 5Yrs %",
-        "Profit_Growth_Screener": "Profit Growth %",
-        "Market_Cap":             "Mar Cap (Rs.Cr.)",
-        "CMP":                    "CMP (Rs.)",
+def canonical_column(name):
+    n = normalize_header(name)
+    mapping = {
+        "s no": "S_No", "sno": "S_No", "serial no": "S_No", "serial number": "S_No",
+        "company": "Company",
+        "cmp rs": "CMP_Rs", "cmp": "CMP_Rs",
+        "p e": "PE_Ratio", "pe": "PE_Ratio", "p e ratio": "PE_Ratio",
+        "cmp bv": "Price_to_Book", "price to book": "Price_to_Book", "pb": "Price_to_Book",
+        "roe": "ROE_pct", "roe %": "ROE_pct",
+        "roa 12m": "ROA_12M_pct", "roa 12m %": "ROA_12M_pct",
+        "opm": "OPM_pct", "opm %": "OPM_pct",
+        "profit growth": "Profit_Growth_pct", "profit growth %": "Profit_Growth_pct",
+        "peg": "PEG",
+        "eps 12m rs": "EPS_12M_Rs", "eps 12m": "EPS_12M_Rs",
+        "eps var 5yrs": "EPS_Var_5Yrs_pct", "eps var 5yrs %": "EPS_Var_5Yrs_pct",
+        "eps var 3yrs": "EPS_Var_3Yrs_pct", "eps var 3yrs %": "EPS_Var_3Yrs_pct",
+        "debt eq": "Debt_to_Equity", "debt to equity": "Debt_to_Equity",
+        "mar cap rs cr": "Market_Cap_Rs_Cr", "market cap rs cr": "Market_Cap_Rs_Cr",
+        "roce": "ROCE_pct", "roce %": "ROCE_pct",
+        "np qtr rs cr": "Net_Profit_Qtr_Rs_Cr", "net profit qtr rs cr": "Net_Profit_Qtr_Rs_Cr",
+        "qtr profit var": "Quarterly_Profit_Var_pct", "qtr profit var %": "Quarterly_Profit_Var_pct",
     }
+    return mapping.get(n, re.sub(r"[^A-Za-z0-9]+", "_", str(name)).strip("_"))
 
-    rows = []
-    available, sparse, absent = [], [], []
+def load_and_clean_data(excel_path=None):
+    if excel_path is None:
+        candidates = [
+            MODELS_DIR / "Screener_Query_Results_Page1 (1).xlsx",
+            MODELS_DIR / "Screener_Query_Results_Page1.xlsx",
+            _THIS_DIR / "Screener_Query_Results_Page1.xlsx",
+            _BACKEND_DIR.parent / "collab work" / "Screener_Query_Results_Page1 (1).xlsx",
+        ]
+        for c in candidates:
+            if c.exists():
+                excel_path = c
+                break
 
-    for feat, excel_src in original_features.items():
-        if feat in df.columns:
-            miss_pct = 100 * df[feat].isnull().sum() / max(len(df), 1)
-            dtype    = str(df[feat].dtype)
-            usable   = miss_pct <= CONFIG["MAX_MISSING_PCT"]
-            status   = "OK Available" if usable else "WARN Sparse (>60% missing)"
-            for_score = usable and feat in ALL_SCORE_FEATURES
-            if usable:
-                available.append(feat)
-            else:
-                sparse.append(feat)
-        else:
-            miss_pct, dtype = 100.0, "N/A"
-            status = "X Absent from Excel"
-            for_score = False
-            absent.append(feat)
+    if excel_path is None or not Path(excel_path).exists():
+        raise FileNotFoundError(f"Screener Excel dataset not found. Checked: {excel_path}")
 
-        rows.append({
-            "Original_Feature": feat,
-            "Excel_Source":     excel_src,
-            "Status":           status,
-            "Data_Type":        dtype,
-            "Missing_%":        round(miss_pct, 1),
-            "Used_For_Scoring": for_score,
-            "Used_For_Model":   for_score,
-        })
+    print(f"[Phase 1] Reading Excel dataset from: {excel_path}")
+    raw = pd.read_excel(excel_path, sheet_name=0, header=None, dtype=object)
 
-    report_df = pd.DataFrame(rows)
-    print(report_df.to_string(index=False))
-    print(f"\nSummary: available={len(available)} | sparse={len(sparse)} | absent={len(absent)}")
-    print("\nUnavailable features from original project:")
-    for k, v in UNAVAILABLE_FEATURES.items():
-        print(f"  {k:30s}: {v}")
+    records = []
+    current_headers = None
+    for row_index, row in raw.iterrows():
+        if looks_like_header(row):
+            current_headers = [str(v).strip() if not pd.isna(v) else "" for v in row.tolist()]
+            continue
+        if current_headers is None:
+            continue
+        row_values = row.tolist()
+        if len(row_values) != len(current_headers):
+            continue
+        record = dict(zip(current_headers, row_values))
+        company_value = next(
+            (value for key, value in record.items() if normalize_header(key) == "company"),
+            None
+        )
+        if pd.isna(company_value) or normalize_header(company_value) in {"", "company"}:
+            continue
+        record["_source_row"] = row_index
+        records.append(record)
 
-    return {
-        "available":   available,
-        "sparse":      sparse,
-        "absent":      absent,
-        "unavailable": list(UNAVAILABLE_FEATURES.keys()),
-        "report_df":   report_df,
-    }
+    parsed = pd.DataFrame(records)
+    parsed.columns = [canonical_column(c) for c in parsed.columns]
 
+    if parsed.columns.duplicated().any():
+        merged = {}
+        for col in dict.fromkeys(parsed.columns):
+            same_cols = parsed.loc[:, parsed.columns == col]
+            merged[col] = same_cols.bfill(axis=1).iloc[:, 0]
+        parsed = pd.DataFrame(merged)
 
-# =============================================================================
-# SECTION 3 - EXPLORATORY DATA ANALYSIS (preserved from minipro1.py Weeks 2-3)
-# =============================================================================
+    parsed["Company"] = parsed["Company"].astype(str).str.strip()
+    parsed = parsed[parsed["Company"].notna() & ~parsed["Company"].isin(["", "nan", "None"])].copy()
 
-def perform_eda(df, available_features, reports_dir):
-    """Full EDA: stats, missing, outliers, histograms, boxplots, heatmap, pairplot."""
-    print("\n" + "=" * 65)
-    print("PHASE 4 - EXPLORATORY DATA ANALYSIS")
-    print("=" * 65)
+    for col in parsed.columns:
+        if col != "Company":
+            parsed[col] = pd.to_numeric(parsed[col], errors="coerce")
 
-    feat_cols  = [c for c in available_features if c in df.columns]
-    numeric_df = df[feat_cols]
+    # Drop duplicates
+    dups_removed = int(parsed["Company"].duplicated(keep="first").sum())
+    parsed = parsed.drop_duplicates(subset=["Company"], keep="first").reset_index(drop=True)
+    print(f"[Phase 2] Deduplication complete. {dups_removed} duplicates removed. Valid companies: {len(parsed)}")
 
-    print(f"\nDataset shape: {df.shape}")
-    display_cols = ["Company"] + feat_cols
-    display_cols = [c for c in display_cols if c in df.columns]
-    print(f"\nFirst 5 rows:\n{df[display_cols].head().to_string()}")
-    print("\nDescriptive statistics:")
-    print(numeric_df.describe().T.to_string())
+    # Replace infinities
+    num_cols = parsed.select_dtypes(include=np.number).columns.tolist()
+    parsed[num_cols] = parsed[num_cols].replace([np.inf, -np.inf], np.nan)
 
-    mv = numeric_df.isnull().sum()
-    print("\nMissing values:")
-    print(mv[mv > 0].to_string() if mv.any() else "  None")
+    return parsed
 
-    if "Company" in df.columns:
-        print(f"\nDuplicate companies: {df['Company'].duplicated().sum()}")
-    print(f"Infinite values: {np.isinf(numeric_df.values).sum()}")
+# -----------------------------------------------------------------------------
+# 2. EDA & Outlier Reports (Colab Week 2 & 3)
+# -----------------------------------------------------------------------------
 
-    # IQR outlier analysis
-    print("\nOutlier analysis (IQR method):")
+def generate_eda_reports(df, score_features):
+    print("[Phase 3] Generating EDA outlier analysis and feature reports...")
     outlier_rows = []
-    for col in feat_cols:
-        Q1 = numeric_df[col].quantile(0.25)
-        Q3 = numeric_df[col].quantile(0.75)
-        IQR = Q3 - Q1
-        lo  = Q1 - 1.5 * IQR
-        hi  = Q3 + 1.5 * IQR
-        cnt = ((numeric_df[col] < lo) | (numeric_df[col] > hi)).sum()
+    for col in score_features:
+        series = df[col].dropna()
+        if series.empty:
+            continue
+        q1, q3 = series.quantile([0.25, 0.75])
+        iqr = q3 - q1
+        lower = round(float(q1 - 1.5 * iqr), 4)
+        upper = round(float(q3 + 1.5 * iqr), 4)
         outlier_rows.append({
-            "Feature": col, "Outliers": cnt,
-            "Lower_Bound": round(lo, 4), "Upper_Bound": round(hi, 4),
-            "Min": round(numeric_df[col].min(), 4),
-            "Max": round(numeric_df[col].max(), 4),
+            "Feature": col,
+            "Valid_Count": len(series),
+            "Q1": round(float(q1), 4),
+            "Q3": round(float(q3), 4),
+            "IQR": round(float(iqr), 4),
+            "Lower_Bound": lower,
+            "Upper_Bound": upper,
+            "Min": round(float(series.min()), 4),
+            "Max": round(float(series.max()), 4),
+            "Outliers": int(((series < lower) | (series > upper)).sum()),
         })
-    out_df = pd.DataFrame(outlier_rows)
-    print(out_df.to_string(index=False))
+    outlier_df = pd.DataFrame(outlier_rows).sort_values("Outliers", ascending=False)
+    outlier_df.to_csv(REPORTS_DIR / "eda_outlier_summary.csv", index=False)
+    return outlier_df
 
-    n_cols = 3
-    n_rows = max(1, (len(feat_cols) + n_cols - 1) // n_cols)
+# -----------------------------------------------------------------------------
+# 3. Directional Percentile Scoring & Labeling (Colab Week 4)
+# -----------------------------------------------------------------------------
 
-    # Histograms
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(18, n_rows * 4))
-    axes = np.array(axes).flatten()
-    for i, col in enumerate(feat_cols):
-        axes[i].hist(numeric_df[col].dropna(), bins=25, color="#4A90D9",
-                     edgecolor="white", alpha=0.8)
-        axes[i].set_title(col, fontsize=9)
-        axes[i].set_xlabel(col, fontsize=8)
-    for j in range(i + 1, len(axes)):
-        axes[j].set_visible(False)
-    plt.suptitle("Distribution of Indian Market Financial Features",
-                 fontsize=13, fontweight="bold")
-    plt.tight_layout()
-    plt.savefig(os.path.join(reports_dir, "eda_histograms.png"), dpi=150)
-    plt.close()
-    print(f"\nHistogram saved.")
+FEATURE_DIRECTIONS = {
+    "PE_Ratio": -1,
+    "Price_to_Book": -1,
+    "PEG": -1,
+    "ROE_pct": 1,
+    "ROA_12M_pct": 1,
+    "OPM_pct": 1,
+    "Profit_Growth_pct": 1,
+    "EPS_Var_5Yrs_pct": 1,
+    "Debt_to_Equity": -1,
+    "ROCE_pct": 1,
+}
 
-    # Box plots
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(18, n_rows * 4))
-    axes = np.array(axes).flatten()
-    for i, col in enumerate(feat_cols):
-        numeric_df[col].dropna().plot.box(ax=axes[i])
-        axes[i].set_title(col, fontsize=9)
-    for j in range(i + 1, len(axes)):
-        axes[j].set_visible(False)
-    plt.suptitle("Box Plots - Indian Market Financial Features",
-                 fontsize=13, fontweight="bold")
-    plt.tight_layout()
-    plt.savefig(os.path.join(reports_dir, "eda_boxplots.png"), dpi=150)
-    plt.close()
-    print("Box plots saved.")
+MODEL_FEATURES = [
+    "PE_Ratio",
+    "Price_to_Book",
+    "PEG",
+    "ROE_pct",
+    "ROA_12M_pct",
+    "Profit_Growth_pct",
+    "Debt_to_Equity",
+    "ROCE_pct"
+]
 
-    # Correlation heatmap
-    corr = numeric_df.corr()
-    plt.figure(figsize=(12, 9))
-    sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm", center=0,
-                linewidths=0.5, annot_kws={"size": 7})
-    plt.title("Correlation Matrix - Indian Financial Features",
-              fontsize=13, fontweight="bold")
-    plt.tight_layout()
-    plt.savefig(os.path.join(reports_dir, "eda_correlation_heatmap.png"), dpi=150)
-    plt.close()
-    print("Correlation heatmap saved.")
+def compute_scoring_and_labels(df):
+    print("[Phase 4] Computing directional percentile ranking and 4-pillar financial scores...")
+    score_features = [f for f in MODEL_FEATURES if f in df.columns]
 
-    # Pairplot (subset)
-    pair_features = [f for f in ["PE_Ratio", "PB_Ratio", "ROE", "ROA",
-                                  "Debt_to_Equity", "Operating_Profit_Margin"]
-                     if f in feat_cols]
-    if len(pair_features) >= 2:
-        try:
-            pair_df = numeric_df[pair_features].dropna()
-            if len(pair_df) > 5:
-                g = sns.pairplot(pair_df, plot_kws={"alpha": 0.5, "s": 20})
-                g.fig.suptitle("Pairwise Relationships - Key Indian Market Features",
-                               y=1.01, fontsize=11)
-                plt.savefig(os.path.join(reports_dir, "eda_pairplot.png"),
-                            dpi=120, bbox_inches="tight")
-                plt.close()
-                print("Pairplot saved.")
-        except Exception as e:
-            print(f"[WARN] Pairplot skipped: {e}")
+    rank_features = pd.DataFrame(index=df.index)
+    for feature in score_features:
+        p_rank = df[feature].rank(pct=True, method="average")
+        if FEATURE_DIRECTIONS.get(feature, 1) < 0:
+            p_rank = 1.0 - p_rank
+        rank_features[feature + "_Rank"] = p_rank
 
-    out_df.to_csv(os.path.join(reports_dir, "eda_outlier_summary.csv"), index=False)
+    df["Financial_Score"] = rank_features.mean(axis=1, skipna=True)
+    df["Score_Feature_Count"] = rank_features.notna().sum(axis=1)
 
+    model_base = df.loc[df["Score_Feature_Count"] >= 3].copy()
+    model_base = model_base[model_base["Financial_Score"].notna()].reset_index(drop=True)
 
-# =============================================================================
-# SECTION 4 - FINANCIAL SCORING (preserved from minipro1.py Week 4)
-# =============================================================================
-
-def calculate_financial_scores(df, available_features):
-    """
-    Four-category financial scoring using RobustScaler.
-    Methodology exactly mirrors minipro1.py Week 4.
-    """
-    print("\n" + "=" * 65)
-    print("PHASE 5 - FINANCIAL SCORING (minipro1.py methodology)")
-    print("=" * 65)
-
-    score_df = df.copy()
-    val_avail    = [f for f in VALUATION_FEATURES     if f in available_features]
-    prof_avail   = [f for f in PROFITABILITY_FEATURES  if f in available_features]
-    growth_avail = [f for f in GROWTH_FEATURES         if f in available_features]
-    health_avail = [f for f in HEALTH_FEATURES         if f in available_features]
-
-    print(f"  Valuation features   : {val_avail}")
-    print(f"  Profitability features: {prof_avail}")
-    print(f"  Growth features      : {growth_avail}")
-    print(f"  Health features      : {health_avail}")
-
-    scoring_features = val_avail + prof_avail + growth_avail + health_avail
-    if not scoring_features:
-        raise RuntimeError("No scoring features available. Cannot generate labels.")
-
-    # RobustScaler + median imputation (full dataset for scoring/ranking)
-    scaler_input = score_df[scoring_features].copy()
-    scaler       = RobustScaler()
-    imp          = SimpleImputer(strategy="median")
-    scaled_arr   = scaler.fit_transform(imp.fit_transform(scaler_input))
-    scaled_df    = pd.DataFrame(scaled_arr, columns=scoring_features,
-                                index=score_df.index)
-
-    # Direction-adjusted component scores
-    for col in scoring_features:
-        if col in NEG_INDICATORS:
-            score_df[f"_sc_{col}"] = -scaled_df[col]
-        else:
-            score_df[f"_sc_{col}"] =  scaled_df[col]
-
-    def _cat_score(feats):
-        cols = [f"_sc_{f}" for f in feats]
-        if not cols:
-            return pd.Series(np.nan, index=score_df.index)
-        return score_df[cols].mean(axis=1, skipna=True)
-
-    score_df["Valuation_Score"]        = _cat_score(val_avail)
-    score_df["Profitability_Score"]    = _cat_score(prof_avail)
-    score_df["Growth_Score"]           = _cat_score(growth_avail)
-    score_df["Financial_Health_Score"] = _cat_score(health_avail)
-
-    # Weighted final score (configurable)
-    w = CONFIG["CATEGORY_WEIGHTS"]
-    cat_map = {
-        "Valuation":        (val_avail,    "Valuation_Score"),
-        "Profitability":    (prof_avail,   "Profitability_Score"),
-        "Growth":           (growth_avail, "Growth_Score"),
-        "Financial_Health": (health_avail, "Financial_Health_Score"),
-    }
-    active = {c: info for c, info in cat_map.items() if info[0]}
-    for cat, (feats, _) in cat_map.items():
-        if not feats:
-            print(f"  [WARN] Category '{cat}' has no available features.")
-
-    total_w = sum(w[c] for c in active)
-    score_df["Financial_Score"] = sum(
-        (w[cat] / total_w) * score_df[score_col]
-        for cat, (_, score_col) in active.items()
-    )
-    score_df["Financial_Rank"] = (score_df["Financial_Score"]
-                                  .rank(ascending=False, method="min", na_option="bottom"))
-    score_df = score_df.sort_values("Financial_Score", ascending=False)
-
-    drop_cols = [c for c in score_df.columns if c.startswith("_sc_")]
-    score_df  = score_df.drop(columns=drop_cols)
-
-    print(f"\nFinancial Score range: "
-          f"{score_df['Financial_Score'].min():.4f} to "
-          f"{score_df['Financial_Score'].max():.4f}")
-    print(f"Companies with valid score: {score_df['Financial_Score'].notna().sum()}")
-    return score_df
-
-
-# =============================================================================
-# SECTION 5 - LABEL GENERATION (preserved from minipro1.py Week 4)
-# =============================================================================
-
-def generate_financial_labels(score_df, reports_dir):
-    """
-    Undervalued/Fairly Valued/Overvalued via 70th/30th percentile.
-    Higher score = stronger financials = Undervalued.
-    """
-    print("\n" + "=" * 65)
-    print("PHASE 6 - LABEL GENERATION (70th/30th percentile)")
-    print("=" * 65)
-
-    valid = score_df["Financial_Score"].dropna()
-    if len(valid) < 3:
-        raise RuntimeError(f"Only {len(valid)} valid scores. Cannot generate labels.")
-
-    high_thresh = valid.quantile(CONFIG["HIGH_PERCENTILE"])
-    low_thresh  = valid.quantile(CONFIG["LOW_PERCENTILE"])
-    print(f"70th percentile: {high_thresh:.4f}")
-    print(f"30th percentile: {low_thresh:.4f}")
+    low_threshold = float(model_base["Financial_Score"].quantile(0.30))
+    high_threshold = float(model_base["Financial_Score"].quantile(0.70))
 
     def assign_label(score):
-        if pd.isna(score): return np.nan
-        if score >= high_thresh: return "Undervalued"
-        if score <= low_thresh:  return "Overvalued"
+        if score <= low_threshold:
+            return "Overvalued"
+        if score >= high_threshold:
+            return "Undervalued"
         return "Fairly Valued"
 
-    score_df = score_df.copy()
-    score_df["Label"] = score_df["Financial_Score"].apply(assign_label)
-    dist = score_df["Label"].value_counts()
-    print(f"\nClass distribution:\n{dist.to_string()}")
+    model_base["Label"] = model_base["Financial_Score"].apply(assign_label)
+    model_base["Financial_Rank"] = model_base["Financial_Score"].rank(ascending=False, method="min").astype(int)
+    model_base = model_base.sort_values("Financial_Score", ascending=False).reset_index(drop=True)
 
-    # Score distribution plot
-    fig, ax = plt.subplots(figsize=(12, 5))
-    ax.hist(valid, bins=30, color="#4A90D9", edgecolor="white", alpha=0.8)
-    ax.axvline(high_thresh, color="#E85D5D", linestyle="--", linewidth=1.5,
-               label=f"70th pct = {high_thresh:.3f}")
-    ax.axvline(low_thresh, color="#F5A623", linestyle="--", linewidth=1.5,
-               label=f"30th pct = {low_thresh:.3f}")
-    ax.set_title("Distribution of Financial Scores - Indian Market",
-                 fontsize=13, fontweight="bold")
-    ax.set_xlabel("Financial Score")
-    ax.set_ylabel("Number of Companies")
-    ax.legend()
+    print(f"  30th Percentile Threshold (Overvalued) : {low_threshold:.5f}")
+    print(f"  70th Percentile Threshold (Undervalued): {high_threshold:.5f}")
+    print(f"  Class Distribution:\n{model_base['Label'].value_counts().to_string()}")
+
+    return model_base, score_features, low_threshold, high_threshold
+
+# -----------------------------------------------------------------------------
+# 4. Model Training, 5-Fold CV & Evaluation (Colab Week 5)
+# -----------------------------------------------------------------------------
+
+def build_model_pipelines():
+    return {
+        "Random Forest": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("classifier", RandomForestClassifier(
+                n_estimators=300,
+                random_state=RANDOM_STATE,
+                class_weight="balanced",
+                n_jobs=-1,
+                min_samples_leaf=2,
+            )),
+        ]),
+        "AdaBoost": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("classifier", AdaBoostClassifier(
+                estimator=DecisionTreeClassifier(max_depth=1, random_state=RANDOM_STATE),
+                n_estimators=200,
+                learning_rate=0.5,
+                random_state=RANDOM_STATE,
+            )),
+        ]),
+        "XGBoost": Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("classifier", XGBClassifier(
+                n_estimators=300,
+                max_depth=3,
+                learning_rate=0.05,
+                subsample=0.9,
+                colsample_bytree=0.9,
+                objective="multi:softprob",
+                eval_metric="mlogloss",
+                random_state=RANDOM_STATE,
+                n_jobs=-1,
+                tree_method="hist",
+            )),
+        ]),
+    }
+
+# -----------------------------------------------------------------------------
+# 5. Plot Generation (Colab Week 2, 3, 4, 5 Charts)
+# -----------------------------------------------------------------------------
+
+def generate_all_plots(model_base, score_features, low_th, high_th, models, X_test, y_test, class_names, test_metrics, cv_metrics):
+    print("[Phase 5] Generating all 13 research publication figures...")
+    
+    # 1. Score & Class Distribution
+    fig, axes = plt.subplots(1, 2, figsize=(14, 4.5))
+    sns.countplot(data=model_base, x="Label", order=["Undervalued", "Fairly Valued", "Overvalued"], ax=axes[0], palette=["#10b981", "#f59e0b", "#ef4444"])
+    axes[0].set_title("Rule-Generated Valuation Classes (N=2,001)")
+    axes[0].set_ylabel("Company Count")
+
+    sns.histplot(model_base["Financial_Score"], bins=25, kde=True, ax=axes[1], color="#6366f1")
+    axes[1].axvline(low_th, linestyle="--", color="#ef4444", label=f"30th % ({low_th:.3f})")
+    axes[1].axvline(high_th, linestyle="--", color="#10b981", label=f"70th % ({high_th:.3f})")
+    axes[1].set_title("Composite Financial Score Distribution")
+    axes[1].legend()
     plt.tight_layout()
-    plt.savefig(os.path.join(reports_dir, "score_distribution.png"), dpi=150)
+    plt.savefig(REPORTS_DIR / "score_distribution.png", dpi=180)
+    plt.savefig(REPORTS_DIR / "class_distribution.png", dpi=180)
     plt.close()
 
-    # Class count plot
-    fig, ax = plt.subplots(figsize=(7, 4))
-    dist.plot(kind="bar",
-              color=["#4CAF50", "#FFC107", "#F44336"][:len(dist)],
-              ax=ax, edgecolor="white")
-    ax.set_title("Financial Valuation Class Distribution",
-                 fontsize=12, fontweight="bold")
-    ax.set_xlabel("Class")
-    ax.set_ylabel("Count")
-    plt.xticks(rotation=0)
+    # 2. Correlation Heatmap
+    plt.figure(figsize=(10, 8))
+    corr = model_base[score_features].corr()
+    sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm", cbar=True, center=0)
+    plt.title("Financial Feature Correlation Heatmap")
     plt.tight_layout()
-    plt.savefig(os.path.join(reports_dir, "class_distribution.png"), dpi=150)
+    plt.savefig(REPORTS_DIR / "eda_correlation_heatmap.png", dpi=180)
     plt.close()
 
-    return score_df, high_thresh, low_thresh
-
-
-# =============================================================================
-# SECTION 6 - ML DATASET PREPARATION
-# =============================================================================
-
-def prepare_ml_dataset(score_df, available_features):
-    """Select ML features, drop rows without labels, return X, y."""
-    print("\n" + "=" * 65)
-    print("PHASE 7 - ML DATASET PREPARATION")
-    print("=" * 65)
-
-    eligible_df = score_df[score_df["Label"].notna()].copy()
-    print(f"Companies with valid labels: {len(eligible_df)}")
-
-    exclude = {"Company", "Label", "Financial_Score", "Financial_Rank",
-               "Market_Cap", "CMP"}
-    ml_features = [f for f in available_features
-                   if f in eligible_df.columns and f not in exclude]
-    print(f"ML features selected ({len(ml_features)}): {ml_features}")
-
-    if not ml_features:
-        raise RuntimeError("No ML features available after filtering.")
-
-    X = eligible_df[ml_features].copy()
-    y = eligible_df["Label"].copy()
-
-    class_counts = y.value_counts()
-    print(f"\nTarget class distribution:\n{class_counts.to_string()}")
-    if len(class_counts) < 2:
-        raise RuntimeError("Only one class present. Cannot train a classifier.")
-
-    return X, y, ml_features, eligible_df
-
-
-def preprocess_features(X_train_raw, X_test_raw):
-    """Median imputation + RobustScaler, fit on train only."""
-    imputer = SimpleImputer(strategy="median")
-    scaler  = RobustScaler()
-    X_train_imp = imputer.fit_transform(X_train_raw)
-    X_test_imp  = imputer.transform(X_test_raw)
-    X_train     = scaler.fit_transform(X_train_imp)
-    X_test      = scaler.transform(X_test_imp)
-    return X_train, X_test, imputer, scaler
-
-
-# =============================================================================
-# SECTION 7 - MODEL DEFINITIONS & TRAINING
-# =============================================================================
-
-def _build_models(n_classes):
-    """Build RF, XGBoost, AdaBoost with project-standard configs."""
-    models = {}
-
-    # 1. Random Forest (original minipro1.py config preserved)
-    models["RandomForest"] = RandomForestClassifier(
-        n_estimators=300,
-        random_state=CONFIG["RANDOM_STATE"],
-        class_weight="balanced",
-        n_jobs=-1,
-    )
-
-    # 2. XGBoost
-    if XGBOOST_AVAILABLE:
-        xgb_params = dict(
-            n_estimators=200,
-            max_depth=5,
-            learning_rate=0.05,
-            subsample=0.8,
-            colsample_bytree=0.8,
-            eval_metric="mlogloss",
-            random_state=CONFIG["RANDOM_STATE"],
-            verbosity=0,
-        )
-        if n_classes > 2:
-            xgb_params["num_class"] = n_classes
-        models["XGBoost"] = XGBClassifier(**xgb_params)
-    else:
-        print("[WARN] Skipping XGBoost - not installed.")
-
-    # 3. AdaBoost (uses DecisionTreeClassifier as base for sklearn >= 1.2)
-    models["AdaBoost"] = AdaBoostClassifier(
-        estimator=DecisionTreeClassifier(max_depth=3),
-        n_estimators=150,
-        learning_rate=0.1,
-        random_state=CONFIG["RANDOM_STATE"],
-    )
-
-
-    return models
-
-
-def train_and_evaluate_model(model_name, model, X_train, X_test,
-                              y_train, y_test, ml_features, class_names,
-                              reports_dir, models_dir, X_test_raw=None):
-    """Train one model, evaluate, save cm plot and .pkl. Returns stats dict."""
-    print(f"\n{'─'*55}")
-    print(f" Training {model_name}")
-    print(f"{'─'*55}")
-
-    t0 = time.time()
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        model.fit(X_train, y_train)
-    train_time = round(time.time() - t0, 4)
-
-    t1 = time.time()
-    y_pred = model.predict(X_test)
-    pred_time = round(time.time() - t1, 6)
-
-    acc      = float(accuracy_score(y_test, y_pred))
-    bal_acc  = float(balanced_accuracy_score(y_test, y_pred))
-    prec_wt  = float(precision_score(y_test, y_pred, average="weighted", zero_division=0))
-    rec_wt   = float(recall_score   (y_test, y_pred, average="weighted", zero_division=0))
-    f1_wt    = float(f1_score       (y_test, y_pred, average="weighted", zero_division=0))
-    prec_mac = float(precision_score(y_test, y_pred, average="macro",    zero_division=0))
-    rec_mac  = float(recall_score   (y_test, y_pred, average="macro",    zero_division=0))
-    f1_mac   = float(f1_score       (y_test, y_pred, average="macro",    zero_division=0))
-
-    report_dict = classification_report(
-        y_test, y_pred, target_names=class_names,
-        output_dict=True, zero_division=0)
-    cm = confusion_matrix(y_test, y_pred)
-
-    print(f"  Accuracy          : {acc*100:.2f}%")
-    print(f"  Balanced Accuracy : {bal_acc*100:.2f}%")
-    print(f"  Weighted F1       : {f1_wt:.4f}")
-    print(f"  Macro F1          : {f1_mac:.4f}")
-    print(f"  Training time     : {train_time}s")
-    print(f"\n  Classification Report:\n"
-          f"{classification_report(y_test, y_pred, target_names=class_names, zero_division=0)}")
-
-    # Confusion matrix
-    fig, ax = plt.subplots(figsize=(6, 5))
-    ConfusionMatrixDisplay.from_predictions(
-        y_test, y_pred, display_labels=class_names, cmap="Blues", ax=ax)
-    ax.set_title(f"{model_name} - Confusion Matrix",
-                 fontsize=11, fontweight="bold")
+    # 3. Boxplots
+    n_feat = len(score_features)
+    fig, axes = plt.subplots((n_feat + 1)//2, 2, figsize=(14, n_feat * 1.5))
+    axes = axes.flatten()
+    for idx, col in enumerate(score_features):
+        sns.boxplot(x=model_base[col].dropna(), ax=axes[idx], color="#38bdf8")
+        axes[idx].set_title(f"Boxplot: {col}")
+    for idx in range(n_feat, len(axes)):
+        fig.delaxes(axes[idx])
     plt.tight_layout()
-    cm_path = os.path.join(reports_dir, f"confusion_matrix_{model_name.lower()}.png")
-    plt.savefig(cm_path, dpi=150)
+    plt.savefig(REPORTS_DIR / "eda_boxplots.png", dpi=180)
     plt.close()
-    # Backward compat copy to models_dir
-    shutil.copy(cm_path,
-                os.path.join(models_dir, f"confusion_matrix_{model_name.lower()}.png"))
-    if model_name == "RandomForest":
-        shutil.copy(cm_path, os.path.join(models_dir, "confusion_matrix.png"))
 
-    # Feature importance
-    fi_dict, fi_method = {}, "none"
-    if hasattr(model, "feature_importances_"):
-        fi_arr    = model.feature_importances_
-        fi_dict   = {ml_features[i]: float(fi_arr[i]) for i in range(len(ml_features))}
-        fi_method = "built-in"
-    elif X_test_raw is not None:
-        try:
-            perm = permutation_importance(
-                model, X_test, y_test, n_repeats=10,
-                random_state=CONFIG["RANDOM_STATE"], scoring="f1_weighted")
-            fi_dict   = {ml_features[i]: float(perm.importances_mean[i])
-                         for i in range(len(ml_features))}
-            fi_method = "permutation"
-        except Exception:
-            fi_dict = {f: 1.0 / len(ml_features) for f in ml_features}
+    # 4. Histograms
+    model_base[score_features].hist(figsize=(14, 10), bins=25, edgecolor="black", color="#818cf8")
+    plt.suptitle("Feature Distribution Histograms", y=1.02)
+    plt.tight_layout()
+    plt.savefig(REPORTS_DIR / "eda_histograms.png", dpi=180)
+    plt.close()
 
-    if fi_dict:
-        fi_sorted = sorted(fi_dict.items(), key=lambda x: x[1], reverse=True)
-        fig, ax   = plt.subplots(figsize=(9, max(4, len(fi_sorted) * 0.45)))
-        ax.barh([x[0] for x in fi_sorted], [x[1] for x in fi_sorted],
-                color="#4A90D9", edgecolor="white")
-        ax.invert_yaxis()
-        ax.set_xlabel("Importance")
-        ax.set_title(f"{model_name} Feature Importance ({fi_method})\n"
-                     "NOTE: importance does not imply causality", fontsize=10)
-        plt.tight_layout()
-        plt.savefig(os.path.join(reports_dir,
-                                 f"feature_importance_{model_name.lower()}.png"),
-                    dpi=150)
+    # 5. Pairplot of key indicators
+    key_pair_cols = ["PE_Ratio", "Price_to_Book", "ROE_pct", "ROA_12M_pct", "Debt_to_Equity"]
+    pair_df = model_base[[c for c in key_pair_cols if c in model_base.columns] + ["Label"]].dropna()
+    if len(pair_df) > 50:
+        g = sns.pairplot(pair_df, hue="Label", palette={"Undervalued": "#10b981", "Fairly Valued": "#f59e0b", "Overvalued": "#ef4444"}, diag_kind="kde")
+        g.fig.suptitle("Key Indicators Multivariate Pairplot", y=1.02)
+        plt.savefig(REPORTS_DIR / "eda_pairplot.png", dpi=150)
         plt.close()
 
-    # Save model
-    model_path = os.path.join(models_dir, f"{model_name}_Model.pkl")
-    joblib.dump(model, model_path)
-    print(f"  Model saved -> {model_path}")
-
-    return {
-        "accuracy":               acc,
-        "balanced_accuracy":      bal_acc,
-        "precision_weighted":     prec_wt,
-        "recall_weighted":        rec_wt,
-        "f1_score_weighted":      f1_wt,
-        "precision_macro":        prec_mac,
-        "recall_macro":           rec_mac,
-        "f1_score_macro":         f1_mac,
-        "training_time_seconds":  train_time,
-        "prediction_time_seconds":pred_time,
-        "train_size":             int(len(X_train)),
-        "test_size":              int(len(X_test)),
-        "confusion_matrix":       cm.tolist(),
-        "classification_report":  report_dict,
-        "feature_importances":    fi_dict,
-        "fi_method":              fi_method,
-        "y_pred":                 y_pred,
-        "last_trained":           time.strftime("%Y-%m-%d %H:%M:%S"),
-        "model_object":           model,
-    }
-
-
-# =============================================================================
-# SECTION 8 - CROSS-VALIDATION
-# =============================================================================
-
-def run_cross_validation(model_name, model, X_all, y_all_encoded):
-    """Stratified k-fold CV with guard for small classes."""
-    min_class_count = min((y_all_encoded == c).sum()
-                          for c in np.unique(y_all_encoded))
-    if min_class_count < CONFIG["MIN_CLASS_SAMPLES_FOR_CV"]:
-        print(f"  [CV] Skipped for {model_name} - smallest class has "
-              f"{min_class_count} samples (need >= {CONFIG['MIN_CLASS_SAMPLES_FOR_CV']}).")
-        return {"cv_mean": None, "cv_std": None, "cv_scores": []}
-
-    n_folds = min(CONFIG["CV_FOLDS"], int(min_class_count))
-    if n_folds < 2:
-        print(f"  [CV] Skipped - cannot form {n_folds} folds.")
-        return {"cv_mean": None, "cv_std": None, "cv_scores": []}
-
-    print(f"  Running {n_folds}-fold stratified CV for {model_name} ...")
-    cv = StratifiedKFold(n_splits=n_folds, shuffle=True,
-                         random_state=CONFIG["RANDOM_STATE"])
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        scores = cross_val_score(model, X_all, y_all_encoded,
-                                 cv=cv, scoring="accuracy", n_jobs=-1)
-
-    print(f"  CV scores: {[round(s, 4) for s in scores]}")
-    print(f"  Mean CV Accuracy: {scores.mean()*100:.2f}% +/- {scores.std()*100:.2f}%")
-    return {
-        "cv_mean":   float(scores.mean()),
-        "cv_std":    float(scores.std()),
-        "cv_scores": scores.tolist(),
-    }
-
-
-# =============================================================================
-# SECTION 9 - MODEL COMPARISON & VISUALISATION
-# =============================================================================
-
-def compare_models(all_stats, reports_dir):
-    """Build comparison table and save bar chart."""
-    metrics = [
-        ("Accuracy",           "accuracy"),
-        ("Balanced Accuracy",  "balanced_accuracy"),
-        ("Weighted Precision", "precision_weighted"),
-        ("Weighted Recall",    "recall_weighted"),
-        ("Weighted F1",        "f1_score_weighted"),
-        ("Macro F1",           "f1_score_macro"),
-        ("Mean CV Accuracy",   "cv_mean"),
-        ("CV Std Dev",         "cv_std"),
-        ("Train Time (s)",     "training_time_seconds"),
-    ]
-    rows = []
-    for label, key in metrics:
-        row = {"Metric": label}
-        for mname, stats in all_stats.items():
-            val = stats.get(key)
-            row[mname] = round(val, 4) if val is not None else "N/A"
-        rows.append(row)
-    comp_df = pd.DataFrame(rows)
-
-    print("\n" + "=" * 65)
-    print("MODEL COMPARISON TABLE")
-    print("=" * 65)
-    print(comp_df.to_string(index=False))
-
-    # Bar chart
-    plot_metrics = ["accuracy", "f1_score_weighted", "f1_score_macro", "balanced_accuracy"]
-    plot_labels  = ["Accuracy", "Weighted F1", "Macro F1", "Balanced Accuracy"]
-    model_names  = list(all_stats.keys())
-    x      = np.arange(len(plot_labels))
-    width  = 0.22
-    colors = ["#4A90D9", "#E85D5D", "#4CAF50"]
-
-    fig, ax = plt.subplots(figsize=(12, 6))
-    for i, (mname, col) in enumerate(zip(model_names, colors)):
-        vals = [all_stats[mname].get(m) or 0 for m in plot_metrics]
-        bars = ax.bar(x + i * width, vals, width, label=mname,
-                      color=col, edgecolor="white", alpha=0.9)
-        for bar in bars:
-            ax.text(bar.get_x() + bar.get_width() / 2,
-                    bar.get_height() + 0.005,
-                    f"{bar.get_height():.3f}",
-                    ha="center", va="bottom", fontsize=7)
-    ax.set_xticks(x + width)
-    ax.set_xticklabels(plot_labels)
-    ax.set_ylim(0, 1.1)
-    ax.set_title("Model Performance Comparison - Indian Market Dataset",
-                 fontsize=12, fontweight="bold")
-    ax.set_ylabel("Score")
-    ax.legend()
+    # 6. Model Comparison Chart
+    comp_df = pd.DataFrame(test_metrics)
+    fig, ax = plt.subplots(figsize=(9, 5))
+    metrics_to_plot = ["Accuracy", "Balanced_Accuracy", "F1_Weighted", "F1_Macro"]
+    plot_data = comp_df.melt(id_vars=["Model"], value_vars=metrics_to_plot, var_name="Metric", value_name="Score")
+    sns.barplot(data=plot_data, x="Metric", y="Score", hue="Model", palette=["#38bdf8", "#fb923c", "#818cf8"], ax=ax)
+    ax.set_ylim(0.7, 0.95)
+    ax.set_title("Multi-Model Performance Comparison (Holdout Test Set)")
+    for p in ax.patches:
+        h = p.get_height()
+        if h > 0:
+            ax.annotate(f"{h*100:.1f}%", (p.get_x() + p.get_width() / 2., h), ha="center", va="bottom", fontsize=8, xytext=(0, 2), textcoords="offset points")
     plt.tight_layout()
-    plt.savefig(os.path.join(reports_dir, "model_comparison.png"), dpi=150)
+    plt.savefig(REPORTS_DIR / "model_comparison.png", dpi=180)
     plt.close()
 
-    return comp_df
+    # 7. Confusion Matrices for each model
+    for model_name, pipeline in models.items():
+        clean_name = model_name.lower().replace(" ", "")
+        preds = pipeline.predict(X_test)
+        cm = confusion_matrix(y_test, preds)
+        fig, ax = plt.subplots(figsize=(6, 5))
+        ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names).plot(ax=ax, cmap="Blues")
+        ax.set_title(f"{model_name} Confusion Matrix")
+        plt.tight_layout()
+        plt.savefig(REPORTS_DIR / f"confusion_matrix_{clean_name}.png", dpi=180)
+        plt.savefig(MODELS_DIR / f"confusion_matrix_{clean_name}.png", dpi=180)
+        if clean_name == "randomforest":
+            plt.savefig(MODELS_DIR / "confusion_matrix.png", dpi=180)
+        plt.close()
 
+    # 8. Feature Importances for each model
+    for model_name, pipeline in models.items():
+        clean_name = model_name.lower().replace(" ", "")
+        clf = pipeline.named_steps["classifier"]
+        if hasattr(clf, "feature_importances_"):
+            fi = clf.feature_importances_
+            fi_df = pd.DataFrame({"Feature": score_features, "Importance": fi}).sort_values("Importance", ascending=True)
+            plt.figure(figsize=(8, 4.5))
+            plt.barh(fi_df["Feature"], fi_df["Importance"], color="#38bdf8" if clean_name=="randomforest" else ("#818cf8" if clean_name=="xgboost" else "#fb923c"))
+            plt.title(f"{model_name} Feature Importance")
+            plt.xlabel("Relative Importance")
+            plt.tight_layout()
+            plt.savefig(REPORTS_DIR / f"feature_importance_{clean_name}.png", dpi=180)
+            plt.close()
 
-# =============================================================================
-# SECTION 10 - COMPANY-LEVEL PREDICTIONS
-# =============================================================================
+# -----------------------------------------------------------------------------
+# 6. End-to-End Pipeline Execution
+# -----------------------------------------------------------------------------
 
-def generate_predictions_table(eligible_df, X_test_idx, all_stats,
-                                class_names, encoder, ml_features,
-                                output_dir, reports_dir):
-    """Consolidated test-set predictions table with agreement analysis."""
-    base_cols = ["Company", "Valuation_Score", "Profitability_Score",
-                 "Growth_Score", "Financial_Health_Score",
-                 "Financial_Score", "Financial_Rank", "Label"]
-    keep = [c for c in base_cols if c in eligible_df.columns]
-    pred_df = eligible_df.loc[X_test_idx, keep].copy()
+def run_pipeline(excel_path=None):
+    start_time = time.time()
+    print("=" * 70)
+    print("FINLEARN AI — INDIAN MARKET ML VALUATION PIPELINE (COLAB)")
+    print("=" * 70)
 
-    for mname, stats in all_stats.items():
-        y_pred_enc = stats.get("y_pred", np.array([]))
-        if len(y_pred_enc) == len(X_test_idx):
-            pred_df[f"{mname}_Pred"] = encoder.inverse_transform(y_pred_enc)
+    # Step 1: Parse and clean
+    df = load_and_clean_data(excel_path)
 
-    pred_cols = [c for c in pred_df.columns if c.endswith("_Pred")]
-    if "Label" in pred_df.columns:
-        for pc in pred_cols:
-            pred_df[f"{pc}_Agrees"] = pred_df["Label"] == pred_df[pc]
+    # Step 2: Scoring and Ground Truth Labels
+    model_base, score_features, low_th, high_th = compute_scoring_and_labels(df)
 
-    if len(pred_cols) > 1:
-        pred_df["All_Models_Agree"] = pred_df[pred_cols].apply(
-            lambda r: r.nunique() == 1, axis=1)
+    # Step 3: Outlier report
+    generate_eda_reports(model_base, score_features)
 
-    pred_df.to_csv(os.path.join(output_dir, "all_model_predictions.csv"), index=False)
+    # Step 4: ML Dataset
+    X = model_base[score_features].replace([np.inf, -np.inf], np.nan).copy()
+    y_text = model_base["Label"].astype(str).copy()
 
-    if "All_Models_Agree" in pred_df.columns:
-        disagree = pred_df[~pred_df["All_Models_Agree"]]
-        disagree.to_csv(os.path.join(output_dir, "model_disagreements.csv"),
-                        index=False)
-        print(f"\nCompanies where models disagree (test set): {len(disagree)}")
+    valid_rows = X.notna().any(axis=1)
+    X = X.loc[valid_rows].reset_index(drop=True)
+    y_text = y_text.loc[valid_rows].reset_index(drop=True)
 
-    print(f"Test-set predictions exported to {output_dir}/all_model_predictions.csv")
-    return pred_df
+    encoder = LabelEncoder()
+    y = encoder.fit_transform(y_text)
+    class_names = encoder.classes_.tolist()
 
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.20, random_state=RANDOM_STATE, stratify=y
+    )
+    print(f"\n[Phase 5] Stratified 80:20 Split -> Train: {len(X_train)}, Test: {len(X_test)}")
 
-# =============================================================================
-# SECTION 11 - ARTIFACT SAVING
-# =============================================================================
-
-def save_artifacts(df_clean, score_df, ml_features, eligible_df,
-                   all_stats, avail_report, comp_df, encoder,
-                   imputer, scaler, high_thresh, low_thresh,
-                   output_dir, models_dir):
-    """Save all CSVs, JSON stats, and preprocessing artifacts."""
-
-    df_clean.to_csv(os.path.join(output_dir, "cleaned_indian_market_data.csv"),
-                    index=False)
-
-    score_cols_keep = ["Company", "Valuation_Score", "Profitability_Score",
-                       "Growth_Score", "Financial_Health_Score",
-                       "Financial_Score", "Financial_Rank", "Label"]
-    score_df[[c for c in score_cols_keep if c in score_df.columns]].to_csv(
-        os.path.join(output_dir, "financial_scores_and_ranking.csv"), index=False)
-
-    ml_cols = ["Company"] + ml_features + ["Financial_Score", "Label"]
-    eligible_df[[c for c in ml_cols if c in eligible_df.columns]].to_csv(
-        os.path.join(output_dir, "ml_ready_dataset.csv"), index=False)
-
-    comp_df.to_csv(os.path.join(output_dir, "model_comparison.csv"), index=False)
-    avail_report["report_df"].to_csv(
-        os.path.join(output_dir, "feature_availability_report.csv"), index=False)
-
-    # Per-model feature importance CSVs
-    for mname, stats in all_stats.items():
-        fi = stats.get("feature_importances", {})
-        pd.DataFrame(list(fi.items()), columns=["Feature", "Importance"]) \
-          .sort_values("Importance", ascending=False) \
-          .to_csv(os.path.join(output_dir,
-                               f"feature_importance_{mname.lower()}.csv"),
-                  index=False)
-
-    # Classification reports CSV
+    # Step 5: Fit and Evaluate Models on Holdout Set
+    models = build_model_pipelines()
+    test_metrics = []
+    all_stats = {}
     cr_rows = []
-    for mname, stats in all_stats.items():
-        for class_label, mets in stats.get("classification_report", {}).items():
-            if isinstance(mets, dict):
-                row = {"Model": mname, "Class": class_label}
-                row.update(mets)
-                cr_rows.append(row)
-    pd.DataFrame(cr_rows).to_csv(
-        os.path.join(output_dir, "classification_reports.csv"), index=False)
+    predictions_dict = {}
 
-    # Cross-validation CSV
-    cv_rows = []
-    for mname, stats in all_stats.items():
-        cv_scores = stats.get("cv_scores", [])
-        for fold_i, score in enumerate(cv_scores, 1):
-            cv_rows.append({"Model": mname, "Fold": fold_i, "Accuracy": score})
-        cv_rows.append({
-            "Model": mname, "Fold": "Mean",
-            "Accuracy": stats.get("cv_mean"),
+    for model_name, pipeline in models.items():
+        t0 = time.time()
+        pipeline.fit(X_train, y_train)
+        train_time = round(time.time() - t0, 4)
+
+        y_pred = pipeline.predict(X_test)
+        predictions_dict[model_name] = y_pred
+
+        acc = accuracy_score(y_test, y_pred)
+        bal_acc = balanced_accuracy_score(y_test, y_pred)
+        prec_w = precision_score(y_test, y_pred, average="weighted", zero_division=0)
+        rec_w = recall_score(y_test, y_pred, average="weighted", zero_division=0)
+        f1_w = f1_score(y_test, y_pred, average="weighted", zero_division=0)
+        prec_m = precision_score(y_test, y_pred, average="macro", zero_division=0)
+        rec_m = recall_score(y_test, y_pred, average="macro", zero_division=0)
+        f1_m = f1_score(y_test, y_pred, average="macro", zero_division=0)
+        cr = classification_report(y_test, y_pred, target_names=class_names, output_dict=True, zero_division=0)
+
+        clf = pipeline.named_steps["classifier"]
+        fi_dict = {}
+        if hasattr(clf, "feature_importances_"):
+            fi_dict = dict(zip(score_features, [float(v) for v in clf.feature_importances_]))
+
+        clean_name = "RandomForest" if "forest" in model_name.lower() else ("XGBoost" if "xgb" in model_name.lower() else "AdaBoost")
+        all_stats[clean_name] = {
+            "accuracy": float(acc),
+            "balanced_accuracy": float(bal_acc),
+            "precision_weighted": float(prec_w),
+            "recall_weighted": float(rec_w),
+            "f1_score_weighted": float(f1_w),
+            "precision_macro": float(prec_m),
+            "recall_macro": float(rec_m),
+            "f1_score_macro": float(f1_m),
+            "classification_report": cr,
+            "confusion_matrix": confusion_matrix(y_test, y_pred).tolist(),
+            "feature_importances": fi_dict,
+            "training_time_seconds": train_time,
+            "train_dataset_size": len(X_train),
+            "test_dataset_size": len(X_test),
+            "last_trained": time.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+
+        test_metrics.append({
+            "Model": model_name,
+            "Accuracy": round(acc, 4),
+            "Balanced_Accuracy": round(bal_acc, 4),
+            "Precision_Weighted": round(prec_w, 4),
+            "Recall_Weighted": round(rec_w, 4),
+            "F1_Weighted": round(f1_w, 4),
+            "Precision_Macro": round(prec_m, 4),
+            "Recall_Macro": round(rec_m, 4),
+            "F1_Macro": round(f1_m, 4),
         })
-    pd.DataFrame(cv_rows).to_csv(
-        os.path.join(output_dir, "cross_validation_results.csv"), index=False)
 
-    # Preprocessing artifacts
-    joblib.dump(encoder, os.path.join(models_dir, "LabelEncoder.pkl"))
-    joblib.dump(imputer, os.path.join(models_dir, "imputer.pkl"))
-    joblib.dump(scaler,  os.path.join(models_dir, "scaler.pkl"))
+        for cls_name, vals in cr.items():
+            if isinstance(vals, dict):
+                r = {"Model": model_name, "Class": cls_name}
+                r.update(vals)
+                cr_rows.append(r)
 
-    # Feature schema (backward compat with model_loader.py)
+        print(f"  --> {model_name:14s} | Holdout Accuracy: {acc*100:6.2f}% | Weighted F1: {f1_w:6.4f} | Train Time: {train_time}s")
+
+    # Step 6: 5-Fold Stratified Cross Validation
+    print("\n[Phase 6] Running Stratified 5-Fold Cross Validation...")
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
+    cv_metrics = []
+    cv_rows_for_csv = []
+
+    for model_name, pipeline in build_model_pipelines().items():
+        clean_name = "RandomForest" if "forest" in model_name.lower() else ("XGBoost" if "xgb" in model_name.lower() else "AdaBoost")
+        scores = cross_validate(pipeline, X, y, cv=cv, scoring=["accuracy", "f1_weighted", "f1_macro"], n_jobs=-1)
+        mean_acc = float(scores["test_accuracy"].mean())
+        std_acc = float(scores["test_accuracy"].std())
+
+        all_stats[clean_name]["cv_scores"] = [round(float(s), 4) for s in scores["test_accuracy"]]
+        all_stats[clean_name]["cv_mean"] = round(mean_acc, 4)
+        all_stats[clean_name]["cv_std"] = round(std_acc, 4)
+
+        for fold_i, score in enumerate(scores["test_accuracy"], 1):
+            cv_rows_for_csv.append({"Model": clean_name, "Fold": str(fold_i), "Accuracy": round(float(score), 4)})
+        cv_rows_for_csv.append({"Model": clean_name, "Fold": "Mean", "Accuracy": round(mean_acc, 4)})
+
+        cv_metrics.append({
+            "Model": model_name,
+            "CV_Folds": 5,
+            "Accuracy_Mean": round(mean_acc, 4),
+            "Accuracy_Std": round(std_acc, 4),
+            "F1_Weighted_Mean": round(float(scores["test_f1_weighted"].mean()), 4),
+            "F1_Macro_Mean": round(float(scores["test_f1_macro"].mean()), 4),
+        })
+        print(f"  --> {model_name:14s} | 5-Fold CV Mean: {mean_acc*100:6.2f}% (+/- {std_acc*100:4.2f}%)")
+
+    # Step 7: Refit on all modeling rows for production inference artifacts
+    print("\n[Phase 7] Refitting final pipelines on full dataset for live inference...")
+    final_pipelines = build_model_pipelines()
+    for model_name, pipeline in final_pipelines.items():
+        pipeline.fit(X, y)
+        clean_name = "RandomForest" if "forest" in model_name.lower() else ("XGBoost" if "xgb" in model_name.lower() else "AdaBoost")
+        joblib.dump(pipeline, MODELS_DIR / f"{clean_name}_Model.pkl")
+        joblib.dump(pipeline, MODELS_DIR / f"{model_name.lower().replace(' ', '_')}_pipeline.joblib")
+        print(f"  Saved fitted model: {clean_name}_Model.pkl")
+
+    joblib.dump(encoder, MODELS_DIR / "LabelEncoder.pkl")
+    joblib.dump(encoder, MODELS_DIR / "label_encoder.joblib")
+
+    # Save fitted imputer separately for legacy model_loader compatibility
+    standalone_imputer = SimpleImputer(strategy="median").fit(X)
+    joblib.dump(standalone_imputer, MODELS_DIR / "imputer.pkl")
+    standalone_scaler = RobustScaler().fit(standalone_imputer.transform(X))
+    joblib.dump(standalone_scaler, MODELS_DIR / "scaler.pkl")
+
+    # Step 8: Predictions Table and Agreement Rates
+    print("\n[Phase 8] Exporting model predictions & agreements...")
+    test_indices = X_test.index
+    pred_export = model_base.loc[test_indices, ["Company", "Financial_Score", "Financial_Rank", "Label"]].copy()
+    pred_export["RandomForest_Pred"] = encoder.inverse_transform(predictions_dict["Random Forest"])
+    pred_export["XGBoost_Pred"] = encoder.inverse_transform(predictions_dict["XGBoost"])
+    pred_export["AdaBoost_Pred"] = encoder.inverse_transform(predictions_dict["AdaBoost"])
+
+    pred_export["RandomForest_Pred_Agrees"] = (pred_export["Label"] == pred_export["RandomForest_Pred"])
+    pred_export["XGBoost_Pred_Agrees"] = (pred_export["Label"] == pred_export["XGBoost_Pred"])
+    pred_export["AdaBoost_Pred_Agrees"] = (pred_export["Label"] == pred_export["AdaBoost_Pred"])
+    pred_export["All_Models_Agree"] = (
+        pred_export["RandomForest_Pred_Agrees"] &
+        pred_export["XGBoost_Pred_Agrees"] &
+        pred_export["AdaBoost_Pred_Agrees"]
+    )
+    pred_export.to_csv(OUTPUT_DIR / "all_model_predictions.csv", index=False)
+
+    disagreements = pred_export[~pred_export["All_Models_Agree"]].copy()
+    disagreements.to_csv(OUTPUT_DIR / "model_disagreements.csv", index=False)
+    print(f"  Holdout samples with model disagreements: {len(disagreements)} / {len(pred_export)}")
+
+    # Step 9: Save CSV Reports & Outputs
+    pd.DataFrame(test_metrics).to_csv(OUTPUT_DIR / "model_comparison.csv", index=False)
+    pd.DataFrame(cv_rows_for_csv).to_csv(OUTPUT_DIR / "cross_validation_results.csv", index=False)
+    pd.DataFrame(cr_rows).to_csv(OUTPUT_DIR / "classification_reports.csv", index=False)
+
+    for mname in ["RandomForest", "XGBoost", "AdaBoost"]:
+        fi_dict = all_stats[mname].get("feature_importances", {})
+        pd.DataFrame(list(fi_dict.items()), columns=["Feature", "Importance"]).sort_values("Importance", ascending=False).to_csv(OUTPUT_DIR / f"feature_importance_{mname.lower()}.csv", index=False)
+
+    model_base.to_csv(OUTPUT_DIR / "financial_scores_and_ranking.csv", index=False)
+    model_base.to_csv(MODELS_DIR / "Final_Project_Data.csv", index=False)
+    model_base.to_csv(MODELS_DIR / "Labelled_Financial_Data.csv", index=False)
+
+    # Feature Availability Report
+    avail_rows = []
+    for f in MODEL_FEATURES:
+        avail_rows.append({
+            "Original_Feature": f,
+            "Excel_Source": f,
+            "Status": "OK Available",
+            "Data_Type": "float64",
+            "Missing_%": round(float(model_base[f].isna().mean() * 100), 2),
+            "Used_For_Scoring": True,
+            "Used_For_Model": True,
+        })
+    pd.DataFrame(avail_rows).to_csv(OUTPUT_DIR / "feature_availability_report.csv", index=False)
+
+    feature_quantiles = {}
+    clip_stats = {}
+    for f in score_features:
+        s = model_base[f].dropna()
+        if not s.empty:
+            q_vals = [round(float(s.quantile(p / 100.0)), 4) for p in range(0, 101, 5)]
+            feature_quantiles[f] = q_vals
+            clip_stats[f] = [round(float(s.quantile(0.01)), 4), round(float(s.quantile(0.99)), 4)]
+
+    # Schema JSON
     schema = {
-        "feature_names":  ml_features,
-        "feature_count":  len(ml_features),
-        "column_mapping": EXCEL_COL_MAP,
-        "neg_indicators": [f for f in ml_features if f in NEG_INDICATORS],
-        "pos_indicators": [f for f in ml_features if f in POS_INDICATORS],
-        "label_classes":  list(encoder.classes_),
-        "label_hi_thresh":float(high_thresh),
-        "label_lo_thresh":float(low_thresh),
+        "feature_names": score_features,
+        "feature_count": len(score_features),
+        "feature_directions": {f: FEATURE_DIRECTIONS.get(f, 1) for f in score_features},
+        "neg_indicators": [f for f in score_features if FEATURE_DIRECTIONS.get(f, 1) < 0],
+        "pos_indicators": [f for f in score_features if FEATURE_DIRECTIONS.get(f, 1) > 0],
+        "label_classes": class_names,
+        "label_hi_thresh": float(high_th),
+        "label_lo_thresh": float(low_th),
+        "feature_quantiles": feature_quantiles,
+        "clip_stats": clip_stats,
     }
-    with open(os.path.join(models_dir, "feature_schema.json"), "w") as f:
+    with open(MODELS_DIR / "feature_schema.json", "w") as f:
         json.dump(schema, f, indent=2)
 
-    # Consolidated model_stats.json (backward compat with routes.py)
-    best = max(all_stats, key=lambda m: all_stats[m].get("f1_score_weighted", 0))
-    stats_export = {
-        k: {sk: sv for sk, sv in sv_dict.items()
-            if sk not in ("model_object", "y_pred")}
-        for k, sv_dict in all_stats.items()
-    }
-    consolidated = {
-        "models":                stats_export,
-        "best_model":            best,
+    # Model Stats JSON
+    best_m = max(all_stats, key=lambda m: all_stats[m]["f1_score_weighted"])
+    consolidated_stats = {
+        "models": all_stats,
+        "best_model": best_m,
         "dataset": {
-            "excel_file": "Screener_Query_Results_Page1.xlsx",
-            "total_raw_rows": len(df_clean),
-            "usable_rows": len(eligible_df),
-            "unique_stocks": int(eligible_df["Company"].nunique()) if "Company" in eligible_df.columns else len(eligible_df),
-            "train_rows": len(eligible_df) - len(eligible_df) // 5,
-            "test_rows": len(eligible_df) // 5,
-            "available_features": ml_features,
-            "label_distribution": eligible_df["Label"].value_counts().to_dict() if "Label" in eligible_df.columns else {},
-            "label_methodology": "Composite Financial Scoring & 70th/30th Percentiles (Undervalued / Fairly Valued / Overvalued)",
-            "data_source": "Screener.in Indian Listed Stocks (2,001 Unique Companies)",
+            "excel_file": "Screener_Query_Results_Page1 (1).xlsx",
+            "total_raw_rows": len(df),
+            "usable_rows": len(model_base),
+            "unique_stocks": int(model_base["Company"].nunique()),
+            "train_rows": len(X_train),
+            "test_rows": len(X_test),
+            "available_features": score_features,
+            "label_distribution": model_base["Label"].value_counts().to_dict(),
+            "label_methodology": f"Directional Percentile Ranking & 70th/30th Percentiles (Undervalued >= {high_th:.3f} / Overvalued <= {low_th:.3f})",
+            "data_source": "Screener.in Indian Listed Equities (2,001 Unique Companies)",
         },
-        "accuracy":              all_stats["RandomForest"]["accuracy"],
-        "precision":             all_stats["RandomForest"]["precision_weighted"],
-        "recall":                all_stats["RandomForest"]["recall_weighted"],
-        "f1_score":              all_stats["RandomForest"]["f1_score_weighted"],
-        "classification_report": all_stats["RandomForest"]["classification_report"],
-        "feature_importances":   all_stats["RandomForest"]["feature_importances"],
-        "last_trained":          time.strftime("%Y-%m-%d %H:%M:%S"),
+        "accuracy": all_stats[best_m]["accuracy"],
+        "precision": all_stats[best_m]["precision_weighted"],
+        "recall": all_stats[best_m]["recall_weighted"],
+        "f1_score": all_stats[best_m]["f1_score_weighted"],
+        "classification_report": all_stats[best_m]["classification_report"],
+        "feature_importances": all_stats[best_m]["feature_importances"],
+        "last_trained": time.strftime("%Y-%m-%d %H:%M:%S"),
     }
-    with open(os.path.join(models_dir, "model_stats.json"), "w") as f:
-        json.dump(consolidated, f, indent=2)
+    with open(MODELS_DIR / "model_stats.json", "w") as f:
+        json.dump(consolidated_stats, f, indent=2)
 
-    # Dataset files for /valuation/stats endpoint
-    eligible_df.to_csv(os.path.join(models_dir, "Final_Project_Data.csv"), index=False)
-    eligible_df.to_csv(os.path.join(models_dir, "Labelled_Financial_Data.csv"), index=False)
+    # Step 10: Generate all 13 plots
+    generate_all_plots(model_base, score_features, low_th, high_th, models, X_test, y_test, class_names, test_metrics, cv_metrics)
 
-    print(f"\nAll artifacts saved to:\n  outputs/ -> {output_dir}\n  models/  -> {models_dir}")
+    elapsed = round(time.time() - start_time, 2)
+    print("=" * 70)
+    print(f"PIPELINE COMPLETED SUCCESSFULLY IN {elapsed}s")
+    print(f"  Best Model: {best_m} ({all_stats[best_m]['accuracy']*100:.2f}% accuracy)")
+    print("=" * 70)
 
-
-# =============================================================================
-# MAIN ENTRY POINT
-# =============================================================================
-
-def run_indian_market_pipeline(excel_path=None):
-    """
-    Full end-to-end pipeline. Pass excel_path to use a different file.
-    Returns result dict with all_stats, comp_df, eligible_df, etc.
-    """
-    if excel_path is None:
-        excel_path = CONFIG["EXCEL_PATH"]
-
-    output_dir  = CONFIG["OUTPUT_DIR"]
-    reports_dir = CONFIG["REPORTS_DIR"]
-    models_dir  = CONFIG["MODELS_DIR"]
-    for d in [output_dir, reports_dir, models_dir]:
-        os.makedirs(d, exist_ok=True)
-
-    # Phase 1-2: Load & clean
-    df_raw   = load_excel_data(excel_path)
-    df_clean = clean_indian_market_data(df_raw)
-
-    # Phase 3: Feature availability
-    avail_report = validate_feature_availability(df_clean)
-    available    = avail_report["available"]
-    if not available:
-        raise RuntimeError("No usable features found. Check EXCEL_COL_MAP.")
-
-    # Phase 4: EDA
-    perform_eda(df_clean, available, reports_dir)
-
-    # Phase 5-6: Scoring & labels
-    score_df = calculate_financial_scores(df_clean, available)
-    score_df, high_thresh, low_thresh = generate_financial_labels(
-        score_df, reports_dir)
-
-    # Phase 7: ML dataset
-    X_raw, y, ml_features, eligible_df = prepare_ml_dataset(score_df, available)
-
-    # Encode labels
-    encoder   = LabelEncoder()
-    y_encoded = encoder.fit_transform(y)
-    class_names = list(encoder.classes_)
-    n_classes   = len(class_names)
-    print(f"\nEncoded classes: {class_names}")
-
-    # Check minimum class samples for splitting
-    min_class_n = min((y_encoded == c).sum() for c in np.unique(y_encoded))
-    if min_class_n < 2:
-        raise RuntimeError(
-            f"Smallest class has only {min_class_n} sample(s). "
-            "Cannot perform stratified split.")
-
-    # Stratified 80:20 split (same for all three models)
-    X_train_raw, X_test_raw, y_train, y_test = train_test_split(
-        X_raw, y_encoded,
-        test_size=CONFIG["TEST_SIZE"],
-        random_state=CONFIG["RANDOM_STATE"],
-        stratify=y_encoded,
-    )
-    print(f"\nTrain: {len(X_train_raw)} | Test: {len(X_test_raw)}")
-    print(f"Train class distribution: "
-          f"{dict(zip(*np.unique(y_train, return_counts=True)))}")
-    print(f"Test  class distribution: "
-          f"{dict(zip(*np.unique(y_test, return_counts=True)))}")
-
-    # Preprocessing (fit on train only)
-    X_train, X_test, imputer, scaler = preprocess_features(
-        X_train_raw, X_test_raw)
-
-    # Full-dataset scaled for CV
-    X_all_scaled = scaler.transform(imputer.transform(X_raw))
-
-    # Phase 8: Train all models
-    print("\n" + "=" * 65)
-    print("PHASE 8 - TRAINING ALL THREE MODELS")
-    print("=" * 65)
-
-    model_defs = _build_models(n_classes)
-    all_stats  = {}
-
-    for mname, model in model_defs.items():
-        stats = train_and_evaluate_model(
-            model_name=mname, model=model,
-            X_train=X_train, X_test=X_test,
-            y_train=y_train, y_test=y_test,
-            ml_features=ml_features, class_names=class_names,
-            reports_dir=reports_dir, models_dir=models_dir,
-            X_test_raw=X_test_raw,
-        )
-        # CV on fresh model instance
-        cv_model = _build_models(n_classes)[mname]
-        cv_stats = run_cross_validation(mname, cv_model, X_all_scaled, y_encoded)
-        stats.update(cv_stats)
-        all_stats[mname] = stats
-
-    # Phase 9: Comparison
-    print("\n" + "=" * 65)
-    print("PHASE 9 - MODEL COMPARISON")
-    print("=" * 65)
-    comp_df = compare_models(all_stats, reports_dir)
-
-    # Company-level predictions (test set only)
-    pred_df = generate_predictions_table(
-        eligible_df=eligible_df, X_test_idx=X_test_raw.index,
-        all_stats=all_stats, class_names=class_names, encoder=encoder,
-        ml_features=ml_features, output_dir=output_dir, reports_dir=reports_dir,
-    )
-
-    # Save all artifacts
-    save_artifacts(
-        df_clean=df_clean, score_df=score_df, ml_features=ml_features,
-        eligible_df=eligible_df, all_stats=all_stats, avail_report=avail_report,
-        comp_df=comp_df, encoder=encoder, imputer=imputer, scaler=scaler,
-        high_thresh=high_thresh, low_thresh=low_thresh,
-        output_dir=output_dir, models_dir=models_dir,
-    )
-
-    # Final summary
-    print("\n" + "=" * 65)
-    print("  FINAL SUMMARY - INDIAN MARKET ML PIPELINE")
-    print("=" * 65)
-    print(f"\nCompanies loaded          : {len(df_clean)}")
-    print(f"Companies with labels     : {len(eligible_df)}")
-    print(f"ML features used          : {ml_features}")
-    print(f"Available indicators      : {avail_report['available']}")
-    print(f"Absent from Excel         : {avail_report['absent']}")
-    print(f"\nModel Results (test set):")
-    print(f"  {'Model':<15} {'Accuracy':>10} {'W-F1':>8} {'M-F1':>8} "
-          f"{'CV Mean':>10} {'Train(s)':>10}")
-    for mname, stats in all_stats.items():
-        cv_str = f"{stats['cv_mean']*100:.2f}%" if stats.get("cv_mean") else "  N/A"
-        print(f"  {mname:<15} {stats['accuracy']*100:>9.2f}% "
-              f"{stats['f1_score_weighted']:>8.4f} {stats['f1_score_macro']:>8.4f} "
-              f"{cv_str:>10} {stats['training_time_seconds']:>10.4f}")
-    print("\nLIMITATIONS:")
-    print("  1. Labels derived from scoring features - models reproduce scoring rules,")
-    print("     not predict future stock returns.")
-    print("  2. Single screener snapshot - no time dimension.")
-    print("  3. Net_Profit_Margin, Current_Ratio, Revenue_Growth, Net_Income_Growth")
-    print("     absent from this Excel file.")
-    print("  4. EPS_Variation_5Yrs is a 5-year variation, NOT annual EPS growth.")
-    print("\nPipeline completed successfully!")
-
-    return {
-        "all_stats":    all_stats,
-        "comp_df":      comp_df,
-        "eligible_df":  eligible_df,
-        "ml_features":  ml_features,
-        "encoder":      encoder,
-        "avail_report": avail_report,
-    }
-
+    return consolidated_stats
 
 if __name__ == "__main__":
-    custom_excel = sys.argv[1] if len(sys.argv) > 1 else None
-    run_indian_market_pipeline(excel_path=custom_excel)
+    run_pipeline()

@@ -1,18 +1,9 @@
 Original_Feature,Excel_Source,Status,Data_Type,Missing_%,Used_For_Scoring,Used_For_Model
-PE_Ratio,P/E,OK Available,float64,0.9,True,True
-PB_Ratio,CMP / BV,OK Available,float64,9.9,True,True
-PEG_Ratio,PEG,OK Available,float64,8.2,True,True
-ROE,ROE %,OK Available,float64,2.8,True,True
-ROA,ROA 12M %,OK Available,float64,0.0,True,True
-Net_Profit_Margin,--- NOT in Excel,X Absent from Excel,N/A,100.0,False,False
-Operating_Profit_Margin,OPM %,OK Available,float64,2.2,True,True
-Revenue_Growth,--- NOT in Excel (Profit_Growth_Screener is a proxy),X Absent from Excel,N/A,100.0,False,False
-EPS_Growth,--- NOT in Excel (EPS_Variation_5Yrs is 5-yr metric),X Absent from Excel,N/A,100.0,False,False
-Net_Income_Growth,--- NOT in Excel,X Absent from Excel,N/A,100.0,False,False
-Debt_to_Equity,Debt / Eq,OK Available,float64,1.0,True,True
-Current_Ratio,--- NOT in Excel,X Absent from Excel,N/A,100.0,False,False
-ROCE,ROCE %,OK Available,float64,0.0,True,True
-EPS_Variation_5Yrs,EPS Var 5Yrs %,OK Available,float64,18.5,True,True
-Profit_Growth_Screener,Profit Growth %,OK Available,float64,0.2,True,True
-Market_Cap,Mar Cap (Rs.Cr.),OK Available,float64,4.3,False,False
-CMP,CMP (Rs.),OK Available,float64,0.2,False,False
+PE_Ratio,PE_Ratio,OK Available,float64,0.75,True,True
+Price_to_Book,Price_to_Book,OK Available,float64,11.07,True,True
+PEG,PEG,OK Available,float64,8.06,True,True
+ROE_pct,ROE_pct,OK Available,float64,1.35,True,True
+ROA_12M_pct,ROA_12M_pct,OK Available,float64,0.0,True,True
+Profit_Growth_pct,Profit_Growth_pct,OK Available,float64,49.92,True,True
+Debt_to_Equity,Debt_to_Equity,OK Available,float64,1.25,True,True
+ROCE_pct,ROCE_pct,OK Available,float64,0.0,True,True

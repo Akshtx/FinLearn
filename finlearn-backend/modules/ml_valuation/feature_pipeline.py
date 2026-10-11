@@ -3,9 +3,23 @@ import json
 import numpy as np
 
 FEATURE_NAMES = [
-    "PE_Ratio", "PB_Ratio", "PEG_Ratio", "ROE", "ROA",
-    "Profit_Margins", "Revenue_Growth", "EPS_Growth", "Debt_to_Equity"
+    "PE_Ratio", "Price_to_Book", "PEG", "ROE_pct", "ROA_12M_pct",
+    "Profit_Growth_pct", "Debt_to_Equity", "ROCE_pct"
 ]
+
+FEATURE_ALIASES = {
+    "PE_Ratio": ["PE_Ratio", "pe_ratio", "pe", "P_E"],
+    "Price_to_Book": ["Price_to_Book", "PB_Ratio", "pb_ratio", "pb", "cmp_bv"],
+    "PEG": ["PEG", "PEG_Ratio", "peg_ratio"],
+    "ROE_pct": ["ROE_pct", "ROE", "roe", "roe_pct"],
+    "ROA_12M_pct": ["ROA_12M_pct", "ROA", "roa", "roa_12m", "roa_pct"],
+    "Profit_Growth_pct": [
+        "Profit_Growth_pct", "profit_growth", "Profit_Margins", "profit_margins",
+        "Revenue_Growth", "revenue_growth"
+    ],
+    "Debt_to_Equity": ["Debt_to_Equity", "debt_to_equity", "debt_eq", "debt_to_equity_ratio"],
+    "ROCE_pct": ["ROCE_pct", "ROCE", "roce", "roce_pct", "EPS_Growth", "eps_growth"],
+}
 
 def load_schema():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -15,56 +29,69 @@ def load_schema():
             return json.load(f)
     return {}
 
+def _extract_metric(metrics_dict, feature):
+    if feature in metrics_dict:
+        v = metrics_dict[feature]
+        if v is not None and not (isinstance(v, float) and np.isnan(v)):
+            return float(v)
+    for alias in FEATURE_ALIASES.get(feature, []):
+        if alias in metrics_dict:
+            v = metrics_dict[alias]
+            if v is not None and not (isinstance(v, float) and np.isnan(v)):
+                return float(v)
+    return None
+
 def compute_financial_score(metrics_dict):
     """
-    Computes a composite financial health score from raw metrics.
-    Returns a float in approximately [0, 1].
+    Computes directional percentile rank financial score from raw metrics
+    matching the Colab notebook methodology. Returns float in [0, 1].
     """
     schema = load_schema()
-    weights = schema.get("score_weights", {
-        "PE_Ratio": 0.12, "PB_Ratio": 0.08, "PEG_Ratio": 0.08,
-        "ROE": 0.20, "ROA": 0.15, "Profit_Margins": 0.15,
-        "Revenue_Growth": 0.12, "EPS_Growth": 0.10, "Debt_to_Equity": 0.10,
+    score_features = schema.get("feature_names", FEATURE_NAMES)
+    feature_directions = schema.get("feature_directions", {
+        "PE_Ratio": -1, "Price_to_Book": -1, "PEG": -1, "Debt_to_Equity": -1,
+        "ROE_pct": 1, "ROA_12M_pct": 1, "Profit_Growth_pct": 1, "ROCE_pct": 1
     })
-    neg_indicators = schema.get("neg_indicators", ["PE_Ratio", "PB_Ratio", "PEG_Ratio", "Debt_to_Equity"])
+    feature_quantiles = schema.get("feature_quantiles", {})
     clip_stats = schema.get("clip_stats", {})
 
-    total_weight = 0.0
-    score = 0.0
+    total_score = 0.0
+    valid_count = 0
 
-    for feature, weight in weights.items():
-        if weight <= 0:
-            continue
-        raw = metrics_dict.get(feature, None)
-        if raw is None or (isinstance(raw, float) and np.isnan(raw)):
+    for f in score_features:
+        val = _extract_metric(metrics_dict, f)
+        if val is None:
             continue
 
-        val = float(raw)
-        if feature in clip_stats:
-            lo, hi = clip_stats[feature]
-            val = max(lo, min(hi, val))
+        direction = feature_directions.get(f, 1)
+
+        # Empirical quantile interpolation if distribution available
+        if f in feature_quantiles and len(feature_quantiles[f]) > 1:
+            q_vals = feature_quantiles[f]
+            grid = np.linspace(0.0, 1.0, len(q_vals))
+            p_rank = float(np.interp(val, q_vals, grid))
+        elif f in clip_stats:
+            lo, hi = clip_stats[f]
+            val_clipped = max(lo, min(hi, val))
             rng = hi - lo
-            if rng > 1e-9:
-                scaled = (val - lo) / rng
-            else:
-                scaled = 0.5
+            p_rank = (val_clipped - lo) / rng if rng > 1e-9 else 0.5
         else:
-            scaled = 0.5  # fallback if no clip stats
+            p_rank = 0.5
 
-        if feature in neg_indicators:
-            scaled = 1.0 - scaled
+        if direction < 0:
+            p_rank = 1.0 - p_rank
 
-        score += weight * scaled
-        total_weight += weight
+        total_score += p_rank
+        valid_count += 1
 
-    if total_weight < 1e-9:
+    if valid_count < 1:
         return 0.5
 
-    return round(float(np.clip(score / total_weight, 0.0, 1.0)), 4)
+    return round(float(np.clip(total_score / valid_count, 0.0, 1.0)), 4)
 
 
 class FeaturePipeline:
-    """Thin wrapper retained for backward compatibility with routes.py."""
+    """Retained for backward compatibility with external routes."""
     _instance = None
 
     def __new__(cls):
@@ -72,15 +99,14 @@ class FeaturePipeline:
             cls._instance = super(FeaturePipeline, cls).__new__(cls)
         return cls._instance
 
-    def build_dict(self, pe, pb, peg, roe, roa, profit_margins, rev_g, eps_g, de):
+    def build_dict(self, pe, pb, peg, roe, roa, profit_margins, rev_g, eps_g, de, roce=None):
         return {
-            "PE_Ratio":       pe,
-            "PB_Ratio":       pb,
-            "PEG_Ratio":      peg,
-            "ROE":            roe,
-            "ROA":            roa,
-            "Profit_Margins": profit_margins,
-            "Revenue_Growth": rev_g,
-            "EPS_Growth":     eps_g,
+            "PE_Ratio": pe,
+            "Price_to_Book": pb,
+            "PEG": peg,
+            "ROE_pct": roe,
+            "ROA_12M_pct": roa,
+            "Profit_Growth_pct": profit_margins if profit_margins is not None else rev_g,
             "Debt_to_Equity": de,
+            "ROCE_pct": roce if roce is not None else eps_g,
         }

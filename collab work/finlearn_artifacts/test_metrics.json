@@ -1,0 +1,35 @@
+[
+  {
+    "Model":"XGBoost",
+    "Accuracy":0.8925,
+    "Balanced_Accuracy":0.8923611111,
+    "Precision_Weighted":0.8947453222,
+    "Recall_Weighted":0.8925,
+    "F1_Weighted":0.8929476375,
+    "Precision_Macro":0.9001443751,
+    "Recall_Macro":0.8923611111,
+    "F1_Macro":0.8955750514
+  },
+  {
+    "Model":"Random Forest",
+    "Accuracy":0.8675,
+    "Balanced_Accuracy":0.8666666667,
+    "Precision_Weighted":0.8723583959,
+    "Recall_Weighted":0.8675,
+    "F1_Weighted":0.8683783442,
+    "Precision_Macro":0.8793706005,
+    "Recall_Macro":0.8666666667,
+    "F1_Macro":0.8714380668
+  },
+  {
+    "Model":"AdaBoost",
+    "Accuracy":0.795,
+    "Balanced_Accuracy":0.775,
+    "Precision_Weighted":0.8520368194,
+    "Recall_Weighted":0.795,
+    "F1_Weighted":0.7941486625,
+    "Precision_Macro":0.8726335031,
+    "Recall_Macro":0.775,
+    "F1_Macro":0.7944009392
+  }
+]

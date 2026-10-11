@@ -1,0 +1,12 @@
+Feature,Available_In_Workbook,Non_Missing,Missing_Percent,Unique_Values,Direction,Eligible,Reason
+PE_Ratio,True,1982,0.9,1636,-1,True,Eligible
+Price_to_Book,True,1776,11.2,889,-1,True,Eligible
+PEG,True,1836,8.2,526,-1,True,Eligible
+ROE_pct,True,1970,1.5,1445,1,True,Eligible
+ROA_12M_pct,True,2000,0.0,1268,1,True,Eligible
+OPM_pct,True,997,50.15,864,1,False,Insufficient coverage or variation
+Profit_Growth_pct,True,1000,50.0,977,1,True,Eligible
+EPS_Var_5Yrs_pct,True,640,68.0,627,1,False,Insufficient coverage or variation
+EPS_Var_3Yrs_pct,True,914,54.3,878,1,False,Insufficient coverage or variation
+Debt_to_Equity,True,1972,1.4,229,-1,True,Eligible
+ROCE_pct,True,2000,0.0,1371,1,True,Eligible

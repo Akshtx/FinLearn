@@ -1,0 +1,8 @@
+Check,Passed,Detail
+Company column exists,True,"(2000, 21)"
+Company identifiers are non-empty,True,Parsed workbook
+Selected features exist,True,"['PE_Ratio', 'Price_to_Book', 'PEG', 'ROE_pct', 'ROA_12M_pct', 'Profit_Growth_pct', 'Debt_to_Equity', 'ROCE_pct']"
+Target has at least two classes,True,"['Fairly Valued', 'Overvalued', 'Undervalued']"
+No all-missing rows in X,True,"(2000, 8)"
+All three models fitted,True,"['Random Forest', 'AdaBoost', 'XGBoost']"
+Saved pipeline files exist,True,finlearn_artifacts

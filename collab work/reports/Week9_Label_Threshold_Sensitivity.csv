@@ -1,0 +1,5 @@
+Lower_Quantile,Upper_Quantile,Overvalued_Count,Fairly_Valued_Count,Undervalued_Count
+0.2,0.8,400,1200,400
+0.25,0.75,500,1000,500
+0.3,0.7,600,800,600
+0.35,0.65,700,600,700

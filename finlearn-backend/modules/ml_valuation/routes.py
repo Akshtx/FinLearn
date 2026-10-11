@@ -299,13 +299,13 @@ def get_model_stats():
 
     methodology = {
         "pillars": {
-            "Valuation": ["PE_Ratio", "PB_Ratio", "PEG_Ratio"],
-            "Profitability": ["ROE", "ROA", "Operating_Profit_Margin", "ROCE"],
-            "Growth": ["Profit_Growth_Screener", "EPS_Variation_5Yrs"],
+            "Valuation": ["PE_Ratio", "Price_to_Book", "PEG"],
+            "Profitability": ["ROE_pct", "ROA_12M_pct", "ROCE_pct"],
+            "Growth": ["Profit_Growth_pct"],
             "Financial_Health": ["Debt_to_Equity"]
         },
-        "scaler": "RobustScaler (IQR outlier-resistant normalization)",
-        "quantiles": "70th percentile (Undervalued) / 30th percentile (Overvalued)"
+        "scaler": "Directional Percentile Ranking (Average Method, 4 Fundamental Pillars)",
+        "quantiles": "70th percentile (Undervalued >= 0.5758) / 30th percentile (Overvalued <= 0.4152)"
     }
 
     report_charts = [
@@ -314,14 +314,14 @@ def get_model_stats():
             "title": "Composite Score & Percentile Thresholds",
             "category": "Data & Scoring",
             "file": "score_distribution.png",
-            "description": "Distribution of composite financial scores across 2,001 companies with 70th (0.365) and 30th (-0.213) percentiles."
+            "description": "Distribution of directional financial scores across Indian equities with 70th (0.5758) and 30th (0.4152) percentile thresholds."
         },
         {
             "id": "class_distribution",
             "title": "Valuation Class Distribution",
             "category": "Data & Scoring",
             "file": "class_distribution.png",
-            "description": "Distribution across Undervalued (601), Fairly Valued (799), and Overvalued (601) categories."
+            "description": "Distribution across Fairly Valued (800), Undervalued (600), and Overvalued (600) categories."
         },
         {
             "id": "eda_correlation_heatmap",
@@ -335,7 +335,7 @@ def get_model_stats():
             "title": "Feature Box Plots (Outlier Identification)",
             "category": "Exploratory Data Analysis",
             "file": "eda_boxplots.png",
-            "description": "Box plots illustrating distribution spread and 1.5× IQR outlier thresholds for Indian equities."
+            "description": "Box plots illustrating distribution spread and 1.5x IQR outlier thresholds for Indian equities."
         },
         {
             "id": "eda_histograms",
@@ -349,7 +349,7 @@ def get_model_stats():
             "title": "Key Indicators Pairwise Relationships",
             "category": "Exploratory Data Analysis",
             "file": "eda_pairplot.png",
-            "description": "Multivariate scatter matrix across P/E, P/B, ROE, Debt/Equity, and growth indicators."
+            "description": "Multivariate scatter matrix across P/E, Price to Book, ROE, Debt/Equity, and growth indicators."
         },
         {
             "id": "model_comparison",
@@ -363,7 +363,7 @@ def get_model_stats():
             "title": "XGBoost Feature Importance",
             "category": "Model Insights",
             "file": "feature_importance_xgboost.png",
-            "description": "Feature weightings for the top-performing XGBoost classifier (85.29% accuracy)."
+            "description": "Feature weightings for the top-performing XGBoost classifier (~89.25% test accuracy)."
         },
         {
             "id": "feature_importance_randomforest",
@@ -384,21 +384,21 @@ def get_model_stats():
             "title": "XGBoost Confusion Matrix",
             "category": "Validation & Matrices",
             "file": "confusion_matrix_xgboost.png",
-            "description": "True vs Predicted classifications on the 401 holdout test set for XGBoost."
+            "description": "True vs Predicted classifications on the 400 holdout test set for XGBoost."
         },
         {
             "id": "confusion_matrix_randomforest",
             "title": "Random Forest Confusion Matrix",
             "category": "Validation & Matrices",
             "file": "confusion_matrix_randomforest.png",
-            "description": "True vs Predicted classifications on the 401 holdout test set for Random Forest."
+            "description": "True vs Predicted classifications on the 400 holdout test set for Random Forest."
         },
         {
             "id": "confusion_matrix_adaboost",
             "title": "AdaBoost Confusion Matrix",
             "category": "Validation & Matrices",
             "file": "confusion_matrix_adaboost.png",
-            "description": "True vs Predicted classifications on the 401 holdout test set for AdaBoost."
+            "description": "True vs Predicted classifications on the 400 holdout test set for AdaBoost."
         }
     ]
 

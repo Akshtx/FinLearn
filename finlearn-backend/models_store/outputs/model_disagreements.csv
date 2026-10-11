@@ -1,72 +1,97 @@
-Company,Valuation_Score,Profitability_Score,Growth_Score,Financial_Health_Score,Financial_Score,Financial_Rank,Label,RandomForest_Pred,XGBoost_Pred,AdaBoost_Pred,RandomForest_Pred_Agrees,XGBoost_Pred_Agrees,AdaBoost_Pred_Agrees,All_Models_Agree
-EID Parry,-8.226661864396169,4.74615735386401,-0.49393427677516943,-0.4370546318289786,-1.1028733547840766,1918.0,Overvalued,Fairly Valued,Fairly Valued,Overvalued,False,False,True,False
-CIE Automotive,-6.543782308286477,6.010870171689629,-0.22336209933075027,-0.6923990498812351,-0.3621683214522081,1629.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-ION Exchange,1.9676354253548451,1.2530405373382592,-0.39051913474089894,-0.3087885985748218,0.6303420573443458,429.0,Undervalued,Fairly Valued,Undervalued,Undervalued,False,True,True,False
-Usha Mart. Edu.,0.0503997361583497,-0.22226432495298903,0.07469101589209115,-1.3064133016627077,-0.350896718641314,1620.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Atlanta Electric,-1.447000797424237,0.2735418556921163,2.4468957845554566,0.2612826603325416,0.3836798757889694,590.0,Undervalued,Undervalued,Fairly Valued,Fairly Valued,True,False,False,False
-Schaeffler India,-1.7058502706459013,0.1014388360903893,1.3238991308041355,0.26603325415676965,-0.003619762398651735,1094.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Pasari Spinning,-1.9022012110342637,-1.288709639209873,9.667280706752587,-0.9738717339667458,1.375624530635426,227.0,Undervalued,Undervalued,Overvalued,Undervalued,True,False,True,False
-TCI Express,0.14459445777397284,0.42572357457355003,-0.27512535482667894,-0.830166270783848,-0.133743398315751,1288.0,Fairly Valued,Overvalued,Fairly Valued,Overvalued,False,True,False,False
-Subros,-1.1671017390033434,1.8051245604647916,-0.003740572488241528,-0.7399049881235155,-0.026405684787577183,1126.0,Fairly Valued,Fairly Valued,Fairly Valued,Overvalued,True,True,False,False
-Nacdac Infra.,0.43858455088607,-0.4337577755621752,-0.06778484553384577,-0.8372921615201901,-0.22506255793253527,1425.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Ecoplast,0.11661576746443796,-0.2255740642451627,-0.2229755454488946,-0.7719714964370546,-0.2759763346666685,1509.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Dr Agarwal's Eye,-1.0880216666414908,1.2307327805263957,2.154159242069494,-0.8919239904988123,0.3512365913638967,623.0,Fairly Valued,Undervalued,Undervalued,Fairly Valued,False,False,True,False
-East India Drums,0.05290854443182941,0.0019444411976377585,-0.06127429397260836,-0.04869358669833731,-0.013778723760369626,1106.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Jeena Sikho,-0.07983252900278116,2.1405388972220827,-2.36790864637507,0.23515439429928742,-0.018011970964120244,1110.0,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued,True,False,True,False
-Five-Star Bus.Fi,-7.722512517100785,6.226112267489174,0.24288339411143098,-0.5961995249406176,-0.4624290951101996,1737.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Euro Panel,0.16075124616461364,-0.3167203560229108,0.0969285477487931,-0.6306413301662708,-0.1724204730689437,1349.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Redington,-14.111673350652877,13.808787202529862,0.13321346062200853,-0.26840855106888356,-0.10952030964247256,1248.0,Fairly Valued,Overvalued,Overvalued,Fairly Valued,False,False,True,False
-Orkla India,-0.08075069468004188,3.111000976479088,-0.29335878416178035,-0.7874109263657958,0.48737014281786745,493.0,Undervalued,Fairly Valued,Undervalued,Undervalued,False,True,True,False
-Clean Science,-0.5167164125482918,3.7432784707792823,0.01967410335039265,-1.3527315914489313,0.47337614253311294,506.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-M R P L,-26.74181001182987,16.311009313709267,-0.08645274330232268,-0.32541567695962,-2.7106672795956364,1980.0,Overvalued,Overvalued,Overvalued,Undervalued,True,True,False,False
-Akiko,-0.09328587776271309,0.3448882582347733,0.9631271626297578,0.23752969121140144,0.3630648085783049,606.0,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
-Chambal Fert.,0.3360446829062373,-0.04368221819499497,-0.7361229098895635,0.25534441805225655,-0.04710400678151616,1158.0,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued,True,False,True,False
-Ganesh Green,0.42004322536755545,0.23764567071433296,-0.6563089219484903,0.24584323040380046,0.061805801134299634,1003.0,Fairly Valued,Undervalued,Undervalued,Overvalued,False,False,False,False
-Silky Overseas,0.4179462529123896,-0.9686551078806958,-0.06833715786420236,-0.7042755344418052,-0.33083038681857846,1594.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Knowledge Marine,-3.377505299831377,7.806902586451068,0.7124090918509003,-1.2814726840855106,0.9650834235962702,310.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Tara Chand Infra,0.2304704165099988,-0.7922264267173307,0.11800836044174615,-0.4192399049881235,-0.21574688868842734,1407.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Megatherm Indu.,-0.34494557500482764,-0.03015832024591386,-0.04550069411350308,-0.6460807600950119,-0.26667133736481413,1495.0,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
-Aluwind Infra,0.1994326028357126,-0.3410376411367653,-0.18059253465387573,-0.5973871733966746,-0.22989618658790076,1434.0,Overvalued,Overvalued,Fairly Valued,Overvalued,True,False,True,False
-Kalpataru Proj.,-9.012874676951155,10.842332117403002,0.3810074487702795,-0.165083135391924,0.5113454384575506,476.0,Undervalued,Fairly Valued,Undervalued,Undervalued,False,True,True,False
-KSB,-1.4984407717817352,-0.24801410887734945,0.5479721784804095,0.2672209026128266,-0.23281544989146216,1440.0,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
-Atul,-8.005662034434412,8.23185407585593,2.4173616434950174,-0.8372921615201901,0.45156538084908626,524.0,Undervalued,Overvalued,Overvalued,Undervalued,False,False,True,False
-Indus Finance,-1.2366447005020311,1.79966324768288,-0.5502053850775956,-0.4655581947743468,-0.11318625816777339,1256.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Thaai,-0.09954742202566098,-0.17801273407915147,-0.3014077813231669,-0.38361045130641336,-0.24064459718359818,1451.0,Overvalued,Overvalued,Fairly Valued,Overvalued,True,False,True,False
-Nexxus Petro,0.3022216084787504,-0.3305424841665603,-0.05360602324762247,-0.8230403800475059,-0.22624181974573457,1428.0,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
-Amic Forging,-1.807503940171851,0.24800710249648292,2.316669213476162,0.2636579572446556,0.25520758326136245,730.0,Fairly Valued,Undervalued,Fairly Valued,Undervalued,False,True,False,False
-Savera Industrie,2.9451328773328207,-0.37302571848364663,-0.49523120713590135,-0.7434679334916865,0.3333520045553966,637.0,Fairly Valued,Fairly Valued,Undervalued,Undervalued,True,False,False,False
-Paradeep Phosph.,-11.153250885879503,6.606776336762188,-0.031655331206099965,-0.48812351543942994,-1.266563348940711,1934.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Aditya Vision,-3.2840871431697494,3.571407875503798,0.15285000932391274,-0.7814726840855107,-0.08532548560688731,1221.0,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
-Taparia Tools,0.609690047469179,1.077050550024761,0.9101459710337112,0.2672209026128266,0.7160268677851195,389.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Kratikal Tech,-0.0677707134339192,0.8535507507897371,0.3853806228373703,0.2672209026128266,0.3595953907015037,615.0,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
-Ruparel Food,0.17206182560513272,-0.2454424271326699,-0.09156082299069701,-1.7434679334916865,-0.47710233950248015,1750.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-MRF,-14.298266088788404,22.800731881147875,61.21775739179082,-0.6864608076009501,17.258440594137333,20.0,Undervalued,Undervalued,Undervalued,Overvalued,True,True,False,False
-Aimtron,-1.2425953755313948,0.06866584698894117,0.6594939446366782,0.23871733966745842,-0.06892956105957923,1194.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Eppeltone Ene.,0.16468559612794553,-0.27912756873634836,0.15013700971758914,-0.6757719714964371,-0.1600192335968127,1324.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Dr Lal Pathlabs,-1.3314061056860813,0.38656435803754724,-0.34590421233657254,0.2577197149643705,-0.25825656125518404,1486.0,Overvalued,Overvalued,Fairly Valued,Overvalued,True,False,True,False
-Accretion Nutraveda,-0.29023742516514245,0.34688593963841485,0.912954152249135,0.2529691211401425,0.3056429469656375,673.0,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued,True,False,True,False
-York Exports,0.5660472305880492,-11.233502290503184,0.6359937995980357,-0.7304038004750595,-2.6904662651980398,1979.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Integra Engg.,2.4048689283453815,-0.0425372602094172,-0.19918856059507292,-0.9168646080760096,0.3115696248662204,664.0,Fairly Valued,Overvalued,Undervalued,Undervalued,False,False,False,False
-Holmarc Opto,-0.980919935122824,0.3840998824588835,-0.2677601112653586,-1.1175771971496438,-0.49553934026973573,1769.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-B C C Fuba India,-1.660681511093583,2.151423443433604,-0.047401088825808554,-0.8788598574821853,-0.10887975349199326,1247.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Hawkins Cookers,-1.1039513588906458,0.3787861737699303,-0.41126225058533455,0.2589073634204276,-0.2193800180714056,1415.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-KRBL,-5.603961488719844,4.275833408345306,-0.1278230735760313,-0.9334916864608075,-0.5973607101028443,1808.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Shivam Chemicals,-1.0096821689966464,1.421402140237693,-0.1630201966309596,-0.826603325415677,-0.1444758877013975,1302.0,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
-Indian Sucrose,0.4685803062239711,-1.0753958640115402,-0.02550931873277671,-0.5142517814726841,-0.28664416449825747,1518.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Arvind Fashions.,-1.101989233939279,2.0493735748890503,-0.21413531069349195,-0.32541567695962,0.10195833832416483,941.0,Fairly Valued,Fairly Valued,Fairly Valued,Overvalued,True,True,False,False
-Kusumgar,-1.8839700360502842,11.201354400946544,0.11977148643888692,-0.9477434679334917,2.1223530958504138,153.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Axtel Industries,-0.3878622719504128,-0.07506026686870547,-0.01349247871039938,0.2672209026128266,-0.05229852872917276,1168.0,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued,True,False,True,False
-Matrix Geo Sol.,0.4158893532450223,0.5056539748600104,0.591803633217993,0.2636579572446556,0.4442512296419203,533.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Swastika Castal,0.020627474961375722,-0.12887363599390558,0.02297502745374294,-0.7802850356294537,-0.21638904230206016,1408.0,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
-Shree Refrigerat,-1.1375929299133534,3.5042618667136294,-0.3226973820525041,-0.8052256532066507,0.3096864753852804,666.0,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
-MOS Utility,0.32421687404663935,-0.11965621272859031,0.04994962497151015,-0.9228028503562945,-0.16707314101668383,1342.0,Fairly Valued,Overvalued,Fairly Valued,Overvalued,False,True,False,False
-Dolfin Rubbers,-0.5476633256771896,0.15470171591798462,-0.27231458363549726,-0.4869358669833729,-0.28805301509451875,1521.0,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
-Sh. Jagdamba Pol,-0.7853787771930203,0.5699704934455341,0.08588812858711647,-0.8147268408551068,-0.23606174900386914,1447.0,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
-Intellect Design,-3.385079996562492,3.3906423723364627,-0.16555060294635648,-0.7695961995249406,-0.23239610667433155,1439.0,Overvalued,Overvalued,Fairly Valued,Overvalued,True,False,True,False
-Pankaj Polymers,0.11958729034570638,3.2463944991289932,-0.22774692828875132,-1.190023752969121,0.48705277705420674,495.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Chamanlal Setia,2.57568484449632,0.8355330684963299,-0.014153570022584591,-1.0724465558194773,0.5811544467876469,440.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Lloyds Engineeri,-2.5442825440878063,7.3691693051831555,-0.21500230507842455,-1.022565320665083,0.8968297838379604,323.0,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
-Thomas Cook (I),-1.5905681662147961,1.6058318239332297,-0.6244043055756998,-0.09144893111638955,-0.17514739474341395,1354.0,Fairly Valued,Overvalued,Fairly Valued,Overvalued,False,True,False,False
-Safari Inds.,-2.794728928492353,2.69612083179288,0.19335205022480983,-1.1520190023752968,-0.26431876221248995,1493.0,Overvalued,Fairly Valued,Fairly Valued,Overvalued,False,False,True,False
-Persistent Systems,-1.0140426862326997,0.32859417084677606,1.591343912520979,0.26009501187648454,0.291497602252885,687.0,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
-Vinit Mobile,0.20765282314512365,1.1072578421522128,0.2914143598615917,0.19358669833729214,0.449977930874055,526.0,Undervalued,Undervalued,Fairly Valued,Fairly Valued,True,False,False,False
+Company,Financial_Score,Financial_Rank,Label,RandomForest_Pred,XGBoost_Pred,AdaBoost_Pred,RandomForest_Pred_Agrees,XGBoost_Pred_Agrees,AdaBoost_Pred_Agrees,All_Models_Agree
+Hindustan Hardy,0.5175288495025552,870,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
+Kirl. Brothers,0.3805812407701691,1543,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Tech Mahindra,0.3932683736727174,1493,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Vesuvius India,0.3986910132442452,1476,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Gallard Steel,0.5853741631808429,550,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+SRIT India,0.6043222984651612,476,Undervalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+SRF,0.3584676648733524,1621,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Vaidya Sane,0.41299455984435257,1413,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
+Sarda Energy,0.4168650900616428,1387,Fairly Valued,Overvalued,Overvalued,Fairly Valued,False,False,True,False
+DOMS Industries,0.38638888301836716,1519,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Intl. Travel Hse,0.6216935013925582,409,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Fabtech Tech.,0.40143016080645105,1459,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+Ganesh Infra.,0.5925414584579761,527,Undervalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+H. R. Hygiene,0.5914830712674445,530,Undervalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+O N G C,0.35605273256434283,1631,Overvalued,Fairly Valued,Overvalued,Overvalued,False,True,True,False
+Motisons Jewel,0.4141213608812945,1403,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+United Spirits,0.41038597712067243,1424,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Dharmaj Crop,0.40500267024046405,1449,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+Saatvik Green,0.5619357969466661,662,Fairly Valued,Undervalued,Undervalued,Undervalued,False,False,False,False
+Kiduja India,0.29000000000000004,1806,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Bharat Seats,0.33305650843948525,1710,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Grand Foundry,0.44663321747580076,1261,Fairly Valued,Overvalued,Overvalued,Overvalued,False,False,False,False
+V-Guard Industri,0.34029388318460274,1680,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Multibase India,0.4260998521587679,1347,Fairly Valued,Overvalued,Overvalued,Fairly Valued,False,False,True,False
+LGT Global Hospitality,0.6124617044787232,440,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Bikaji Foods,0.4100478031372373,1426,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+Std. Capital Mkt,0.4262337940186053,1346,Fairly Valued,Overvalued,Overvalued,Fairly Valued,False,False,True,False
+Marksans Pharma,0.3940244191416096,1492,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Arham Tech,0.41356814712471907,1406,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+ICICI AMC,0.5835002276211008,557,Undervalued,Undervalued,Fairly Valued,Fairly Valued,True,False,False,False
+Sharda Motor,0.5654320955400434,647,Fairly Valued,Undervalued,Undervalued,Fairly Valued,False,False,True,False
+Cyber Media Ind,0.6310868314833502,381,Undervalued,Fairly Valued,Undervalued,Fairly Valued,False,True,False,False
+Sheetal Univer.,0.4088528329320814,1429,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Jay Ambe Super.,0.5768590215053395,588,Undervalued,Fairly Valued,Undervalued,Fairly Valued,False,True,False,False
+Gabriel India,0.413639478587741,1405,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+ROX Hi-Tech,0.40682419905119244,1438,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+FX Multitech,0.596807544633396,506,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Garware Tech.,0.3597471322027588,1614,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+True Green,0.3999278843391851,1471,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Jindal Stain.,0.4033819432157886,1454,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Kheria Autocomp,0.5826983850608116,562,Undervalued,Undervalued,Fairly Valued,Fairly Valued,True,False,False,False
+Firstsour.Solu.,0.31037839250004634,1763,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Aayush Wellness,0.5247469669344957,830,Fairly Valued,Undervalued,Undervalued,Fairly Valued,False,False,True,False
+Avience Biomedi.,0.5345239414423908,787,Fairly Valued,Undervalued,Fairly Valued,Fairly Valued,False,True,True,False
+Godfrey Phillips,0.557739891268984,680,Fairly Valued,Undervalued,Undervalued,Fairly Valued,False,False,True,False
+Sri Lotus,0.4381055777010726,1300,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued,True,False,True,False
+Styrenix Perfor.,0.35039278076325653,1651,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+KEI Industries,0.36372857432854,1601,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Lumax Auto Tech.,0.3854860937266813,1524,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Prime Fresh,0.5729310552355569,613,Fairly Valued,Undervalued,Undervalued,Undervalued,False,False,False,False
+TGIF Agribusines,0.6275733320293292,389,Undervalued,Fairly Valued,Undervalued,Undervalued,False,True,True,False
+Intec Capital,0.5876908119902514,541,Undervalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Seshaasai Tech.,0.5689731635977673,634,Fairly Valued,Undervalued,Undervalued,Fairly Valued,False,False,True,False
+Mega Flex Plast.,0.38916558555043007,1505,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Cyber Media Res.,0.5942530679208945,516,Undervalued,Undervalued,Fairly Valued,Fairly Valued,True,False,False,False
+Brightcom Group,0.61567850063756,429,Undervalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Atharva Poly-Plast,0.5937194825395596,517,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Suyog Telematics,0.35315543464378824,1641,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+R R Fin. Cons.,0.586178242079139,546,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Teamtech Formwork,0.5988570553377944,497,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Prizor Viztech,0.5454274887481209,730,Fairly Valued,Undervalued,Fairly Valued,Undervalued,False,True,False,False
+Aptus Value Hou.,0.4139898490718797,1404,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Skipper,0.388149776590864,1509,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+Knack Packaging,0.5759832502852149,599,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+ASK Automotive,0.41070011841012644,1423,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Havells India,0.41591001178718434,1396,Fairly Valued,Overvalued,Fairly Valued,Fairly Valued,False,True,True,False
+Honasa Consumer,0.3563549219860872,1629,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Kalyani Steels,0.38868619935209187,1507,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Star Delta Trans,0.5447703149395922,734,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued,True,False,True,False
+Sheetal Cool,0.3959506405096871,1484,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Committed Cargo,0.4085696244487629,1432,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Campus Activewe.,0.3520802931861186,1645,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Techno Elec.Engg,0.40778706376276475,1434,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Swastika Infra,0.5928197119282507,522,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Suraj Estate,0.3831998156299617,1535,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Karbonsteel Eng.,0.4073724408951949,1437,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Advanced Enzyme,0.3834238141397175,1532,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Ginni Filaments,0.5925794916864012,526,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Bella Casa Fashi,0.35708462904804505,1627,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Lehar Footwears,0.4055869294943861,1444,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Dhariwalcorp,0.3945707716943564,1491,Overvalued,Overvalued,Fairly Valued,Fairly Valued,True,False,False,False
+Sh. Jagdamba Pol,0.4012437570829927,1460,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Pasupati Acrylon,0.6118580244166986,443,Undervalued,Undervalued,Undervalued,Fairly Valued,True,True,False,False
+Supreme Power,0.3486960455700505,1655,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Utkal Speciality,0.572878732819497,614,Fairly Valued,Undervalued,Fairly Valued,Undervalued,False,True,False,False
+Trent,0.40558630744505514,1445,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Geekay Wires,0.40083507816501884,1465,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+Ecofinity Atomix,0.4148972746500808,1401,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Power & Instrum.,0.41442598745176423,1402,Overvalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Arigato Universe,0.6237390031940294,399,Undervalued,Fairly Valued,Undervalued,Fairly Valued,False,True,False,False
+Shri Kanha Stain,0.5911050657264635,531,Undervalued,Fairly Valued,Fairly Valued,Fairly Valued,False,False,False,False
+Jayaswal Neco,0.40534164099912756,1446,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False
+Rentomojo,0.576270690363676,594,Undervalued,Fairly Valued,Undervalued,Fairly Valued,False,True,False,False
+Kimia Bioscien.,0.3572941970085261,1626,Overvalued,Fairly Valued,Overvalued,Fairly Valued,False,True,False,False
+Tata Elxsi,0.5809761406803055,570,Undervalued,Fairly Valued,Undervalued,Undervalued,False,True,True,False
+Guj. Themis Bio.,0.3805399861942367,1544,Overvalued,Overvalued,Overvalued,Fairly Valued,True,True,False,False

@@ -1,0 +1,2001 @@
+Company,Financial_Score,Financial_Rank,Label,Random_Forest_Prediction,AdaBoost_Prediction,XGBoost_Prediction
+Shanti Guru Inds,0.9735664267951825,1,Undervalued,Undervalued,Undervalued,Undervalued
+TeleCanor Global,0.964421918838171,2,Undervalued,Undervalued,Undervalued,Undervalued
+Harig Crankshaft,0.9584128689798602,3,Undervalued,Undervalued,Undervalued,Undervalued
+Noida Tollbridg.,0.9559868792993147,4,Undervalued,Undervalued,Undervalued,Undervalued
+SRM Energy Ltd,0.9506242153235327,5,Undervalued,Undervalued,Undervalued,Undervalued
+Royal India Corp,0.9494477038425552,6,Undervalued,Undervalued,Undervalued,Undervalued
+Jindal Poly Inve,0.9396616347835679,7,Undervalued,Undervalued,Undervalued,Undervalued
+SHRI NIWAS L& F.,0.9205322525826117,8,Undervalued,Undervalued,Undervalued,Undervalued
+BLB,0.9203824822294401,9,Undervalued,Undervalued,Undervalued,Undervalued
+Rap Corp,0.9170756539617487,10,Undervalued,Undervalued,Undervalued,Undervalued
+Prime Property,0.9071829394931072,11,Undervalued,Undervalued,Undervalued,Undervalued
+Shaival Reality,0.8953881403459769,12,Undervalued,Undervalued,Undervalued,Undervalued
+Sonalis Consumer,0.8901310908233638,13,Undervalued,Undervalued,Undervalued,Undervalued
+Taparia Tools,0.8875430704561168,14,Undervalued,Undervalued,Undervalued,Undervalued
+Bhagawati Oxygen,0.8860255656114225,15,Undervalued,Undervalued,Undervalued,Undervalued
+Golden Legand Ls,0.8817858959114145,16,Undervalued,Undervalued,Undervalued,Undervalued
+MPF Systems,0.8784468847205015,17,Undervalued,Undervalued,Undervalued,Undervalued
+Swati Projects,0.8769421267601344,18,Undervalued,Undervalued,Undervalued,Undervalued
+ENS Enterprises,0.8682241974562596,19,Undervalued,Undervalued,Undervalued,Undervalued
+City Crops Agro,0.8646750617855408,20,Undervalued,Undervalued,Undervalued,Undervalued
+Rajasthan Securities,0.8635043715413531,21,Undervalued,Undervalued,Undervalued,Undervalued
+String Metaverse,0.859143774847337,22,Undervalued,Undervalued,Undervalued,Undervalued
+Maxgrow India,0.8590440872690059,23,Undervalued,Undervalued,Undervalued,Undervalued
+PAN HR Solution,0.8462033516158394,24,Undervalued,Undervalued,Undervalued,Undervalued
+SMR Jewels,0.8461084710438629,25,Undervalued,Undervalued,Undervalued,Undervalued
+Stellant Secu.,0.8445750721502188,26,Undervalued,Undervalued,Undervalued,Undervalued
+Shricon Indus.,0.8427592910020196,27,Undervalued,Undervalued,Undervalued,Undervalued
+Panth Infinity,0.8395927732673758,28,Undervalued,Undervalued,Undervalued,Undervalued
+Harikanta Overseas,0.8395486689971268,29,Undervalued,Undervalued,Undervalued,Undervalued
+Indo Thai Sec.,0.8378032510066536,30,Undervalued,Undervalued,Undervalued,Undervalued
+Paluck Technol.,0.8375635648461756,31,Undervalued,Undervalued,Undervalued,Undervalued
+Sri Ramakr. Mill,0.8362501010302106,32,Undervalued,Undervalued,Undervalued,Undervalued
+Adon Agro,0.8266048290115237,33,Undervalued,Undervalued,Undervalued,Undervalued
+TPI India,0.8259022562539984,34,Undervalued,Undervalued,Undervalued,Undervalued
+C P C L,0.8254943011328788,35,Undervalued,Undervalued,Undervalued,Undervalued
+Simca Advertis.,0.8229243994146521,36,Undervalued,Undervalued,Undervalued,Undervalued
+Himalaya Nutravedics,0.8226208982566587,37,Undervalued,Undervalued,Undervalued,Undervalued
+SPARC,0.8182404037324564,38,Undervalued,Undervalued,Undervalued,Undervalued
+Sham Foam,0.8176796470533828,39,Undervalued,Undervalued,Undervalued,Undervalued
+Vivid Mercantile,0.8176131810706176,40,Undervalued,Undervalued,Undervalued,Undervalued
+Gravity (India),0.8144869936796448,41,Undervalued,Undervalued,Undervalued,Undervalued
+Cash UR Drive,0.8124384951884889,42,Undervalued,Undervalued,Undervalued,Undervalued
+Kalind,0.8110516691243921,43,Undervalued,Undervalued,Undervalued,Undervalued
+Dhanwel Hybrid,0.8074090793287901,44,Undervalued,Undervalued,Undervalued,Undervalued
+Mopshop Distribution,0.807144850308206,45,Undervalued,Undervalued,Undervalued,Undervalued
+Ravita Engineering,0.8067043543425745,46,Undervalued,Undervalued,Undervalued,Undervalued
+Garnet Construct,0.8043154630482767,47,Undervalued,Undervalued,Undervalued,Undervalued
+GenXAI Analytics,0.8036588935771267,48,Undervalued,Undervalued,Undervalued,Undervalued
+Methodhub Software,0.8028014745836413,49,Undervalued,Undervalued,Undervalued,Undervalued
+Fascinate Textiles,0.801589058722482,50,Undervalued,Undervalued,Undervalued,Undervalued
+Liotech Ind.,0.8011491276770629,51,Undervalued,Undervalued,Undervalued,Undervalued
+Biopol Chemicals,0.8008003161390087,52,Undervalued,Undervalued,Undervalued,Undervalued
+Ganesh Green,0.8004993025050954,53,Undervalued,Undervalued,Undervalued,Undervalued
+Propshop Events,0.7997962687798494,54,Undervalued,Undervalued,Undervalued,Undervalued
+One Global Serv,0.7983482472164922,55,Undervalued,Undervalued,Undervalued,Undervalued
+Infrax Renewable,0.79615843814371,56,Undervalued,Undervalued,Undervalued,Undervalued
+Manoj Jewellers,0.7958499294492114,57,Undervalued,Undervalued,Undervalued,Undervalued
+Vigor Plast,0.7949544761034895,58,Undervalued,Undervalued,Undervalued,Undervalued
+Ravinder Heights,0.7942444013759538,59,Undervalued,Undervalued,Undervalued,Undervalued
+Indosolar,0.7932419910355042,60,Undervalued,Undervalued,Undervalued,Undervalued
+Savy Infra,0.793201906473348,61,Undervalued,Undervalued,Undervalued,Undervalued
+Shekhawati Inds,0.7927341196226113,62,Undervalued,Undervalued,Undervalued,Undervalued
+Q&T Foods,0.7918289283727776,63,Undervalued,Undervalued,Undervalued,Undervalued
+Mehul Telecom,0.7917243834817721,64,Undervalued,Undervalued,Undervalued,Undervalued
+Fusion Klassroom Edutech,0.7894929666593163,65,Undervalued,Undervalued,Undervalued,Undervalued
+Safe Enterprises,0.78729507867505,66,Undervalued,Undervalued,Undervalued,Undervalued
+Fly-Hi Maritime,0.7858261283885716,67,Undervalued,Undervalued,Undervalued,Undervalued
+Apana Logistics,0.785470164631594,68,Undervalued,Undervalued,Undervalued,Undervalued
+Matrix Geo Sol.,0.7843394688192995,69,Undervalued,Undervalued,Undervalued,Undervalued
+Padam Cotton,0.7834404906006497,70,Undervalued,Undervalued,Undervalued,Undervalued
+Game Changers,0.7814699890170722,71,Undervalued,Undervalued,Undervalued,Undervalued
+Unifinz Capital,0.7798497082725513,72,Undervalued,Undervalued,Undervalued,Undervalued
+Sanghvi Brands,0.778786439093738,73,Undervalued,Undervalued,Undervalued,Undervalued
+Omega Interactiv,0.7761449987569657,74,Undervalued,Undervalued,Undervalued,Undervalued
+Jivial Industrie,0.7758741470669644,75,Undervalued,Undervalued,Undervalued,Undervalued
+GSM Foils,0.7752546208180403,76,Undervalued,Undervalued,Undervalued,Undervalued
+Shankesh Jewellers,0.7719547999984767,77,Undervalued,Undervalued,Undervalued,Undervalued
+Magnus Steel,0.771523372140877,78,Undervalued,Undervalued,Undervalued,Undervalued
+Vinit Mobile,0.7714477302904471,79,Undervalued,Undervalued,Undervalued,Undervalued
+Adcounty Media.,0.7706853314172046,80,Undervalued,Undervalued,Undervalued,Undervalued
+SP Refractories,0.7706278286553252,81,Undervalued,Undervalued,Undervalued,Undervalued
+Pratik Panels,0.768946649811771,82,Undervalued,Undervalued,Undervalued,Undervalued
+Kratikal Tech,0.7688311963593425,83,Undervalued,Undervalued,Undervalued,Undervalued
+Omara Ventures,0.7667878199277575,84,Undervalued,Undervalued,Undervalued,Undervalued
+Nityas Gems & Jewellery,0.7666187645291129,85,Undervalued,Undervalued,Undervalued,Undervalued
+Websol Energy,0.7662165006168592,86,Undervalued,Undervalued,Undervalued,Undervalued
+Dhara Rail Pro.,0.7660937271320694,87,Undervalued,Undervalued,Undervalued,Undervalued
+Garuda Cons,0.7641898156302944,88,Undervalued,Undervalued,Undervalued,Undervalued
+Virtual Galaxy,0.7637437929472402,89,Undervalued,Undervalued,Undervalued,Undervalued
+Ovobel Foods,0.76362749936262,90,Undervalued,Undervalued,Undervalued,Undervalued
+California Soft.,0.7589071932407112,91,Undervalued,Undervalued,Undervalued,Undervalued
+Kartik Invest.,0.7583663470432959,92,Undervalued,Undervalued,Undervalued,Undervalued
+Austere Sys.,0.7582839902985197,93,Undervalued,Undervalued,Undervalued,Undervalued
+Sathlokhar Sys.,0.7580970715462699,94,Undervalued,Undervalued,Undervalued,Undervalued
+Australian Prem,0.757311390182935,95,Undervalued,Undervalued,Undervalued,Undervalued
+Sera Investments,0.7559691392743019,96,Undervalued,Undervalued,Undervalued,Undervalued
+R.K. Fashion Accessories,0.7542486393294915,97,Undervalued,Undervalued,Undervalued,Undervalued
+Kore Digital,0.7541681141188769,98,Undervalued,Undervalued,Undervalued,Undervalued
+Manas Polymers,0.754056629454313,99,Undervalued,Undervalued,Undervalued,Undervalued
+Natl. Aluminium,0.7534240159979457,100,Undervalued,Undervalued,Undervalued,Undervalued
+Millworks Technologies,0.752916692864649,101,Undervalued,Undervalued,Undervalued,Undervalued
+Emmvee Photovol.,0.7520694459900852,102,Undervalued,Undervalued,Undervalued,Undervalued
+Goenka Business,0.7514425212105629,103,Undervalued,Undervalued,Undervalued,Undervalued
+Sahana Systems,0.7509389772897304,104,Undervalued,Undervalued,Undervalued,Undervalued
+Rose Merc.,0.7504662949775472,105,Undervalued,Undervalued,Undervalued,Undervalued
+Desco Infra.,0.7498768210716606,106,Undervalued,Undervalued,Undervalued,Undervalued
+Raksan Transformers,0.7475430657098421,107,Undervalued,Undervalued,Undervalued,Undervalued
+Vistar Amar,0.7475027539430965,108,Undervalued,Undervalued,Undervalued,Undervalued
+GK Energy,0.7474265157858433,109,Undervalued,Undervalued,Undervalued,Undervalued
+Nisus Finance,0.746484527707338,110,Undervalued,Undervalued,Undervalued,Undervalued
+Eighty Jewellers,0.7442201879503665,111,Undervalued,Undervalued,Undervalued,Undervalued
+Systango Tech,0.7439815799200018,112,Undervalued,Undervalued,Undervalued,Undervalued
+Dove Soft,0.7439674075304793,113,Undervalued,Undervalued,Undervalued,Undervalued
+S J Logistics (I,0.7437031100389133,114,Undervalued,Undervalued,Undervalued,Undervalued
+Party Cruisers,0.7420092307092231,115,Undervalued,Undervalued,Undervalued,Undervalued
+Complete Sports and Management,0.740310552275129,116,Undervalued,Undervalued,Undervalued,Undervalued
+Bench Mark Infotech Services,0.740173073815028,117,Undervalued,Undervalued,Undervalued,Undervalued
+Oswal Pumps,0.7396569856954404,118,Undervalued,Undervalued,Undervalued,Undervalued
+Rajesh Power,0.738778308986054,119,Undervalued,Undervalued,Undervalued,Undervalued
+SRM Contractors,0.7374593252029393,120,Undervalued,Undervalued,Undervalued,Undervalued
+Vans Electroengineerings,0.7373478631494296,121,Undervalued,Undervalued,Undervalued,Undervalued
+Greenleaf Envi.,0.7370174308218416,122,Undervalued,Undervalued,Undervalued,Undervalued
+UHM Vacation,0.7357093612022382,123,Undervalued,Undervalued,Undervalued,Undervalued
+Vama Wovenfab,0.7351486986700971,124,Undervalued,Undervalued,Undervalued,Undervalued
+Borana Weaves,0.7342047971651542,125,Undervalued,Undervalued,Undervalued,Undervalued
+Medistep Health.,0.7331908276961462,126,Undervalued,Undervalued,Undervalued,Undervalued
+Sparkle GoldRock,0.7324571284137475,127,Undervalued,Undervalued,Undervalued,Undervalued
+Pro FX,0.7308938193983736,128,Undervalued,Undervalued,Undervalued,Undervalued
+Expleo Solutions,0.7308718762876799,129,Undervalued,Undervalued,Undervalued,Undervalued
+Sita Enterprises,0.7304122977530658,130,Undervalued,Undervalued,Undervalued,Undervalued
+Om Power Transmission,0.7301922810645761,131,Undervalued,Undervalued,Undervalued,Undervalued
+Speciality Medi.,0.7299095828235036,132,Undervalued,Undervalued,Undervalued,Undervalued
+GE Power,0.7298464498697514,133,Undervalued,Undervalued,Undervalued,Undervalued
+Yaashvi Jewellers,0.7296635864602053,134,Undervalued,Undervalued,Undervalued,Undervalued
+Connplex Cinemas,0.729115907602139,135,Undervalued,Undervalued,Undervalued,Undervalued
+Western Overseas,0.728609055128642,136,Undervalued,Undervalued,Undervalued,Undervalued
+Ardee Industries,0.7282856076615819,137,Undervalued,Undervalued,Undervalued,Undervalued
+Peshwa Wheat,0.7276372590581033,138,Undervalued,Undervalued,Undervalued,Undervalued
+Recode Studios,0.726993268540619,139,Undervalued,Undervalued,Undervalued,Undervalued
+Crestchem,0.7268839303465686,140,Undervalued,Undervalued,Undervalued,Undervalued
+Sat Kartar Life,0.7264702690251483,141,Undervalued,Undervalued,Undervalued,Undervalued
+Kwick Forensic,0.7264518062527302,142,Undervalued,Undervalued,Undervalued,Undervalued
+Elitecon Inter.,0.7261290110885604,143,Undervalued,Undervalued,Undervalued,Undervalued
+Deepa Jewellers,0.7258425598797033,144,Undervalued,Undervalued,Undervalued,Undervalued
+Vaxtex Cotfab,0.7254477092057395,145,Undervalued,Undervalued,Undervalued,Undervalued
+Darjeeling Industriies,0.7239662521518896,146,Undervalued,Undervalued,Undervalued,Undervalued
+Digikore Studios,0.7238476151036217,147,Undervalued,Undervalued,Undervalued,Undervalued
+Ceinsys Tech,0.7238313785307431,148,Undervalued,Undervalued,Undervalued,Undervalued
+Stanbik Agro,0.7230150135394494,149,Undervalued,Undervalued,Undervalued,Undervalued
+DRC Systems,0.7229219814053265,150,Undervalued,Undervalued,Undervalued,Undervalued
+G V Electricals,0.7220619340985325,151,Undervalued,Undervalued,Undervalued,Undervalued
+Snehaa Organics,0.7209838134271478,152,Undervalued,Undervalued,Undervalued,Undervalued
+Chatterbox Tech,0.7200067418426209,153,Undervalued,Undervalued,Undervalued,Undervalued
+Parmeshwar Metal,0.7191374166805639,154,Undervalued,Undervalued,Undervalued,Undervalued
+VST Industries,0.7187194613263835,155,Undervalued,Undervalued,Undervalued,Undervalued
+Glass Wall Syst.,0.7184646570634536,156,Undervalued,Undervalued,Undervalued,Undervalued
+Global Ocean,0.7181595714341522,157,Undervalued,Undervalued,Undervalued,Undervalued
+Prodocs Solution,0.7180875949752272,158,Undervalued,Undervalued,Undervalued,Undervalued
+Brandman Retail,0.7180647934136968,159,Undervalued,Undervalued,Undervalued,Undervalued
+Rajnandini Fashion,0.7174097719677993,160,Undervalued,Undervalued,Undervalued,Undervalued
+TechD Cybersec.,0.7165659529552041,161,Undervalued,Undervalued,Undervalued,Undervalued
+Milkfood,0.7154148987835017,162,Undervalued,Undervalued,Undervalued,Undervalued
+Crizac,0.7148177182558417,163,Undervalued,Undervalued,Undervalued,Undervalued
+NILE,0.7144420384358884,164,Undervalued,Undervalued,Undervalued,Undervalued
+Narmada Gelatine,0.7143269123086474,165,Undervalued,Undervalued,Undervalued,Undervalued
+Himalayan Solar,0.7141812262523022,166,Undervalued,Undervalued,Undervalued,Undervalued
+Integrity Infra.,0.7139778374879795,167,Undervalued,Undervalued,Undervalued,Undervalued
+Career Point Edu,0.7139614733163425,168,Undervalued,Undervalued,Undervalued,Undervalued
+Sheshadri Indus.,0.7137292185222559,169,Undervalued,Undervalued,Undervalued,Undervalued
+SSPDL Ltd,0.7133545270564368,170,Undervalued,Undervalued,Undervalued,Undervalued
+Delaplex,0.7124787519823643,171,Undervalued,Undervalued,Undervalued,Undervalued
+Fractal Industries,0.7118411855099323,172,Undervalued,Undervalued,Undervalued,Undervalued
+Sunlite Recycli.,0.7117949771989055,173,Undervalued,Undervalued,Undervalued,Undervalued
+FlySBS Aviation,0.7109030913973745,174,Undervalued,Undervalued,Undervalued,Undervalued
+Augmont Enterpri,0.7108669533291588,175,Undervalued,Undervalued,Undervalued,Undervalued
+Waaree Renewab.,0.7105474971040661,176,Undervalued,Undervalued,Undervalued,Undervalued
+Marushika Tech.,0.7102713987954477,177,Undervalued,Undervalued,Undervalued,Undervalued
+Nirman Agri,0.7101828449626372,178,Undervalued,Undervalued,Undervalued,Undervalued
+Mahalaxmi Rubtec,0.7101542988021732,179,Undervalued,Undervalued,Undervalued,Undervalued
+Alpex Solar,0.7097197937101752,180,Undervalued,Undervalued,Undervalued,Undervalued
+Apex Ecotech,0.7085007122023993,181,Undervalued,Undervalued,Undervalued,Undervalued
+Gurunanak Agri.,0.7079291709721298,182,Undervalued,Undervalued,Undervalued,Undervalued
+Vegorama Punjabi,0.7071885704532613,183,Undervalued,Undervalued,Undervalued,Undervalued
+Star Imaging,0.7068384670915173,184,Undervalued,Undervalued,Undervalued,Undervalued
+Amwill Health,0.7059919815740029,185,Undervalued,Undervalued,Undervalued,Undervalued
+HBL Engineering,0.7059361804452964,186,Undervalued,Undervalued,Undervalued,Undervalued
+Toss The Coin,0.70478208875251,187,Undervalued,Undervalued,Undervalued,Undervalued
+Manipal Payment,0.7037474147460344,188,Undervalued,Undervalued,Undervalued,Undervalued
+Maharaja & Speedex India,0.7036548311673435,189,Undervalued,Undervalued,Undervalued,Undervalued
+Eventions,0.7032616968786716,190,Undervalued,Undervalued,Undervalued,Undervalued
+Paramount Syntex,0.7027555097595115,191,Undervalued,Undervalued,Undervalued,Undervalued
+Pramodini Medicare,0.7025018246905266,192,Undervalued,Undervalued,Undervalued,Undervalued
+Ravelcare,0.7024042725076421,193,Undervalued,Undervalued,Undervalued,Undervalued
+Force Motors,0.7020966247835922,194,Undervalued,Undervalued,Undervalued,Undervalued
+JD Cables,0.7016720272621295,195,Undervalued,Undervalued,Undervalued,Undervalued
+Mayasheel Vent.,0.7015911639798762,196,Undervalued,Undervalued,Undervalued,Undervalued
+Nidhi Granites,0.7014299664694192,197,Undervalued,Undervalued,Undervalued,Undervalued
+Emkay Tools,0.7011834586089553,198,Undervalued,Undervalued,Undervalued,Undervalued
+Avax Apparels,0.7009922616125553,199,Undervalued,Undervalued,Undervalued,Undervalued
+Mishtann Foods,0.7002890169513211,200,Undervalued,Undervalued,Undervalued,Undervalued
+Rajvi Logitrade,0.6987139929003725,201,Undervalued,Undervalued,Undervalued,Undervalued
+Guj. Terce Labs.,0.6966996496568452,202,Undervalued,Undervalued,Undervalued,Undervalued
+Borosil Renew.,0.6961702722090969,203,Undervalued,Undervalued,Undervalued,Undervalued
+Viram Suvarn,0.6953916557003115,204,Undervalued,Undervalued,Undervalued,Undervalued
+Positron Energy,0.6953480732321657,205,Undervalued,Undervalued,Undervalued,Undervalued
+ACE Alpha Tech,0.6950815210106316,206,Undervalued,Undervalued,Undervalued,Undervalued
+Suzlon Energy,0.6950294674669235,207,Undervalued,Undervalued,Undervalued,Undervalued
+Value 360 Commu.,0.6950212641647201,208,Undervalued,Undervalued,Undervalued,Undervalued
+Shanti Gold,0.6947681713646741,209,Undervalued,Undervalued,Undervalued,Undervalued
+Brooks Lab.,0.6946948973409917,210,Undervalued,Undervalued,Undervalued,Undervalued
+Acetech E-Commerce,0.6945767211479363,211,Undervalued,Undervalued,Undervalued,Undervalued
+Aten Papers,0.6940396873273547,212,Undervalued,Undervalued,Undervalued,Undervalued
+Roopa Screen,0.6938301955321974,213,Undervalued,Undervalued,Undervalued,Undervalued
+Vahh Chemicals,0.6935928060676496,214,Undervalued,Undervalued,Undervalued,Undervalued
+Identixweb,0.693269512880817,215,Undervalued,Undervalued,Undervalued,Undervalued
+Phychem Technologies,0.6928883787753417,216,Undervalued,Undervalued,Undervalued,Undervalued
+Spice IslandsInd,0.691808743968161,217,Undervalued,Undervalued,Undervalued,Undervalued
+Jonjua Overseas,0.691356041106077,218,Undervalued,Undervalued,Undervalued,Undervalued
+Sharpline Broadc,0.6907690993669178,219,Undervalued,Undervalued,Fairly Valued,Undervalued
+KSE,0.6907605048494497,220,Undervalued,Undervalued,Undervalued,Undervalued
+EPW India,0.6904825217958179,221,Undervalued,Undervalued,Undervalued,Undervalued
+Sharda Cropchem,0.6904495572845627,222,Undervalued,Undervalued,Undervalued,Undervalued
+Citizen Solar,0.6896281048042828,223,Undervalued,Undervalued,Undervalued,Undervalued
+Esaar (India),0.6888429742514542,224,Undervalued,Undervalued,Undervalued,Undervalued
+Dachepalli Pub.,0.6881885682124709,225,Undervalued,Undervalued,Undervalued,Undervalued
+Luxury Time,0.6877596906931353,226,Undervalued,Undervalued,Undervalued,Undervalued
+Sigma Solve,0.6875527854342449,227,Undervalued,Undervalued,Undervalued,Undervalued
+Siddhika Coatins,0.686337596224177,228,Undervalued,Undervalued,Undervalued,Undervalued
+Goldline Pharmaceutical,0.686121923338468,229,Undervalued,Undervalued,Undervalued,Undervalued
+Susan Electrical,0.6859321839128727,230,Undervalued,Undervalued,Undervalued,Undervalued
+Techknowgreen,0.6845647654417968,231,Undervalued,Undervalued,Undervalued,Undervalued
+Pushpa Jewellers,0.6839746824399157,232,Undervalued,Undervalued,Undervalued,Undervalued
+Devson Catalyst,0.6824981447794343,233,Undervalued,Undervalued,Undervalued,Undervalued
+Lohia Corp,0.6824124239543127,234,Undervalued,Undervalued,Undervalued,Undervalued
+Monarch Surve.,0.6806548520814333,235,Undervalued,Undervalued,Undervalued,Undervalued
+SSMD Agrotech,0.6801440835541603,236,Undervalued,Undervalued,Undervalued,Undervalued
+Khazanchi Jewell,0.6800332458624556,237,Undervalued,Undervalued,Undervalued,Undervalued
+Aanchal Ispat,0.679976714074357,238,Undervalued,Undervalued,Undervalued,Undervalued
+Optimystix Entertainment,0.6796611690846023,239,Undervalued,Undervalued,Undervalued,Undervalued
+Harish Textile,0.6795854347145759,240,Undervalued,Undervalued,Undervalued,Undervalued
+Novus Loyalty,0.6783852362101319,241,Undervalued,Undervalued,Undervalued,Undervalued
+Astron,0.6783811245565943,242,Undervalued,Undervalued,Undervalued,Undervalued
+GP Eco Solutions,0.6778427301076045,243,Undervalued,Undervalued,Undervalued,Undervalued
+Moving Media,0.6775378892741186,244,Undervalued,Undervalued,Undervalued,Undervalued
+Parker Agrochem,0.6773808446255047,245,Undervalued,Undervalued,Undervalued,Undervalued
+Jeena Sikho,0.6767769470272709,246,Undervalued,Undervalued,Undervalued,Undervalued
+SKM Egg Prod.,0.6763455178055632,247,Undervalued,Undervalued,Undervalued,Undervalued
+Nexus Surgical,0.67590845228114,248,Undervalued,Undervalued,Undervalued,Undervalued
+Kabra Drugs,0.6755581245502792,249,Undervalued,Undervalued,Undervalued,Undervalued
+Armour Security,0.6749020484651873,250,Undervalued,Undervalued,Undervalued,Undervalued
+Harshdeep Horti.,0.6746411061343137,251,Undervalued,Undervalued,Undervalued,Undervalued
+Waaree Energies,0.674471290060074,252,Undervalued,Undervalued,Undervalued,Undervalued
+Jainik Power,0.6743796574647514,253,Undervalued,Undervalued,Undervalued,Undervalued
+Coal India,0.67380320037091,254,Undervalued,Undervalued,Undervalued,Undervalued
+Happy Square,0.6735648387871365,255,Undervalued,Undervalued,Undervalued,Undervalued
+GRE Renew,0.6735451738492614,256,Undervalued,Undervalued,Undervalued,Undervalued
+Qualiance International,0.6730802415877124,257,Undervalued,Undervalued,Undervalued,Undervalued
+Black Opal,0.6727948819200993,258,Undervalued,Undervalued,Undervalued,Undervalued
+S. K. Offset,0.6725712806374291,259,Undervalued,Undervalued,Undervalued,Undervalued
+Vivid Electromech,0.6720050318203633,260,Undervalued,Undervalued,Undervalued,Undervalued
+Century Business,0.6714266771680254,261,Undervalued,Undervalued,Undervalued,Undervalued
+AMPL Capital,0.6711231520858144,262,Undervalued,Undervalued,Undervalued,Undervalued
+Neochem Bio,0.670467914690002,263,Undervalued,Undervalued,Undervalued,Undervalued
+Shri Techtex,0.6702428553169019,264,Undervalued,Undervalued,Undervalued,Undervalued
+Kanohar Elect.,0.6701446113315128,265,Undervalued,Undervalued,Undervalued,Undervalued
+Suratwwala Busi.,0.6696778547176483,266,Undervalued,Undervalued,Undervalued,Undervalued
+TAC Infosec,0.6696102176422899,267,Undervalued,Undervalued,Undervalued,Undervalued
+KRM Ayurveda,0.6695824826859795,268,Undervalued,Undervalued,Undervalued,Undervalued
+Samay Project,0.6692771935111512,269,Undervalued,Undervalued,Undervalued,Undervalued
+Accelya Solution,0.6689219021356854,270,Undervalued,Undervalued,Undervalued,Undervalued
+Tatia Global,0.6688642757906654,271,Undervalued,Undervalued,Undervalued,Undervalued
+Amba Auto Sales,0.6688391466571671,272,Undervalued,Undervalued,Undervalued,Undervalued
+KP Green Engg.,0.6685550219859514,273,Undervalued,Undervalued,Undervalued,Undervalued
+Siemens Ener.Ind,0.6683203204202647,274,Undervalued,Undervalued,Undervalued,Undervalued
+SBI Funds Mgt.,0.6680998354311013,275,Undervalued,Undervalued,Fairly Valued,Undervalued
+My Mudra Fin.,0.6675436539353363,276,Undervalued,Undervalued,Undervalued,Undervalued
+Baroda Extrusion,0.6671506438135891,277,Undervalued,Undervalued,Undervalued,Undervalued
+Om Metallogic,0.6663054981667449,278,Undervalued,Undervalued,Undervalued,Undervalued
+Sanofi India,0.665540120639903,279,Undervalued,Undervalued,Undervalued,Undervalued
+Urban Enviro,0.6653887331195582,280,Undervalued,Undervalued,Undervalued,Undervalued
+Kothari Petroche,0.6648626463934324,281,Undervalued,Undervalued,Undervalued,Undervalued
+U. Y. Fincorp,0.6648349915682739,282,Undervalued,Undervalued,Undervalued,Undervalued
+RBM Infracon,0.6648209110176713,283,Undervalued,Undervalued,Undervalued,Undervalued
+De Neers Tools,0.6641092995197121,284,Undervalued,Undervalued,Undervalued,Undervalued
+Oriana Power Ltd,0.6637896471903983,285,Undervalued,Undervalued,Undervalued,Undervalued
+Umiya Mobile,0.6636019638586302,286,Undervalued,Undervalued,Undervalued,Undervalued
+Quanto Agroworld,0.6634147954297277,287,Undervalued,Undervalued,Fairly Valued,Undervalued
+Vashishtha Lux.,0.6632690665106831,288,Undervalued,Undervalued,Undervalued,Undervalued
+Nurture Well Industries,0.6630403308357604,289,Undervalued,Undervalued,Undervalued,Undervalued
+Harshil Agrotech,0.6627804525208686,290,Undervalued,Undervalued,Fairly Valued,Undervalued
+Technocrats Plasma,0.6624766053128944,291,Undervalued,Undervalued,Undervalued,Undervalued
+TIPCO Engineering,0.6621263639135797,292,Undervalued,Undervalued,Undervalued,Undervalued
+Repono,0.6613039026022618,293,Undervalued,Undervalued,Undervalued,Undervalued
+LAPL Automotive,0.6609431385568388,294,Undervalued,Undervalued,Undervalued,Undervalued
+Papadmalji Agro,0.660502367700395,295,Undervalued,Undervalued,Undervalued,Undervalued
+Vruddhi Engineer,0.6604678086209019,296,Undervalued,Undervalued,Undervalued,Undervalued
+Mobilise App,0.6588355886188648,297,Undervalued,Undervalued,Undervalued,Undervalued
+Modison,0.6587737440029731,298,Undervalued,Undervalued,Undervalued,Undervalued
+JMJ Fintech,0.6585534563864209,299,Undervalued,Undervalued,Undervalued,Undervalued
+Lupin,0.6579515191763841,300,Undervalued,Undervalued,Undervalued,Undervalued
+Bondada Engineer,0.657697848645229,301,Undervalued,Undervalued,Undervalued,Undervalued
+Intl. Conveyors,0.6573622199211809,302,Undervalued,Undervalued,Undervalued,Undervalued
+Goldstar Power,0.6567611107339039,303,Undervalued,Undervalued,Fairly Valued,Undervalued
+The Bombay Burmah,0.6567544545946831,304,Undervalued,Undervalued,Undervalued,Undervalued
+Kamdhenu,0.6563748216864786,305,Undervalued,Undervalued,Undervalued,Undervalued
+NFP Sampoorna,0.6556991010823688,306,Undervalued,Undervalued,Undervalued,Undervalued
+Naapbooks,0.6542754286393999,307,Undervalued,Undervalued,Undervalued,Undervalued
+Vikram Solar,0.6536178805773247,308,Undervalued,Undervalued,Undervalued,Undervalued
+Resgen,0.6534945593324918,309,Undervalued,Undervalued,Undervalued,Undervalued
+Panama Petrochem,0.6534772690254308,310,Undervalued,Undervalued,Undervalued,Undervalued
+Annu Projects,0.6534679277327032,311,Undervalued,Undervalued,Undervalued,Undervalued
+Bhagwati Auto,0.6533724950282432,312,Undervalued,Undervalued,Fairly Valued,Undervalued
+Viviana Power,0.6532957532357826,313,Undervalued,Undervalued,Undervalued,Undervalued
+Nanta Tech,0.6528088115070599,314,Undervalued,Undervalued,Undervalued,Undervalued
+Shree Pacetronix,0.6521173365605923,315,Undervalued,Undervalued,Fairly Valued,Undervalued
+Unique Organics,0.6520689224980384,316,Undervalued,Undervalued,Undervalued,Undervalued
+Multi Comm. Exc.,0.6518288380786103,317,Undervalued,Undervalued,Undervalued,Undervalued
+BLS Internat.,0.6514985987319635,318,Undervalued,Undervalued,Undervalued,Undervalued
+Grameva,0.650440657683794,319,Undervalued,Undervalued,Undervalued,Undervalued
+Shraddha Prime,0.6495924142021063,320,Undervalued,Undervalued,Undervalued,Undervalued
+Adisoft Technol.,0.6493558577232302,321,Undervalued,Undervalued,Undervalued,Undervalued
+Sunshine Picture,0.6492021655145452,322,Undervalued,Undervalued,Undervalued,Undervalued
+GE Vernova T&D,0.6487262387656824,323,Undervalued,Undervalued,Undervalued,Undervalued
+Manav Infra,0.6478694680075193,324,Undervalued,Undervalued,Undervalued,Undervalued
+Raama Finance,0.6469407646723794,325,Undervalued,Undervalued,Undervalued,Undervalued
+True Colors,0.6465371557450387,326,Undervalued,Undervalued,Fairly Valued,Undervalued
+Riddhi Display,0.6464056893769141,327,Undervalued,Undervalued,Fairly Valued,Undervalued
+Slone Infosys.,0.6459586432425666,328,Undervalued,Undervalued,Undervalued,Undervalued
+Kaarya Facilit.,0.6452313969917645,329,Undervalued,Undervalued,Undervalued,Undervalued
+BSE,0.6443979026791296,330,Undervalued,Undervalued,Undervalued,Undervalued
+Avana Electrosystems,0.6443901106176337,331,Undervalued,Undervalued,Undervalued,Undervalued
+Dam Capital Advi,0.6433710887507755,332,Undervalued,Undervalued,Undervalued,Undervalued
+Kernex Microsys.,0.6429423579047203,333,Undervalued,Undervalued,Undervalued,Undervalued
+CG-VAK Software,0.642043683674645,334,Undervalued,Undervalued,Undervalued,Undervalued
+Exhicon Events,0.6418781444568709,335,Undervalued,Undervalued,Undervalued,Undervalued
+SKF India Indus.,0.6417698088507181,336,Undervalued,Undervalued,Undervalued,Undervalued
+Lancor Holdings,0.6415473691585479,337,Undervalued,Undervalued,Fairly Valued,Undervalued
+Justo Realfin,0.6413870708006287,338,Undervalued,Undervalued,Fairly Valued,Undervalued
+Shelter Pharma,0.6409330510752996,339,Undervalued,Undervalued,Fairly Valued,Undervalued
+Infollion Resea.,0.6401960590643234,340,Undervalued,Undervalued,Undervalued,Undervalued
+Arihant Academy,0.6395124341017092,341,Undervalued,Undervalued,Undervalued,Undervalued
+Royal Sense,0.6393968058378575,342,Undervalued,Undervalued,Undervalued,Undervalued
+Aryaman Capital,0.6393585754481717,343,Undervalued,Undervalued,Undervalued,Undervalued
+RDB Rasayans,0.6391945452049033,344,Undervalued,Undervalued,Undervalued,Undervalued
+GHCL,0.6391654426425195,345,Undervalued,Undervalued,Undervalued,Undervalued
+AVP Infracon,0.6384920006194194,346,Undervalued,Undervalued,Undervalued,Undervalued
+Kaytex Fabrics,0.6382569493940993,347,Undervalued,Undervalued,Undervalued,Undervalued
+Radhika Jeweltec,0.6381366259974749,348,Undervalued,Undervalued,Undervalued,Undervalued
+Spunweb Nonwoven,0.6381216084244331,349,Undervalued,Undervalued,Undervalued,Undervalued
+Frontier Springs,0.6380357689267873,350,Undervalued,Undervalued,Undervalued,Undervalued
+Msafe Equipments,0.6378220456057017,351,Undervalued,Undervalued,Undervalued,Undervalued
+Sameera Agro,0.6377005155717629,352,Undervalued,Undervalued,Undervalued,Undervalued
+Anawil Wire,0.6376657470407807,353,Undervalued,Undervalued,Undervalued,Undervalued
+PNGS Gargi FJ,0.637381787255741,354,Undervalued,Undervalued,Undervalued,Undervalued
+K.P. Energy,0.6368456126645602,355,Undervalued,Undervalued,Undervalued,Undervalued
+Leapfrog Engg.,0.6366650013399847,356,Undervalued,Undervalued,Undervalued,Undervalued
+Pecos Hotels,0.6361001882831553,357,Undervalued,Undervalued,Undervalued,Undervalued
+Ashapuri Gold,0.6360394611386498,358,Undervalued,Undervalued,Undervalued,Undervalued
+Insolation Ener,0.6359326563521112,359,Undervalued,Undervalued,Undervalued,Undervalued
+Akiko,0.6359092040513341,360,Undervalued,Undervalued,Undervalued,Undervalued
+Polychem,0.6358018600020751,361,Undervalued,Undervalued,Undervalued,Undervalued
+Shine Fashions,0.6356938373815926,362,Undervalued,Undervalued,Undervalued,Undervalued
+Neptune Pet.,0.635582807623187,363,Undervalued,Undervalued,Fairly Valued,Undervalued
+Pooja Logistics,0.6352061375209187,364,Undervalued,Undervalued,Undervalued,Undervalued
+InfoBeans Tech.,0.6351877430694006,365,Undervalued,Undervalued,Undervalued,Undervalued
+Shringar House,0.634995086401097,366,Undervalued,Undervalued,Undervalued,Undervalued
+Valplast Technol,0.6349717113830669,367,Undervalued,Undervalued,Undervalued,Undervalued
+Goel Construct.,0.6345991178009271,368,Undervalued,Undervalued,Undervalued,Undervalued
+Krishanveer Forg,0.6345693349927768,369,Undervalued,Undervalued,Undervalued,Undervalued
+Shakti Polytarp,0.6343480822987428,370,Undervalued,Undervalued,Undervalued,Undervalued
+Kabra Jewels,0.6340912853159912,371,Undervalued,Undervalued,Undervalued,Undervalued
+Interactive Fin,0.6337828260028271,372,Undervalued,Undervalued,Undervalued,Undervalued
+Neetu Yoshi,0.6337093172356609,373,Undervalued,Undervalued,Undervalued,Undervalued
+Diksha Polymers,0.633329416628288,374,Undervalued,Undervalued,Undervalued,Undervalued
+Yaap Digital,0.6330977607552555,375,Undervalued,Undervalued,Undervalued,Undervalued
+Sanofi Consumer,0.6329393198467412,376,Undervalued,Undervalued,Undervalued,Undervalued
+ANB Metal,0.6325831946400895,377,Undervalued,Undervalued,Undervalued,Undervalued
+Horizon Reclaim,0.632318222043934,378,Undervalued,Undervalued,Undervalued,Undervalued
+Classic Electrod,0.631963268377249,379,Undervalued,Undervalued,Undervalued,Undervalued
+Influx Health.,0.6312553463407127,380,Undervalued,Undervalued,Undervalued,Undervalued
+Cyber Media Ind,0.6310868314833502,381,Undervalued,Undervalued,Fairly Valued,Undervalued
+Grover Jewells,0.630429911349143,382,Undervalued,Undervalued,Undervalued,Undervalued
+Mahendra Realtor,0.6298810570644762,383,Undervalued,Undervalued,Undervalued,Undervalued
+Chambal Fert.,0.6297638874627287,384,Undervalued,Undervalued,Undervalued,Undervalued
+Nacdac Infra.,0.629489684827055,385,Undervalued,Undervalued,Fairly Valued,Undervalued
+SJP Ultrasonics,0.6286307795283631,386,Undervalued,Undervalued,Undervalued,Undervalued
+Sattva Eng.,0.6282867759343149,387,Undervalued,Undervalued,Undervalued,Undervalued
+Retaggio Indust.,0.6282017387982206,388,Undervalued,Undervalued,Undervalued,Undervalued
+TGIF Agribusines,0.6275733320293292,389,Undervalued,Undervalued,Undervalued,Undervalued
+Mobavenue AI Tech,0.6275055864290733,390,Undervalued,Undervalued,Undervalued,Undervalued
+Solarworld Ene.,0.6272628553278738,391,Undervalued,Undervalued,Undervalued,Undervalued
+Icodex Publish.,0.6265837371967615,392,Undervalued,Undervalued,Undervalued,Undervalued
+NMDC,0.6259929823508343,393,Undervalued,Undervalued,Undervalued,Undervalued
+Glenmark Pharma.,0.6259490717778422,394,Undervalued,Undervalued,Undervalued,Undervalued
+Exim Routes,0.6254594159245043,395,Undervalued,Undervalued,Undervalued,Undervalued
+Sacheerome,0.6253352261058261,396,Undervalued,Undervalued,Undervalued,Undervalued
+Safety Controls,0.6249280309725126,397,Undervalued,Undervalued,Undervalued,Undervalued
+Pulz Electronics,0.6239269613023347,398,Undervalued,Undervalued,Undervalued,Undervalued
+Arigato Universe,0.6237390031940294,399,Undervalued,Undervalued,Fairly Valued,Undervalued
+M E T S,0.6234742640271594,400,Undervalued,Undervalued,Fairly Valued,Undervalued
+Lalithaa Jewel,0.6233157778079416,401,Undervalued,Undervalued,Fairly Valued,Undervalued
+Sayaji Hot. Pune,0.622987337309296,402,Undervalued,Undervalued,Undervalued,Undervalued
+K. V. Toys India,0.6228253804731106,403,Undervalued,Undervalued,Fairly Valued,Undervalued
+Solex Energy,0.6226981534680537,404,Undervalued,Undervalued,Undervalued,Undervalued
+Timescan Logist.,0.622646719110774,405,Undervalued,Undervalued,Fairly Valued,Undervalued
+Maxvolt Energy,0.6223677467676655,406,Undervalued,Undervalued,Undervalued,Undervalued
+Blue Water,0.62211698134731,407,Undervalued,Undervalued,Undervalued,Undervalued
+International Gemological Instit,0.6218311855809213,408,Undervalued,Undervalued,Fairly Valued,Undervalued
+Intl. Travel Hse,0.6216935013925582,409,Undervalued,Undervalued,Undervalued,Undervalued
+Inspirisys Sol.,0.6214198063706337,410,Undervalued,Undervalued,Undervalued,Undervalued
+Hindustan Copper,0.6212221959207684,411,Undervalued,Undervalued,Undervalued,Undervalued
+Apollo Techno,0.6208594845873066,412,Undervalued,Undervalued,Undervalued,Undervalued
+Indo SMC,0.6200679027732243,413,Undervalued,Undervalued,Undervalued,Undervalued
+Clear Secured,0.6186573306509436,414,Undervalued,Undervalued,Undervalued,Undervalued
+Hindustan Zinc,0.6186427065252387,415,Undervalued,Undervalued,Undervalued,Undervalued
+Modi Naturals,0.6185338609204927,416,Undervalued,Undervalued,Undervalued,Undervalued
+Ashutosh Fibre,0.6183870657520298,417,Undervalued,Undervalued,Undervalued,Undervalued
+Merritronix,0.6182615504108637,418,Undervalued,Undervalued,Undervalued,Undervalued
+Current Infra.,0.617987415348883,419,Undervalued,Undervalued,Undervalued,Undervalued
+Mipco Seaml Ring,0.6172878071488714,420,Undervalued,Undervalued,Fairly Valued,Undervalued
+Dev Labtech,0.617223282327369,421,Undervalued,Undervalued,Fairly Valued,Undervalued
+Bansal Roofing,0.6171169947127764,422,Undervalued,Undervalued,Undervalued,Undervalued
+Life Insurance,0.6163365002797471,423,Undervalued,Undervalued,Fairly Valued,Undervalued
+Pee Cee Cosma,0.616267192618735,424,Undervalued,Undervalued,Fairly Valued,Undervalued
+DSM Fresh,0.6162122199674626,425,Undervalued,Undervalued,Undervalued,Undervalued
+Agarwal Toughene,0.6161892332951713,426,Undervalued,Undervalued,Undervalued,Undervalued
+Walchand People,0.6161170122669064,427,Undervalued,Undervalued,Fairly Valued,Undervalued
+Admach Systems,0.6159129975342841,428,Undervalued,Undervalued,Undervalued,Undervalued
+Brightcom Group,0.61567850063756,429,Undervalued,Undervalued,Fairly Valued,Undervalued
+Aegeus Technolog,0.6152369867793298,430,Undervalued,Undervalued,Fairly Valued,Undervalued
+Panchatv Bharat,0.6152292421498251,431,Undervalued,Undervalued,Undervalued,Undervalued
+EverestIMS Tech.,0.6150173356123766,432,Undervalued,Undervalued,Undervalued,Undervalued
+Bihar Sponge,0.6145177067463379,433,Undervalued,Undervalued,Fairly Valued,Undervalued
+Swaraj Engines,0.6144874311176818,434,Undervalued,Undervalued,Fairly Valued,Undervalued
+Workmates Core2,0.6140584033834531,435,Undervalued,Undervalued,Undervalued,Undervalued
+Saven Tech.,0.6137908051873104,436,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jenburkt Pharma,0.6134957150807503,437,Undervalued,Undervalued,Undervalued,Undervalued
+D.P. Abhushan,0.6134937043171336,438,Undervalued,Undervalued,Undervalued,Undervalued
+Nitta Gelatin,0.6131985559312016,439,Undervalued,Undervalued,Undervalued,Undervalued
+LGT Global Hospitality,0.6124617044787232,440,Undervalued,Undervalued,Fairly Valued,Undervalued
+BLT Logi.,0.611986467596004,441,Undervalued,Undervalued,Fairly Valued,Undervalued
+Contil India,0.6119173058319761,442,Undervalued,Undervalued,Undervalued,Undervalued
+Pasupati Acrylon,0.6118580244166986,443,Undervalued,Undervalued,Fairly Valued,Undervalued
+Wanbury,0.611797614482468,444,Undervalued,Undervalued,Undervalued,Undervalued
+Associated Coat.,0.6117047824750456,445,Undervalued,Undervalued,Undervalued,Undervalued
+Infinity Infoway,0.6113779499926287,446,Undervalued,Undervalued,Undervalued,Undervalued
+Safecure Service,0.6113539317221125,447,Undervalued,Undervalued,Fairly Valued,Undervalued
+Shradha AI Tech,0.6112045073418104,448,Undervalued,Undervalued,Fairly Valued,Undervalued
+DDev Plastiks,0.6109522700677189,449,Undervalued,Undervalued,Undervalued,Undervalued
+Sugs Lloyd,0.6102507842621404,450,Undervalued,Undervalued,Undervalued,Undervalued
+B.R.Goyal Infra.,0.610111385355294,451,Undervalued,Undervalued,Undervalued,Undervalued
+Chamanlal Setia,0.6100330826514542,452,Undervalued,Undervalued,Undervalued,Undervalued
+Envirotech Sys.,0.6096381072517176,453,Undervalued,Undervalued,Undervalued,Undervalued
+Arkade,0.6095541579182449,454,Undervalued,Undervalued,Fairly Valued,Undervalued
+Shubhshree Bio.,0.6090564684759696,455,Undervalued,Undervalued,Undervalued,Undervalued
+Indrapr.Medical,0.608895552860482,456,Undervalued,Undervalued,Undervalued,Undervalued
+All E Tech,0.608733029775469,457,Undervalued,Undervalued,Undervalued,Undervalued
+Praruh Tech,0.6087217180887794,458,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jindal Leasefin,0.6085392049957717,459,Undervalued,Undervalued,Fairly Valued,Undervalued
+Unjha Formul.,0.6082216874343285,460,Undervalued,Undervalued,Fairly Valued,Undervalued
+Tera Software,0.6079392377591986,461,Undervalued,Undervalued,Fairly Valued,Undervalued
+Auto.Corp.of Goa,0.607871566023386,462,Undervalued,Undervalued,Undervalued,Undervalued
+Canara Robeco,0.6076268010882131,463,Undervalued,Undervalued,Undervalued,Undervalued
+Tembo Global,0.6072903757120904,464,Undervalued,Undervalued,Undervalued,Undervalued
+Rolex Rings,0.6071083660178697,465,Undervalued,Undervalued,Fairly Valued,Fairly Valued
+Marc Technocrats,0.6070472007376086,466,Undervalued,Undervalued,Fairly Valued,Undervalued
+ABS Marine,0.6069578966729864,467,Undervalued,Undervalued,Undervalued,Undervalued
+Euro Pratik Sale,0.6067026084670921,468,Undervalued,Undervalued,Undervalued,Undervalued
+Ravi Leela Gran,0.6065188825548676,469,Undervalued,Undervalued,Undervalued,Undervalued
+Orient Cement,0.6058622496837837,470,Undervalued,Undervalued,Fairly Valued,Undervalued
+Uniparts India,0.6054259489198194,471,Undervalued,Undervalued,Fairly Valued,Undervalued
+Bhagyanagar Ind,0.6050850967176862,472,Undervalued,Undervalued,Fairly Valued,Undervalued
+B P C L,0.6048042091654343,473,Undervalued,Undervalued,Undervalued,Undervalued
+Emerald Finance,0.6047972300195118,474,Undervalued,Undervalued,Undervalued,Undervalued
+G M Polyplast,0.6047213218309248,475,Undervalued,Undervalued,Undervalued,Undervalued
+SRIT India,0.6043222984651612,476,Undervalued,Undervalued,Fairly Valued,Undervalued
+Deep Industries,0.6043121877625381,477,Undervalued,Undervalued,Undervalued,Undervalued
+Cospower Engine.,0.6041934104086559,478,Undervalued,Undervalued,Undervalued,Undervalued
+Sai Urja Indo,0.6036562588183566,479,Undervalued,Undervalued,Fairly Valued,Undervalued
+GTV Engineering,0.6034694204275883,480,Undervalued,Undervalued,Fairly Valued,Undervalued
+Indian Energy Ex,0.6030537114960525,481,Undervalued,Undervalued,Fairly Valued,Undervalued
+Sundrex Oil,0.6028201083672425,482,Undervalued,Undervalued,Undervalued,Undervalued
+Umiya Tubes,0.6027279406020565,483,Undervalued,Undervalued,Fairly Valued,Undervalued
+LCC Projects,0.6024839942270456,484,Undervalued,Undervalued,Undervalued,Undervalued
+Fujiyama Power,0.6024018151735627,485,Undervalued,Undervalued,Undervalued,Undervalued
+Srivari Spices &,0.6024016532930427,486,Undervalued,Undervalued,Undervalued,Undervalued
+Sunrakshakk Inds,0.6016034119164141,487,Undervalued,Undervalued,Fairly Valued,Undervalued
+Axiom Gas Engi.,0.6007396339541723,488,Undervalued,Undervalued,Undervalued,Undervalued
+Anondita Medi.,0.599910835041297,489,Undervalued,Undervalued,Undervalued,Undervalued
+Purple Wave Info,0.5997131148762049,490,Undervalued,Undervalued,Undervalued,Undervalued
+Accretion Pha.,0.5996368826861006,491,Undervalued,Undervalued,Undervalued,Undervalued
+Teja Engineering,0.5996029349122003,492,Undervalued,Undervalued,Undervalued,Undervalued
+Icon Facil.,0.5993818284469382,493,Undervalued,Undervalued,Undervalued,Undervalued
+Veedol Corporat,0.5992549889524791,494,Undervalued,Undervalued,Fairly Valued,Undervalued
+R M Drip & Sprin,0.5990967226938646,495,Undervalued,Undervalued,Undervalued,Undervalued
+Krupalu Metals,0.5990588417922854,496,Undervalued,Undervalued,Fairly Valued,Undervalued
+Teamtech Formwork,0.5988570553377944,497,Undervalued,Undervalued,Undervalued,Undervalued
+Monarch Networth,0.5987695426869488,498,Undervalued,Undervalued,Undervalued,Undervalued
+Fluidomat,0.5983924577449857,499,Undervalued,Undervalued,Undervalued,Undervalued
+Jubilant Agri,0.5979588269915155,500,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jyoti Resins,0.5973522533120295,501,Undervalued,Undervalued,Undervalued,Undervalued
+Chetana Educa.,0.5973239493783843,502,Undervalued,Undervalued,Fairly Valued,Undervalued
+Shining Tools,0.5972695818259223,503,Undervalued,Undervalued,Fairly Valued,Undervalued
+Linc,0.5972360371775848,504,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jasch Gauging,0.5969912827573904,505,Undervalued,Undervalued,Undervalued,Undervalued
+FX Multitech,0.596807544633396,506,Undervalued,Undervalued,Undervalued,Undervalued
+Shree Metalloys,0.596794589382215,507,Undervalued,Undervalued,Undervalued,Undervalued
+Senco Gold,0.5966660973741748,508,Undervalued,Undervalued,Fairly Valued,Undervalued
+Afcom Holdings,0.5963863066272502,509,Undervalued,Undervalued,Undervalued,Undervalued
+Oracle Fin.Serv.,0.5961557069924237,510,Undervalued,Undervalued,Undervalued,Undervalued
+Guj Pipavav Port,0.5956380095915361,511,Undervalued,Undervalued,Fairly Valued,Undervalued
+Onesource Indus.,0.5955068413021749,512,Undervalued,Undervalued,Undervalued,Undervalued
+Sharvaya Metals,0.5951736401437282,513,Undervalued,Undervalued,Undervalued,Undervalued
+Accretion Nutraveda,0.5947408135620069,514,Undervalued,Undervalued,Fairly Valued,Undervalued
+Valiant Commun.,0.5945918754248143,515,Undervalued,Undervalued,Undervalued,Undervalued
+Cyber Media Res.,0.5942530679208945,516,Undervalued,Undervalued,Fairly Valued,Undervalued
+Atharva Poly-Plast,0.5937194825395596,517,Undervalued,Undervalued,Undervalued,Undervalued
+Sandur Manganese,0.5937173139139427,518,Undervalued,Undervalued,Undervalued,Undervalued
+Quest Laborato.,0.5931954336292434,519,Undervalued,Undervalued,Undervalued,Undervalued
+Infosys,0.5931140843063981,520,Undervalued,Undervalued,Undervalued,Undervalued
+Nazara Technolo.,0.5928728889410821,521,Undervalued,Undervalued,Undervalued,Undervalued
+Swastika Infra,0.5928197119282507,522,Undervalued,Undervalued,Undervalued,Undervalued
+Vishnusurya Pro.,0.5928155448459316,523,Undervalued,Undervalued,Fairly Valued,Undervalued
+Hero Motocorp,0.5928124047175363,524,Undervalued,Undervalued,Undervalued,Undervalued
+TCS,0.5927209967429339,525,Undervalued,Undervalued,Undervalued,Undervalued
+Ginni Filaments,0.5925794916864012,526,Undervalued,Undervalued,Undervalued,Undervalued
+Ganesh Infra.,0.5925414584579761,527,Undervalued,Undervalued,Fairly Valued,Undervalued
+I O C L,0.5924006242128393,528,Undervalued,Undervalued,Fairly Valued,Undervalued
+Canarys Automa.,0.591747390858458,529,Undervalued,Undervalued,Undervalued,Undervalued
+H. R. Hygiene,0.5914830712674445,530,Undervalued,Undervalued,Fairly Valued,Undervalued
+Shri Kanha Stain,0.5911050657264635,531,Undervalued,Undervalued,Fairly Valued,Undervalued
+Khaitan (India),0.5899066639834291,532,Undervalued,Undervalued,Fairly Valued,Undervalued
+Ahm. Steelcraft,0.5896190338300293,533,Undervalued,Undervalued,Fairly Valued,Undervalued
+India Gelatine,0.5893853092334495,534,Undervalued,Undervalued,Undervalued,Undervalued
+Raymond Realty,0.5888740394188916,535,Undervalued,Undervalued,Fairly Valued,Undervalued
+NINtec Systems,0.5887528075638347,536,Undervalued,Undervalued,Undervalued,Undervalued
+Mauria Udyog,0.5885308886688801,537,Undervalued,Undervalued,Fairly Valued,Undervalued
+Tips Music,0.5884735637908047,538,Undervalued,Undervalued,Fairly Valued,Undervalued
+Transteel Seatin,0.5880795884440811,539,Undervalued,Undervalued,Fairly Valued,Undervalued
+Alphalogic Indu,0.5878925419788348,540,Undervalued,Undervalued,Fairly Valued,Undervalued
+Intec Capital,0.5876908119902514,541,Undervalued,Undervalued,Fairly Valued,Fairly Valued
+Sotefin Bharat,0.587665126212047,542,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jayesh Logistics,0.5874922880109485,543,Undervalued,Undervalued,Undervalued,Undervalued
+Gillette India,0.5873681555127293,544,Undervalued,Undervalued,Fairly Valued,Undervalued
+Genus Power,0.5865599740454273,545,Undervalued,Undervalued,Undervalued,Undervalued
+R R Fin. Cons.,0.586178242079139,546,Undervalued,Undervalued,Fairly Valued,Undervalued
+Kriti Nutrients,0.5858609833056626,547,Undervalued,Undervalued,Fairly Valued,Undervalued
+Ausom Enter.,0.5855218493684807,548,Undervalued,Undervalued,Undervalued,Undervalued
+Kisaan Parivar,0.5854512394277099,549,Undervalued,Undervalued,Undervalued,Undervalued
+Gallard Steel,0.5853741631808429,550,Undervalued,Undervalued,Fairly Valued,Undervalued
+Univastu India,0.5850296603267207,551,Undervalued,Undervalued,Fairly Valued,Undervalued
+Madhur Knit,0.5848090534888432,552,Undervalued,Undervalued,Undervalued,Undervalued
+B.A.G. Converge.,0.5845810222976227,553,Undervalued,Undervalued,Fairly Valued,Undervalued
+SEAMEC Ltd,0.5842557219956683,554,Undervalued,Undervalued,Fairly Valued,Undervalued
+Chemkart India,0.5840515894316101,555,Undervalued,Undervalued,Undervalued,Undervalued
+Green Asia,0.5838044642033172,556,Undervalued,Undervalued,Undervalued,Undervalued
+ICICI AMC,0.5835002276211008,557,Undervalued,Undervalued,Fairly Valued,Undervalued
+Taurian MPS,0.5832290240242808,558,Undervalued,Undervalued,Undervalued,Undervalued
+Arrow Greentech,0.5832230960456067,559,Undervalued,Undervalued,Undervalued,Undervalued
+Harmony Capital,0.5829967314783512,560,Undervalued,Undervalued,Fairly Valued,Undervalued
+Rachana Infra.,0.582821539501211,561,Undervalued,Undervalued,Fairly Valued,Undervalued
+Kheria Autocomp,0.5826983850608116,562,Undervalued,Undervalued,Fairly Valued,Fairly Valued
+Dhaval Packaging,0.5826365008099658,563,Undervalued,Undervalued,Fairly Valued,Undervalued
+Siyaram Silk,0.582552697982284,564,Undervalued,Undervalued,Undervalued,Undervalued
+Zensar Tech.,0.581885174409388,565,Undervalued,Undervalued,Fairly Valued,Undervalued
+Brahmaputra Inf.,0.5818167402883846,566,Undervalued,Undervalued,Fairly Valued,Undervalued
+Mayur Uniquoters,0.5816569076690493,567,Undervalued,Undervalued,Fairly Valued,Undervalued
+Saraswati Saree,0.5814184063966289,568,Undervalued,Undervalued,Fairly Valued,Fairly Valued
+Onward Technolog,0.5810709525188364,569,Undervalued,Undervalued,Fairly Valued,Undervalued
+Tata Elxsi,0.5809761406803055,570,Undervalued,Undervalued,Undervalued,Undervalued
+Krishna Defence,0.5806796107171535,571,Undervalued,Undervalued,Undervalued,Undervalued
+Premier Energies,0.5802456355085535,572,Undervalued,Undervalued,Undervalued,Undervalued
+V.L.Infraproject,0.5797833152964417,573,Undervalued,Undervalued,Fairly Valued,Undervalued
+Cargotrans Marit,0.5793177714801734,574,Undervalued,Undervalued,Fairly Valued,Undervalued
+Omega Ag Seeds,0.5790027832152461,575,Undervalued,Undervalued,Undervalued,Undervalued
+Master Component,0.5788987190500728,576,Undervalued,Undervalued,Fairly Valued,Undervalued
+Highness Microelectronics,0.5787297842667974,577,Undervalued,Undervalued,Fairly Valued,Undervalued
+Phantom Digital,0.5787275299753247,578,Undervalued,Undervalued,Fairly Valued,Undervalued
+Gandhi Spl. Tube,0.5782566334361519,579,Undervalued,Undervalued,Undervalued,Undervalued
+Axtel Industries,0.5779706035090657,580,Undervalued,Undervalued,Fairly Valued,Undervalued
+TNA Solutions,0.5778951426009922,581,Undervalued,Undervalued,Undervalued,Undervalued
+Fiem Industries,0.5776185945840836,582,Undervalued,Undervalued,Fairly Valued,Undervalued
+Pajson Agro,0.5772710194784991,583,Undervalued,Undervalued,Fairly Valued,Undervalued
+Castrol India,0.5772547467949203,584,Undervalued,Undervalued,Fairly Valued,Undervalued
+Mid East Port.,0.5771122164781723,585,Undervalued,Undervalued,Undervalued,Undervalued
+Dhabriya Poly.,0.5770487506117008,586,Undervalued,Undervalued,Fairly Valued,Undervalued
+Sanrhea Tech.,0.5769896217182704,587,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jay Ambe Super.,0.5768590215053395,588,Undervalued,Undervalued,Fairly Valued,Undervalued
+Mother Nutri,0.5768365059657309,589,Undervalued,Undervalued,Undervalued,Undervalued
+Dhampur.Spl.Sug.,0.5766944256506493,590,Undervalued,Undervalued,Fairly Valued,Undervalued
+SMT Engineering,0.5766439433126636,591,Undervalued,Undervalued,Fairly Valued,Undervalued
+RFBL Flexi Pack,0.5766283837749546,592,Undervalued,Undervalued,Fairly Valued,Undervalued
+Indo Tech.Trans.,0.5764618778233641,593,Undervalued,Undervalued,Fairly Valued,Undervalued
+Rentomojo,0.576270690363676,594,Undervalued,Undervalued,Fairly Valued,Undervalued
+HEC Infra Proj.,0.5761427259290935,595,Undervalued,Undervalued,Undervalued,Undervalued
+Malpani Pipes,0.5760704724939044,596,Undervalued,Undervalued,Fairly Valued,Fairly Valued
+Shilchar Tech.,0.5760613310511444,597,Undervalued,Undervalued,Fairly Valued,Undervalued
+Guj. Containers,0.5760520135411413,598,Undervalued,Undervalued,Undervalued,Undervalued
+Knack Packaging,0.5759832502852149,599,Undervalued,Undervalued,Fairly Valued,Undervalued
+Jaro Institute,0.5758708943066505,600,Undervalued,Undervalued,Fairly Valued,Undervalued
+Vikram Thermo,0.5757672374343941,601,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kay Cee,0.5755847675621404,602,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+EFC (I),0.5754019408771747,603,Fairly Valued,Fairly Valued,Undervalued,Undervalued
+Sugal & Damani,0.5753378957918035,604,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+P & G Health Ltd,0.5751154091261422,605,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+MOS Utility,0.575063736108147,606,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Winsol Engineers,0.5745656273316817,607,Fairly Valued,Fairly Valued,Fairly Valued,Undervalued
+Shreeji Global,0.5742016387437492,608,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mah. Seamless,0.5738584328071488,609,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Asian Hotels (W),0.573719757226806,610,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SKP Securities,0.5736902822636475,611,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Unisem Agritech,0.5733573047876889,612,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prime Fresh,0.5729310552355569,613,Fairly Valued,Fairly Valued,Undervalued,Undervalued
+Utkal Speciality,0.572878732819497,614,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bridge Securitie,0.5728721581757993,615,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+P.E. Analytics,0.5726777759527253,616,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Route Mobile,0.5720970607522221,617,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Defrail Technologies,0.5718168589920829,618,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Anubhav Plast,0.5717626428789764,619,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Deepak Chemtex,0.5715557240348075,620,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shivchem Agro,0.5713286967044204,621,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Metalic Technoforge,0.570786373692873,622,Fairly Valued,Fairly Valued,Fairly Valued,Undervalued
+Goldiam Intl.,0.5707405057363645,623,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+L. T. Elevator,0.57059727418423,624,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indraprastha Gas,0.5705364010819777,625,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hexagon Nutri.,0.5704394004579655,626,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Natco Pharma,0.5701016075233087,627,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Essex Marine,0.5700620206445594,628,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Behari Lal Engg.,0.5696226732779762,629,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shri Gang Indus,0.5693654044925532,630,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Panasonic Carbon,0.5693309978801978,631,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sun TV Network,0.5692201317129892,632,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Central Mine Pla,0.5691418069191487,633,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Seshaasai Tech.,0.5689731635977673,634,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jhandewala Foods,0.5687500961710392,635,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Monolithisch Ind,0.5686753774385891,636,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+CSM Technologies,0.5684378998188339,637,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kennametal India,0.5668878391587208,638,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Apollo Ingredie.,0.5668612947391349,639,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Elnet Technolog,0.5666432332054842,640,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sr.Rayala.Hypo,0.5663146747147513,641,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indiabulls,0.5659441204321428,642,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sonaselection India,0.5659389240056237,643,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HDFC AMC,0.5658598792184674,644,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Refex Industries,0.5655054213275341,645,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+My Money Sec.,0.5654589223062286,646,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sharda Motor,0.5654320955400434,647,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Engineers India,0.5651673944649567,648,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rajputana Bio.,0.5648840652745506,649,Fairly Valued,Fairly Valued,Undervalued,Undervalued
+Par Drugs & Che.,0.5645693986346622,650,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Swasti Vin. Art,0.5645017170264898,651,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KRBL,0.5642370546486747,652,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rukmani Devi Gar,0.5640218312820721,653,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shukra Pharma.,0.5638328484600663,654,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Foseco Crucible (India),0.5635303486332384,655,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+D B Corp,0.5634313937634043,656,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mehul Colours,0.5631440674521635,657,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+MSTC,0.5629783202073856,658,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Marsons,0.5621452008891231,659,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Pondy Oxides,0.5620837317119163,660,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Uni Abex Alloy,0.5619791568180498,661,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Saatvik Green,0.5619357969466661,662,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+P & G Hygiene,0.5613681133762503,663,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sadbhav Infra.,0.5611811874682602,664,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Emiac Technologies,0.5609525878051407,665,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Saksoft,0.5609306814203984,666,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indian Emuls,0.560788580187528,667,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+JUJHAR LOGISTICS,0.5603841642838192,668,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Wealth First Por,0.5600821489109715,669,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gokul Agro,0.5597967918238582,670,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vasundhara Rasy.,0.5593502086046069,671,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Alldigi Tech,0.5593370572711993,672,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ksolves India,0.5592411522140532,673,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KS Smart Technlogies,0.558760772531003,674,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rockingdeals Cir,0.5587147673925067,675,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prime Cable Ind.,0.5586589615802762,676,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Lloyds Metals,0.5585735961472558,677,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+ITC,0.5584895868866493,678,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dudani Retail,0.5578708721155256,679,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Godfrey Phillips,0.557739891268984,680,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shri Ahimsa,0.5573244664622987,681,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+AD Manum Finance,0.5569088488992298,682,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+POCL Enterprises,0.5569048145819734,683,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Bizotic Commer.,0.5565078334111155,684,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mahanagar Gas,0.5563787915330073,685,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Maruti Global Industries,0.5562629807702877,686,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dynamic Services,0.5562295464622755,687,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Organic Recyclin,0.5560182709170666,688,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ameya Precision,0.5558498162052965,689,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Enbee Trade,0.5552014831155957,690,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kronox Lab,0.5549786448077801,691,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+General Insuranc,0.5549382510179389,692,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Zelio E-Mobility,0.5541680243723244,693,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+B. D. Industries,0.5541379499122382,694,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Clean Science,0.5540833913807992,695,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Srinibas Pradhan,0.5540605621915402,696,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Osiajee Texfab,0.5539312390636155,697,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Suba Hotels,0.5536378921745145,698,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+BharatRohan Air.,0.5534828502655555,699,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Consecutive Commodities,0.5534797442494356,700,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+95471,0.5531601218219876,701,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Fonebox Retail,0.5528598138236929,702,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bajaj Consumer,0.5526126731835841,703,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nila Spaces,0.5521653423626988,704,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+York Exports,0.5520751344749043,705,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ecos (India),0.5518286073978663,706,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Silky Overseas,0.5517852472990612,707,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Reliance Infra.,0.5514856145381727,708,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Encompass Design,0.5504275899373625,709,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tanla Platforms,0.5500773462892319,710,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Palco Metals Ltd,0.549983845112685,711,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Syncom Formul.,0.5494901367922458,712,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rachit Prints,0.5494389411540811,713,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+RBZ Jewellers Lt,0.5488531361300295,714,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SNL Bearings,0.5487025379929177,715,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Chembond Chemic.,0.5481055971134721,716,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Iware Supplych.,0.547992592345304,717,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Modi's Navnirman,0.5479244463691175,718,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jasch Industries,0.5478516359941339,719,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Reganto Enterprises,0.5473159968109605,720,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Acutaas Chemical,0.5472881956389951,721,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rudra Gas,0.5471630419531854,722,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+S P I C,0.5469792405246515,723,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Oval Projects,0.5467377627605543,724,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Thyrocare Tech.,0.546378182071813,725,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nippon Life Ind.,0.5462416815162191,726,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Balu Forge,0.5460977272911929,727,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Esab India,0.5459516426061011,728,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sonu Infratech,0.5458991671561595,729,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prizor Viztech,0.5454274887481209,730,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Glance Finance,0.5452700740991053,731,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vision Infra,0.5452022270933155,732,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+India Pesticides,0.5449468140885693,733,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Star Delta Trans,0.5447703149395922,734,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vedanta,0.5445931103709442,735,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shivashrit Foods,0.5445000383266805,736,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Farm Peace,0.5440006877244009,737,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Amtech Esters,0.5434175183779838,738,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Algoquant Fin,0.5431645402746821,739,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Avanti Feeds,0.5426802715118927,740,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pranik Logistics,0.5423494877974697,741,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+MKP Mobility,0.5422423455642041,742,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tiger Logistics,0.5420031303940194,743,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SpectraA Technology,0.5415339564255328,744,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jyoti Global,0.5413714613142142,745,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+M K Exim India,0.5411626856754217,746,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nexxus Petro,0.5408995852189525,747,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+MPS,0.5408168156667051,748,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Resonance Speci.,0.5404676616945705,749,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kirl.Pneumatic,0.540441206032209,750,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mangal Compuso.,0.5403321612795869,751,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gayatri Rubbers,0.5401739430559291,752,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Utssav CZ Gold,0.5401659930433031,753,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Ashapura Minech.,0.5398682557172647,754,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+TBI Corn,0.5397914097264568,755,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gulshan Polyols,0.5396317973142247,756,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Birlasoft Ltd,0.5394108380251049,757,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Z-Tech (India),0.539178014216342,758,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HD Fire Protect,0.5390545833763579,759,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bhansali Engg.,0.5390512551272515,760,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gujarat Intrux,0.5390188620534908,761,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Venus Remedies,0.5389551066545918,762,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ganon Products,0.5386477823186768,763,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Travels & Rent.,0.5384951336817009,764,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Share India Sec.,0.5384744855786338,765,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Atlanta Electric,0.5383994503524104,766,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Manorama Indust.,0.5379593556125786,767,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Carraro India,0.5376326347041381,768,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nirlon,0.5374512040046939,769,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Sunsky Logistics,0.5374477185598353,770,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SJS Enterprises,0.5374423645989344,771,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shayona Eng.,0.5373339420346469,772,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Khaitan Chemical,0.5372051931781796,773,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Suraj Products,0.5370856972944938,774,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ruparel Food,0.5370729480620952,775,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shree Marutinand,0.5368972180611967,776,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Covance Softsol,0.5367366649584636,777,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Federal-Mogul Go,0.536718705311473,778,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Advance Techno.,0.5359823641765181,779,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Advit Jewels,0.5358303900978315,780,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kings Infra,0.5357719526828556,781,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Flywings Simula.,0.5352746390194499,782,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Anand Seamless,0.5352326722894094,783,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+ABH Healthcare,0.5348696858652693,784,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+3B Blackbio,0.5348109141951933,785,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Transport Corp.,0.5346999589899506,786,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Avience Biomedi.,0.5345239414423908,787,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sodhani Capital,0.5343992000786778,788,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tenneco Clean,0.5339626287068148,789,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Anand Rathi Wea.,0.5334942263615539,790,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Petronet LNG,0.5322401751627881,791,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+eClerx Services,0.532141592906962,792,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prevest Denpro,0.5320584932677235,793,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Effwa Infra,0.5318713935310431,794,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+I R C T C,0.5318247820809748,795,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Paradeep Pari.,0.5316254223758876,796,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Xtranet Techno.,0.531582396152909,797,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Lead Reclaim,0.5314296887034948,798,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Forbes Precision,0.5313730666541435,799,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sampat Aluminium,0.5310556225361392,800,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sawaliya Food,0.5308411155027997,801,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sumax Engineering,0.5301898167500999,802,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sterling Powerg.,0.5300205836232331,803,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Glaxosmi. Pharma,0.5299254595109938,804,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Eleganz Interior,0.5296327013759689,805,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+V-Marc India,0.5292026364046225,806,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sunrise Efficie.,0.5290110733586433,807,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shree Salasar,0.5286480524230877,808,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Brisk Technovisi,0.5285626601660628,809,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Skytech Infinite Platform,0.5285524976655667,810,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+T B Z,0.5284598415662105,811,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+AJC Jewel,0.5283023053307081,812,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vaibhav Global,0.5281292852757039,813,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Veritaas Adver.,0.5280493878891171,814,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+H.M. Electro,0.5280125662882483,815,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ashwini Contain.,0.5279518167224465,816,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Humming Bird Edu,0.5279237764247925,817,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shiv Texchem,0.5275414960109177,818,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Naturewings Hol.,0.5274834418719668,819,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+GE Shipping Co,0.5266150114781988,820,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Exato Technologies,0.5265256770084508,821,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Apcotex Industri,0.5265105806699131,822,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Eco Recyc.,0.526333281190304,823,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Danish Power,0.5263095995717211,824,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gensol Engineer.,0.5257355459844699,825,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Concord Control,0.5255084982694811,826,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sunrest Lifescie,0.5251768244894058,827,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sahaj Solar,0.5250198669454975,828,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ivalue Infosolut,0.5247737809613336,829,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aayush Wellness,0.5247469669344957,830,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Unihealth Hosp,0.5246148276672411,831,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Highway Infra,0.5245486514013235,832,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Banco Products,0.5245344534224566,833,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Assoc.Alcohols,0.524036338952207,834,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pervasive Comm.,0.5237421458999799,835,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Chamunda Ele.,0.5235926485265759,836,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+B N Rathi Sec.,0.5235424722077917,837,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SK Minerals & Additives,0.5234933244322151,838,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Garden Reach Sh.,0.5234721925124349,839,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Yashhtej Industries,0.523360420838214,840,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Chandan Healthca,0.52319062651902,841,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Quality Power El,0.5231586278632318,842,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Newgen Software,0.5231467774207249,843,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Galaxy Medicare,0.5228359093449882,844,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Abbott India,0.5224756914288097,845,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aryaman Fin.Serv,0.5223312288478761,846,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rapid Fleet,0.5220468850408857,847,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Suntech Infra.,0.5219953871632124,848,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+WOL 3D India,0.5219357444929235,849,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SPEB Adhesives,0.521915727376573,850,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Basilic Fly Stud,0.5216265183157847,851,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Billionbrains,0.5213375091552802,852,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ken Enter.,0.5212884057101924,853,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Glottis,0.520828259970357,854,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Accent Microcell,0.5207429206675386,855,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dhanuka Agritech,0.5207326988746238,856,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shankara Buildpro,0.5202521099070637,857,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+G M Breweries,0.5202184246631054,858,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Karnawati Innovation,0.5201504563702043,859,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ador Welding,0.5200597536558962,860,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Escorts Kubota,0.5200246779003551,861,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vinod Texworld,0.5198517909609125,862,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CapitalNumbers,0.5195958499620217,863,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Epigral,0.5195722051366974,864,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sterling & Wils.,0.5195509464678508,865,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CARE Ratings,0.5195195323087457,866,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dynamic Cables,0.5193176162221727,867,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hisar Spg. Mills,0.5189322814185339,868,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Maruti Interior,0.5188468080489101,869,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hindustan Hardy,0.5175288495025552,870,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Colgate-Palmoliv,0.5173626246452407,871,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Signpost India,0.5167024039142427,872,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Airfloa Rail,0.5166310524490274,873,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Travel Food,0.516583358901711,874,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cera Sanitary.,0.5165557714586246,875,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cummins India,0.5162845741646411,876,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Surya Roshni,0.5162642253793394,877,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Premier Polyfilm,0.516010598178928,878,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Fidel Softech,0.5159606037938836,879,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Coreintegra Con.,0.5157015683075963,880,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+JFL Life,0.5156342174809164,881,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+B-Right Real,0.5155782584663111,882,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Creative Casting,0.5153773692338831,883,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hawkins Cookers,0.5151452808783723,884,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ganesh Consumer,0.5148174919789555,885,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dharni Capital,0.5143884460842555,886,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gujarat Peanut,0.5142548179150451,887,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ontic Finserve,0.5133704044578551,888,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Le Lavoir,0.5133437401115103,889,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indian Toners,0.512948333739523,890,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nestle India,0.5125180899159412,891,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tata Tele. Mah.,0.5125,892,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aditya AMC,0.5123243606587093,893,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Invicta Diagnos.,0.5120527287053289,894,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+High Energy Bat.,0.5118569480086312,895,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nila Infrastruct,0.5117907305202853,896,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kunststoff Inds.,0.511718839473011,897,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Eicher Motors,0.5117068994219367,898,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Universal Starch,0.5116917487467043,899,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Medico Remedies,0.5113869754914319,900,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Master Trust,0.51130392924761,901,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sedemac Mechatro,0.5112060044258093,902,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gulf Oil Lubric.,0.5108866312791821,903,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ingersoll-Rand,0.5107663596635034,904,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HCP Plastene,0.5107399142942447,905,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+E Factor Experie,0.5105292072841685,906,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sky Gold & Diam.,0.5104567598618353,907,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Felix Industries,0.5104313916334811,908,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Silver Touch,0.5099257281983853,909,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ajanta Pharma,0.5098376370896089,910,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pudumjee Paper,0.5096744459228482,911,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ashoka Buildcon,0.5096739923154022,912,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Amrapali Inds.,0.509614531187058,913,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cochin Minerals,0.5091170569412438,914,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Premium Capital,0.5086666666666667,915,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Xchanging Sol.,0.5085149842628899,916,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HCL Technologies,0.5084357149360934,917,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cupid,0.508403701788769,918,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cams Services,0.508280175405262,919,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Anlon Tech,0.5082448547573986,920,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Zuari Agro Chem.,0.5076854969479725,921,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bajaj Auto,0.5064248779036298,922,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Poojaa Precision Engg.,0.5063335645380873,923,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rites,0.5059297368254372,924,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indian Sucrose,0.5056309618620023,925,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Premium Plast,0.5055032861372777,926,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Denta Water,0.5052788656533779,927,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+OSEL Devices,0.5046085569128639,928,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+IB Infotech,0.5045001633926891,929,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Amrutanjan Healt,0.5043112094363259,930,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Persistent Systems,0.5041266160764324,931,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Orbit Exports,0.5039046324886273,932,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+PNGS Reva Diamo.,0.5038884611549691,933,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+M & B Engineer.,0.5038214061643508,934,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Krishana Phosch.,0.5038190792995506,935,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Saint-Gob. Sekur,0.5033653547103825,936,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aakaar Medical,0.5029875478269039,937,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Inventurus Knowl,0.5025784784385331,938,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HVAX Technolog.,0.5024890627417518,939,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nagreeka Cap.,0.5024046758714296,940,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+TPL Plastech,0.5023261879929936,941,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Eppeltone Ene.,0.5021787853138099,942,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Action Const.Eq.,0.5021532031258995,943,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pace Digitek,0.5020625943528585,944,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Filtra Consult.,0.5020260876023653,945,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Macfos,0.5019662562199971,946,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Balmer Law. Inv.,0.5019387316093491,947,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gaudium IVF,0.5019086756653223,948,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Trom Industries,0.5013909346066806,949,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dhillon Freight,0.5011275385444606,950,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Maxposure,0.5010468252532214,951,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jamna Auto Inds.,0.5010120695737965,952,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jullundur Motor,0.5008561679353195,953,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+LTM,0.5007024690081002,954,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Transcorp Intl.,0.5006256855283313,955,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Magellanic Cloud,0.5005369430609964,956,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bhaskar Agrochem,0.5002543072877397,957,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Thomas Scott,0.49997591299083044,958,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Macpower CNC,0.4999402935450192,959,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kiaasa Retail,0.49977123083255937,960,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aelea Commoditi.,0.499050918131111,961,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jain Resource,0.4989925043981136,962,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Haria Apparels,0.4987669784601917,963,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Supertech EV,0.49872464493649515,964,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Silkflex Polymer,0.49860424767604733,965,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+RNFI Services,0.49855764987924606,966,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Northern Spirits,0.4979934242377227,967,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Elfin Agro India,0.4977155425203148,968,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+South West Pinn.,0.4974792097058424,969,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Oneindig Technologies,0.49702410775595346,970,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mazagon Dock,0.49683425634759854,971,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hexaware Tech.,0.4965492990093793,972,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Coforge,0.4964640705492217,973,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Smarten Power,0.4963439575059943,974,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Simplex Castings,0.4962976122337843,975,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mastek,0.4961821019719465,976,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Fine Organic,0.49561171769544043,977,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ascensive Educa.,0.4953281125218317,978,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Beacon Trust.,0.49505770605967736,979,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+La Opala RG,0.4947671007666035,980,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Studds Accessor.,0.49470613506029093,981,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sampark India,0.49463904712396783,982,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jay Bharat Maru.,0.4945722095777979,983,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Butterfly Gan Ap,0.49416601116307246,984,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Benares Hotels,0.4941162864947518,985,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Timex Group,0.4940487892094423,986,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Steelcast,0.4937431827865375,987,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indian Metals,0.4936846552768475,988,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Automotive Axles,0.4936140622421762,989,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Swasti Vinayaka,0.4934157464035751,990,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Danlaw Tech.,0.4932833607685174,991,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Oxford Industrie,0.49266235454603413,992,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KKV Agro Powers,0.49262208411017083,993,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Emami,0.49261924533793894,994,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Porwal Auto Comp,0.4923528784745268,995,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Guj. Inject(Ker),0.49201348610056583,996,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sonata Software,0.4919980925404443,997,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Captain Polyplas,0.4919468366675107,998,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ambitious Plasto,0.49182083973627577,999,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pix Transmission,0.49172464896838597,1000,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+TAAL Tech,0.4916348127529322,1001,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Modern Engineer.,0.491596738674804,1002,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Enviro Infra,0.49127114515383535,1003,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KPT Industries,0.4911033665245836,1004,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Arabian Petrol.,0.4910005681179282,1005,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Onemi Technology,0.49096420305290955,1006,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bayer Crop Sci.,0.49082921829360504,1007,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kama Holdings,0.4907859259442257,1008,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SBEC Systems,0.49076249700463215,1009,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Durlax Top,0.49068054852534243,1010,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+ESDS Software,0.49067626914055523,1011,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Global Education,0.49051078990586755,1012,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Enser,0.49038347419309164,1013,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bharat Electron,0.4902305691628132,1014,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tata Motors,0.49002080093305145,1015,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Meta Infotech,0.4898361476361212,1016,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prudent Corp.,0.48964626916578236,1017,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indus Towers,0.4895063856974215,1018,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Transrail Light,0.4893336563879062,1019,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Polycab India,0.4892235335697956,1020,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Telge Projects,0.4891939060953022,1021,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dynacons Sys.,0.4888339985715491,1022,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pelatro,0.4887964861124748,1023,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cellecor Gadgets,0.48847335138998976,1024,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indiamart Inter.,0.4884657064161115,1025,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+AGI Greenpac,0.4882796712132772,1026,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Supriya Lifesci.,0.48806083680656276,1027,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shaily Engineer.,0.4879765454238594,1028,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Abram Food,0.4877827338407198,1029,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aureate Tradde,0.4875615126389791,1030,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sika Interplant,0.4874296676276237,1031,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Giriraj Civil,0.48738762930797597,1032,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aimtron,0.4873452668877148,1033,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+APL Apollo Tubes,0.48691732824726985,1034,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mason Infratech,0.4864083277391528,1035,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Menon Pistons,0.4860738834304688,1036,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cryogenic OGS,0.48589220596289606,1037,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rajeshwari Cans,0.48585082055833595,1038,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Caprolactam Chem,0.48573730953870725,1039,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hoac Foods,0.485643542820254,1040,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rubicon Research,0.48560760535454467,1041,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gowra Leasing,0.4855161108653642,1042,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shyam Dhani Ind.,0.484704391105051,1043,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Interarch Build.,0.48454466714122213,1044,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Alufluoride,0.48420749164643606,1045,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shankar Lal Ram.,0.484051448658986,1046,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+EP Biocomposites,0.48400929215426686,1047,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Lincoln Pharma.,0.4840029096414886,1048,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Stylam Industrie,0.48391317755025476,1049,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+AIA Engineering,0.48390057514156515,1050,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Optivalue Tek,0.483731566336785,1051,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Raghav Product.,0.4836583872721897,1052,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sati Poly,0.4831141464888612,1053,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jyothy Labs,0.4830873930286795,1054,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Usha Mart. Edu.,0.4828593098979236,1055,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Finbud Financial,0.4828489400635824,1056,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kaushalya,0.4822604998680107,1057,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Panache Digilife,0.48198756737081966,1058,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gujarat Hotels,0.4819814784587321,1059,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Solar Industries,0.48193426008808854,1060,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Britannia Inds.,0.48164285809519836,1061,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+S C I,0.4815792415292575,1062,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Patel Chem,0.48119485016597663,1063,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Leo Dryfruits,0.48076706376228434,1064,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shanti Inorgan.,0.4806040687109255,1065,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aurionpro Sol.,0.4805453041702032,1066,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Black Rose Indus,0.48033620987878173,1067,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aastha Spintex,0.48030269626824823,1068,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Amal,0.4801560885529904,1069,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Caplin Point Lab,0.47971243582605816,1070,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bharat Rasayan,0.47955877079881687,1071,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HMA Agro Inds.,0.4795363997320747,1072,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+TCI Express,0.47940995293386646,1073,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Mindteck (India),0.4790076147354706,1074,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+D-Link India,0.4789476613454777,1075,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kellton Tech,0.47853834689484653,1076,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pfizer,0.4784243378558996,1077,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Choksi Asia,0.4782765671008797,1078,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CMS Info Systems,0.478004161168804,1079,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Neuland Labs.,0.4775947363493426,1080,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Goyal Salt,0.4774899425040885,1081,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Readymix Cons.,0.476792146902931,1082,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Narmada Macplast,0.4766991354578382,1083,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Thangamayil Jew.,0.47627042031710676,1084,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bhadora Indust.,0.47625161427652113,1085,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+J Kumar Infra,0.4762190170832544,1086,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Simm. Marshall,0.4754934394103866,1087,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Automotive Stamp,0.47542131662662324,1088,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hitachi Energy,0.47528041515389796,1089,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Unified Data,0.4751668598719573,1090,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+D.K. Enterprises,0.47507288250893537,1091,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ambar Protein,0.47500170842634676,1092,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Savera Industrie,0.47498318232566306,1093,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Osia Hyper Reta.,0.4749381387554815,1094,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vimta Labs,0.47466117760450605,1095,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+B2B Soft.Tech.,0.4746487183189568,1096,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rajgor Castor,0.4744649952397603,1097,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NCL Industries,0.47434905098613084,1098,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bhavik Enterpris,0.4738319810532052,1099,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NSE,0.4738015167438773,1100,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+TD Power Systems,0.47378299992718653,1101,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sh. Rama Multi.,0.47369740301615637,1102,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Savita Oil Tech,0.4735962013404182,1103,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Likhitha Infra.,0.4735761877422887,1104,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rapid Multimodal,0.47354972832532954,1105,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pankaj Polymers,0.4731904822887789,1106,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Teerth Gopicon,0.4730583364354047,1107,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rajoo Engineers,0.4729086630398813,1108,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Voith Paper,0.47285897744344435,1109,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Injecto Polymers,0.4727900176807644,1110,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Yuvraaj Hygiene,0.472599349881559,1111,Fairly Valued,Fairly Valued,Undervalued,Fairly Valued
+Vedant Fashions,0.47237892638551865,1112,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Premier Roadline,0.47237323861024466,1113,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+20 Microns,0.4722177155791499,1114,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Balmer Lawrie,0.4719747654521011,1115,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Lumino Inds,0.4718820450416845,1116,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sunshield Chem.,0.47172943228365394,1117,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hyundai Motor I,0.4717095747759368,1118,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CFF Fluid,0.4710338714130937,1119,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Clay Craft India,0.4708627593126528,1120,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Brace Port,0.4707425350770853,1121,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hind. Unilever,0.4707154492400566,1122,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Marico,0.4704982964212723,1123,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aristo Bio-Tech,0.46997504042092775,1124,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tirth Plastic,0.469569695157461,1125,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shree Ram Twist.,0.4692501511567307,1126,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Page Industries,0.46919377082804914,1127,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Adroit Industries,0.4690737052184102,1128,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Amic Forging,0.4690046672759765,1129,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rajputana Indu.,0.4689592536460679,1130,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Titaanium Ten,0.46844264268470953,1131,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Boss Packaging,0.46832266791101035,1132,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Captain Techno.,0.46805433266437824,1133,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ganesh Housing,0.46805048169007935,1134,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Uday Jewellery,0.46781698943596667,1135,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+L G Balakrishnan,0.4677352483492053,1136,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+VRL Logistics,0.46717171397758783,1137,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Control Print,0.46700732028395814,1138,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Alivus Life,0.46691102533461787,1139,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NESCO,0.4665998401744115,1140,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cybertech Sys.,0.46615596672774906,1141,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cemindia Project,0.46609625491934265,1142,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CLN Energy,0.4660172215557785,1143,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+ICRA,0.46574217699437614,1144,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+iStreet Network,0.46551618297909453,1145,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Disa India,0.46545666460316626,1146,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Netweb Technol.,0.46541836495135697,1147,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+R R Kabel,0.46505854411191205,1148,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Megamont,0.46496974211276726,1149,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hind.Adhesive,0.4648627812466143,1150,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sungarner Energ.,0.4647906560775317,1151,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Oceanic Foods,0.46473935833842045,1152,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kingfa Science,0.464178436943889,1153,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Yash Highvoltage,0.4641278164781359,1154,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Corona Remedies,0.4641065619774281,1155,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sellowrap Indus.,0.4639951471161949,1156,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+G G Automotive,0.4637770200361002,1157,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CIE Automotive,0.4634241538457996,1158,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prasol Chemicals,0.4633908056325313,1159,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Beardsell,0.4633880346750904,1160,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Godawari Power,0.46329394379912386,1161,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pranav Construc.,0.463242880025903,1162,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hannah Joseph,0.4631760623297208,1163,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+R Systems Intl.,0.4629658004257465,1164,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+ADC India,0.4624058714287152,1165,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+P N Gadgil Jewe.,0.46228847074790247,1166,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dodla Dairy,0.4619002250593534,1167,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Atishay,0.46183283622338445,1168,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Orkla India,0.4614145355714087,1169,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aries Agro,0.4613361617883004,1170,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Zydus Lifesci.,0.46129137005209675,1171,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Moxsh Overseas,0.46076219264455665,1172,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Atmastco Ltd,0.46064032468189575,1173,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Credo Brands,0.46051613458982527,1174,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Royal Arc Ele.,0.4603547516853873,1175,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vinati Organics,0.4602402092038539,1176,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Advait Energy,0.4597982754826457,1177,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+WSFX Global,0.4596807447569858,1178,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indian Phosphate,0.4594286995304185,1179,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Amba Enterprises,0.45933858952204354,1180,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jindal Drilling,0.45929682032319513,1181,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Coromandel Inter,0.4591478456289219,1182,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Muthoot Finance,0.4590828209428994,1183,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kajaria Ceramics,0.4590296827225533,1184,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Khyati Global,0.45889997211391487,1185,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Goodyear India,0.45887816284284827,1186,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Monika Alcobev,0.4588770033166741,1187,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Arman Holdings,0.45862650159541196,1188,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+C D S L,0.45853272701265313,1189,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+EIH,0.4580668600097801,1190,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Wise Travel,0.458022575441104,1191,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bright Outdoor,0.4578713014770142,1192,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Apsis Aerocom,0.4574688359260869,1193,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CRISIL,0.4571935423484373,1194,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+IC Electricals,0.45698003383151,1195,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kaka Industries,0.45675946077838964,1196,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Betex India,0.4565624325432923,1197,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vishal Nirmiti,0.4564813955841189,1198,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ajax Engineering,0.4564243233583476,1199,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Neptune Logitek,0.4563165897474821,1200,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kilburn Engg.,0.45602936799150473,1201,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Omax Autos,0.45575215808783687,1202,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Strides Pharma,0.45570615604901793,1203,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Grauer & Weil,0.4554908983928299,1204,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+HRH Next,0.455391162048364,1205,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Supreme Petroch.,0.4553903344724934,1206,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Curis Lifescien.,0.45537849094526633,1207,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ratnamani Metals,0.4553093964265131,1208,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vadilal Inds.,0.4551212171712335,1209,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kanpur Plastipa.,0.45502608256063215,1210,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aluwind Infra,0.4547054525360945,1211,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aptus Pharma,0.45467946079384197,1212,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Waterways Leisur,0.45460503207512476,1213,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pidilite Inds.,0.4544275798229522,1214,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Schaeffler India,0.45430479094346266,1215,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KMC Speciality,0.4541394294318238,1216,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aptech,0.4540097778427766,1217,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Motherson Wiring,0.45391620445730674,1218,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kaveri Seed Co.,0.4537239107153811,1219,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+P I Industries,0.45357408389129766,1220,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+M P K Steels,0.4535249743537273,1221,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bai-Kakaji Poly.,0.45330058024004416,1222,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+EPack PrefabTech,0.45327514614510733,1223,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Advance Agrolife,0.45312552479909785,1224,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ritesh Intl.,0.45305056713126773,1225,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Arunaya Organics,0.4529840228682867,1226,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indo US Bio-Tech,0.4529837772243478,1227,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dynavision,0.4525983566474044,1228,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Prima Plastics,0.45257454501502803,1229,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vintage Coffee,0.45233593594124805,1230,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dolat Algotech,0.45229865748921877,1231,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indo Borax & Ch.,0.4521719691811003,1232,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pricol Ltd,0.4520649929586384,1233,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+EIH Assoc.Hotels,0.45186642717563463,1234,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rajputana Stain.,0.4513157188747943,1235,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Antelopus Selan,0.45122402187132205,1236,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shree Balaji (Mala),0.4509562280037489,1237,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Swaraj Suiting,0.45093234515691377,1238,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Alpine Texworld,0.4509086020137311,1239,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Innovision,0.45085919827015364,1240,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shalimar Wires,0.4506634588943871,1241,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tinna Rubber,0.4505380157439766,1242,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ecoplast,0.4503295388838466,1243,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Globe Civil,0.4502589381384852,1244,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Triveni Turbine,0.45024558173095974,1245,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Centuple Global,0.4502015552622295,1246,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Monte Carlo Fas.,0.4499092056799808,1247,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Renol Polychem,0.4498489451614845,1248,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+SS Retail,0.4489099933969768,1249,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Namo eWaste,0.44882321659940894,1250,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Maruti Suzuki,0.44833451896665844,1251,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aditya Infotech,0.4480274872728822,1252,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+DMR Engineering,0.4480263294143548,1253,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NDR Auto Compon.,0.4476843079849158,1254,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Capacit'e Infra.,0.4476648375691963,1255,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Eveready Inds.,0.4475171201448784,1256,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+M R P L,0.44730452730312553,1257,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Benchmark Comp.,0.4471922570325998,1258,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Datamatics Glob.,0.4471796515373835,1259,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Menon Bearings,0.4471184422143547,1260,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Grand Foundry,0.44663321747580076,1261,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued
+Vinyl Chemicals,0.44562811208851677,1262,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued
+Plada Infotech S,0.4455720311912223,1263,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Anthem Bioscienc,0.4452075905900127,1264,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+EID Parry,0.44510871472567004,1265,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+L&T Technology,0.4451024887071568,1266,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Cella Space,0.4449023362235088,1267,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kesar India,0.44464936471267424,1268,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gaja Alternative Asset,0.4440250759429664,1269,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Asston Pharmaceu,0.4434369962637391,1270,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Quess Corp,0.4433029837569349,1271,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shakti Pumps,0.4432765057635534,1272,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ahluwalia Contr.,0.4432582319670276,1273,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued
+Steel City Sec.,0.44308126890212435,1274,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+CSL Finance,0.4428017273670169,1275,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Roopa Industries,0.44278068398810966,1276,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Privi Speci.,0.44271772044116164,1277,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Rama Phosphates,0.4426791782412542,1278,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Alkyl Amines,0.44250024052270026,1279,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bemco Hydraulics,0.44181324261884547,1280,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Aesthetik Engi.,0.44159494965023566,1281,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+German Green Ste,0.44143600740427563,1282,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+BDH Industries,0.4413751626939355,1283,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Wipro,0.4412266748182968,1284,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+ADF Foods,0.44087074178809754,1285,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+RMC Switchgears,0.4406934431844752,1286,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dhoot Transmission,0.44061215437605056,1287,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tuticorin Alkali,0.4404806483312839,1288,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Q-Line Biotech,0.44045572464469834,1289,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Welspun Corp,0.4404415062991994,1290,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Visdem Technosys,0.4402524564914021,1291,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+GNA Axles,0.4395505935811857,1292,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KPIT Technologi.,0.43946870044004294,1293,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Arisinfra Solu.,0.43928090427420424,1294,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shri Balaji,0.43923276352631063,1295,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kalyani Cast-Tec,0.4388435753961933,1296,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Manoj Vaibhav,0.4385646888194184,1297,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+GPT Infraproject,0.43831962773034994,1298,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vdeal System,0.4382217135126187,1299,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sri Lotus,0.4381055777010726,1300,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Golkunda Diamond,0.43803831979370883,1301,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Integra Engg.,0.4378494876731707,1302,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+AVT Natural Prod,0.4377641785915517,1303,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Bhatia Communic.,0.43742996026243497,1304,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sudeep Pharma,0.4372630656981263,1305,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hy-Tech Engineer,0.43681711130731754,1306,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Suditi Industrie,0.43666229549829577,1307,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Insecticid.India,0.43614905188781544,1308,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dhanalaxmi Roto,0.436102477226319,1309,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Accedere,0.43610198961295893,1310,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kovai Medical,0.43557203458855853,1311,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Gallantt Ispat L,0.43512472902845406,1312,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NIIT Learning,0.4348928187963573,1313,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+ASM Technologies,0.4348231348801137,1314,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Zeal Global Serv,0.4347016732560279,1315,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Trident Lifeline,0.4337383668215619,1316,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Volt.Transform.,0.4336638057044591,1317,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Lippi Systems,0.4335554158249465,1318,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Titan Biotech,0.43307561143930373,1319,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NMS Global,0.43300061123063566,1320,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sai Silks,0.4329697063026476,1321,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+U P Hotels,0.4328171897211646,1322,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vidya Wires,0.4322313841957133,1323,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kwality Pharma,0.4320225905830483,1324,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+RPG LifeScience.,0.43194224013410887,1325,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shalibhadra Fin.,0.431810106987553,1326,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+KFin Technolog.,0.4312342845446941,1327,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Veekayem Fash.,0.4311208111896892,1328,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Srigee DLM,0.4308929134570073,1329,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+NAPS Global,0.43073966555489435,1330,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jindal Supreme,0.429901820757341,1331,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+DHVIJA FINANCE,0.42878065721167663,1332,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indo Rama Synth.,0.4283808933493026,1333,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Energy-Mission,0.4282184012239953,1334,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jumbo Bag,0.4280999454192083,1335,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Jagsonpal Pharma,0.4280672043617324,1336,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Hind.Aeronautics,0.42781595957959595,1337,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Railtel Corpn.,0.4278114762338845,1338,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Vertoz,0.4276690921941328,1339,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Empire Inds.,0.4276368431589856,1340,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+3M India,0.4274906038793518,1341,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Modern Insulator,0.4273978613992235,1342,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Flair Writing,0.42688421328075155,1343,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+BCL Industries,0.42686889976845743,1344,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+K2 Infragen,0.4268436231651953,1345,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Std. Capital Mkt,0.4262337940186053,1346,Fairly Valued,Fairly Valued,Overvalued,Fairly Valued
+Multibase India,0.4260998521587679,1347,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Novartis India,0.4260076772451889,1348,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Nucleus Soft.,0.42574674896642645,1349,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Redtape,0.4250015637204006,1350,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Caliber Mining,0.4249532586483154,1351,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Suryalata Spg.,0.42483365684561153,1352,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Dr Lal Pathlabs,0.4247984415245315,1353,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+TVS Holdings,0.42466232021296413,1354,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Systematic Inds.,0.42441378068548297,1355,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Riyaasat Life,0.42409960384604223,1356,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Autofurnish,0.4236832329124564,1357,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+VVIP Infratech,0.4234553192888281,1358,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Fermenta Biotec.,0.42319974272131733,1359,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Take,0.4230496543718008,1360,Fairly Valued,Overvalued,Fairly Valued,Overvalued
+Forcas Studio,0.42303352107450587,1361,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Pramara Promotio,0.4227766698089939,1362,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Laxmi Dental,0.42264599738982084,1363,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Omfurn India,0.422184149119189,1364,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Euro Panel,0.42213293423251486,1365,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Inox India,0.42206725405070117,1366,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Subros,0.42177627940420914,1367,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kanishk Alumin.,0.4217650803108507,1368,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Anantam Highways,0.421168648466957,1369,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Satin Creditcare,0.4210832200445835,1370,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Krystal Integrat,0.42072073416112005,1371,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Matrimony.com,0.4206039636904082,1372,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Alkem Lab,0.42043715123441805,1373,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sizemasters Tech,0.4198220465024021,1374,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Indo Amines,0.4198074764415069,1375,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Helloji Holidays,0.4197451301726859,1376,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Himadri Special,0.4194209971387042,1377,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Striders Impex,0.4186977011858041,1378,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Crompton Gr. Con,0.4185585566041155,1379,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Archit Organosys,0.41819395196299525,1380,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Om Galaxy,0.4178288577507901,1381,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Kasturi Metal,0.41712118859056796,1382,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+H P C L,0.417108530001583,1383,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Time Technoplast,0.4169956630834837,1384,Fairly Valued,Fairly Valued,Fairly Valued,Overvalued
+Prec. Wires (I),0.4169724688195027,1385,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Madras Fertilize,0.41687227085159034,1386,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Sarda Energy,0.4168650900616428,1387,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Seemax Resources,0.4168150301335784,1388,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Talbros Auto.,0.41674044181648895,1389,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Radico Khaitan,0.416584521680777,1390,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Swastika Castal,0.416542866870009,1391,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Baheti Recycling,0.4162798339589496,1392,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Apollo Tyres,0.4161679952456581,1393,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Earkart,0.41616204998914114,1394,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Shivalik Bimetal,0.41613074522041377,1395,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Havells India,0.41591001178718434,1396,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+The Anup Enginee,0.4155698149337255,1397,Fairly Valued,Fairly Valued,Fairly Valued,Overvalued
+Bulkcorp Inter.,0.4154598297204606,1398,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Tata Technolog.,0.4153475561696261,1399,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Walpar Nutrition,0.4153256157304085,1400,Fairly Valued,Fairly Valued,Fairly Valued,Fairly Valued
+Ecofinity Atomix,0.4148972746500808,1401,Overvalued,Overvalued,Fairly Valued,Fairly Valued
+Power & Instrum.,0.41442598745176423,1402,Overvalued,Overvalued,Fairly Valued,Overvalued
+Motisons Jewel,0.4141213608812945,1403,Overvalued,Overvalued,Fairly Valued,Overvalued
+Aptus Value Hou.,0.4139898490718797,1404,Overvalued,Overvalued,Fairly Valued,Overvalued
+Gabriel India,0.413639478587741,1405,Overvalued,Overvalued,Fairly Valued,Overvalued
+Arham Tech,0.41356814712471907,1406,Overvalued,Overvalued,Fairly Valued,Overvalued
+Elecon Engg.Co,0.4132594646240584,1407,Overvalued,Overvalued,Fairly Valued,Overvalued
+Halder Venture,0.41319261245411537,1408,Overvalued,Overvalued,Fairly Valued,Overvalued
+C K K Retail,0.4131837829200594,1409,Overvalued,Overvalued,Fairly Valued,Overvalued
+Jay Bee Laminati,0.41316332065372535,1410,Overvalued,Overvalued,Fairly Valued,Overvalued
+Signoria Creatio,0.4131489286516114,1411,Overvalued,Overvalued,Fairly Valued,Overvalued
+Autoriders Intl.,0.41305631362073836,1412,Overvalued,Overvalued,Fairly Valued,Overvalued
+Vaidya Sane,0.41299455984435257,1413,Overvalued,Overvalued,Fairly Valued,Overvalued
+SML Mahindra,0.41283370747316506,1414,Overvalued,Overvalued,Fairly Valued,Overvalued
+Va Tech Wabag,0.41273631692007773,1415,Overvalued,Overvalued,Fairly Valued,Overvalued
+FDC,0.4117847722625765,1416,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cello World,0.41171048324731263,1417,Overvalued,Overvalued,Fairly Valued,Overvalued
+Tara Chand Infra,0.411601036282815,1418,Overvalued,Overvalued,Fairly Valued,Overvalued
+SM Auto Stamping,0.4114418150875677,1419,Overvalued,Overvalued,Fairly Valued,Overvalued
+HP Telecom,0.4110850933524876,1420,Overvalued,Overvalued,Fairly Valued,Overvalued
+Agro Phos India,0.411053820059765,1421,Overvalued,Overvalued,Fairly Valued,Overvalued
+Gabion Technol.,0.41072510102728577,1422,Overvalued,Overvalued,Fairly Valued,Overvalued
+ASK Automotive,0.41070011841012644,1423,Overvalued,Overvalued,Fairly Valued,Overvalued
+United Spirits,0.41038597712067243,1424,Overvalued,Overvalued,Fairly Valued,Overvalued
+GSP Crop Science,0.41034599622132456,1425,Overvalued,Overvalued,Fairly Valued,Overvalued
+Bikaji Foods,0.4100478031372373,1426,Overvalued,Overvalued,Fairly Valued,Overvalued
+Rajas. Tube Mfg,0.4093406434138593,1427,Overvalued,Overvalued,Fairly Valued,Overvalued
+Armee Infotech,0.40913534812561414,1428,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sheetal Univer.,0.4088528329320814,1429,Overvalued,Overvalued,Fairly Valued,Overvalued
+Happy Steels,0.408763926741218,1430,Overvalued,Overvalued,Fairly Valued,Overvalued
+Shree TNB Polymers,0.4087628089566832,1431,Overvalued,Overvalued,Fairly Valued,Overvalued
+Committed Cargo,0.4085696244487629,1432,Overvalued,Overvalued,Fairly Valued,Overvalued
+EPL Ltd,0.4079625192509923,1433,Overvalued,Overvalued,Fairly Valued,Overvalued
+Techno Elec.Engg,0.40778706376276475,1434,Overvalued,Overvalued,Fairly Valued,Overvalued
+N R Vandana,0.4077571099236077,1435,Overvalued,Overvalued,Fairly Valued,Overvalued
+Modern Malleable,0.40763492013446395,1436,Overvalued,Overvalued,Fairly Valued,Overvalued
+Karbonsteel Eng.,0.4073724408951949,1437,Overvalued,Overvalued,Fairly Valued,Overvalued
+ROX Hi-Tech,0.40682419905119244,1438,Overvalued,Overvalued,Fairly Valued,Overvalued
+Blue Jet Health,0.4067944117899892,1439,Overvalued,Overvalued,Fairly Valued,Fairly Valued
+Shera Energy,0.40676799820184334,1440,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mangal Electrica,0.406480403140641,1441,Overvalued,Overvalued,Fairly Valued,Overvalued
+Gothi Plascon,0.4061097311144256,1442,Overvalued,Overvalued,Fairly Valued,Overvalued
+Acme India,0.4058758080839498,1443,Overvalued,Overvalued,Fairly Valued,Overvalued
+Lehar Footwears,0.4055869294943861,1444,Overvalued,Overvalued,Fairly Valued,Overvalued
+Trent,0.40558630744505514,1445,Overvalued,Overvalued,Fairly Valued,Overvalued
+Jayaswal Neco,0.40534164099912756,1446,Overvalued,Overvalued,Fairly Valued,Overvalued
+Aarvi Encon,0.4051714269028905,1447,Overvalued,Overvalued,Fairly Valued,Overvalued
+Excelsoft Tech.,0.40507833432501605,1448,Overvalued,Overvalued,Fairly Valued,Overvalued
+Dharmaj Crop,0.40500267024046405,1449,Overvalued,Overvalued,Fairly Valued,Overvalued
+Purple United,0.4048968777387677,1450,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mahaveer Infoway,0.4048179829185986,1451,Overvalued,Overvalued,Fairly Valued,Overvalued
+Swastika Investm,0.40404599243410744,1452,Overvalued,Overvalued,Fairly Valued,Overvalued
+Arih.Found.Hsg.,0.4038221087983246,1453,Overvalued,Overvalued,Fairly Valued,Overvalued
+Jindal Stain.,0.4033819432157886,1454,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cenlub Industrie,0.4027315699112964,1455,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sun Pharma.Inds.,0.40267465849447365,1456,Overvalued,Overvalued,Fairly Valued,Overvalued
+H P Cotton Tex,0.4020874683613681,1457,Overvalued,Overvalued,Fairly Valued,Overvalued
+JK Tyre & Indust,0.40184697275807174,1458,Overvalued,Overvalued,Fairly Valued,Overvalued
+Fabtech Tech.,0.40143016080645105,1459,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sh. Jagdamba Pol,0.4012437570829927,1460,Overvalued,Overvalued,Fairly Valued,Overvalued
+Prostarm Info,0.40120158397252187,1461,Overvalued,Overvalued,Fairly Valued,Overvalued
+Power Mech Proj.,0.40118555197555295,1462,Overvalued,Overvalued,Fairly Valued,Overvalued
+Team Lease Serv.,0.40113293981130405,1463,Overvalued,Overvalued,Fairly Valued,Overvalued
+Innovana Think.,0.4009040794665384,1464,Overvalued,Overvalued,Fairly Valued,Overvalued
+Geekay Wires,0.40083507816501884,1465,Overvalued,Overvalued,Fairly Valued,Overvalued
+DC Infotech,0.4007930273788549,1466,Overvalued,Overvalued,Fairly Valued,Overvalued
+T R I L,0.40064249326211754,1467,Overvalued,Overvalued,Fairly Valued,Fairly Valued
+Emcure Pharma,0.4005888411151459,1468,Overvalued,Overvalued,Fairly Valued,Overvalued
+Authum Invest,0.4003342283351166,1469,Overvalued,Overvalued,Fairly Valued,Overvalued
+Platinum Industr,0.40009604192954573,1470,Overvalued,Overvalued,Overvalued,Overvalued
+True Green,0.3999278843391851,1471,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mach Travel Solutions,0.39982628205973064,1472,Overvalued,Overvalued,Fairly Valued,Overvalued
+Trade-Wings,0.3992299721458266,1473,Overvalued,Overvalued,Overvalued,Overvalued
+KSH Internationa,0.39896740715840795,1474,Overvalued,Overvalued,Fairly Valued,Overvalued
+Hawa Engineers,0.398833359656363,1475,Overvalued,Overvalued,Fairly Valued,Overvalued
+Vesuvius India,0.3986910132442452,1476,Overvalued,Overvalued,Fairly Valued,Overvalued
+Zodiac Energy,0.398548343007449,1477,Overvalued,Overvalued,Fairly Valued,Overvalued
+CG Power & Ind,0.3984059472652891,1478,Overvalued,Overvalued,Fairly Valued,Overvalued
+Elantas Beck,0.3977753317974446,1479,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sirca Paints,0.39773618216471723,1480,Overvalued,Overvalued,Fairly Valued,Overvalued
+Asian Paints,0.39737131170293244,1481,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mphasis,0.39623528786330353,1482,Overvalued,Overvalued,Fairly Valued,Fairly Valued
+Star Cement,0.3961094123866367,1483,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sheetal Cool,0.3959506405096871,1484,Overvalued,Overvalued,Fairly Valued,Overvalued
+Vinsys IT Serv.,0.3955111154776413,1485,Overvalued,Overvalued,Fairly Valued,Overvalued
+Varvee Global,0.3954499264129606,1486,Overvalued,Overvalued,Overvalued,Overvalued
+Akme Fintrade,0.3950974694988386,1487,Overvalued,Overvalued,Fairly Valued,Overvalued
+Holmarc Opto,0.3950958201668322,1488,Overvalued,Overvalued,Fairly Valued,Overvalued
+Dixon Technolog.,0.39493545685499337,1489,Overvalued,Overvalued,Overvalued,Overvalued
+Asarfi Hospital,0.39480568989586867,1490,Overvalued,Overvalued,Fairly Valued,Overvalued
+Dhariwalcorp,0.3945707716943564,1491,Overvalued,Overvalued,Fairly Valued,Overvalued
+Marksans Pharma,0.3940244191416096,1492,Overvalued,Overvalued,Fairly Valued,Overvalued
+Tech Mahindra,0.3932683736727174,1493,Overvalued,Overvalued,Fairly Valued,Overvalued
+Markolines Pavem,0.39236539993775005,1494,Overvalued,Overvalued,Fairly Valued,Overvalued
+Ultra Wiring,0.39171910792845416,1495,Overvalued,Overvalued,Fairly Valued,Overvalued
+Shreeji Ship. Gl,0.3915586718958117,1496,Overvalued,Overvalued,Fairly Valued,Overvalued
+Divi's Lab.,0.3911386205528854,1497,Overvalued,Overvalued,Fairly Valued,Overvalued
+Usha Martin,0.390963380102793,1498,Overvalued,Overvalued,Fairly Valued,Overvalued
+I T D C,0.3905590927753667,1499,Overvalued,Overvalued,Fairly Valued,Overvalued
+Hind.Construct.,0.39011668847207226,1500,Overvalued,Overvalued,Overvalued,Overvalued
+Mazda,0.38971328430804686,1501,Overvalued,Overvalued,Overvalued,Overvalued
+NBCC,0.3896756984947393,1502,Overvalued,Overvalued,Overvalued,Overvalued
+Sumitomo Chemi.,0.3893998172984511,1503,Overvalued,Overvalued,Fairly Valued,Overvalued
+SBEC Sugar,0.38921456286689343,1504,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mega Flex Plast.,0.38916558555043007,1505,Overvalued,Overvalued,Fairly Valued,Overvalued
+LG Electronics,0.38869902735664874,1506,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kalyani Steels,0.38868619935209187,1507,Overvalued,Overvalued,Fairly Valued,Overvalued
+Rallis India,0.38841652607575383,1508,Overvalued,Overvalued,Fairly Valued,Overvalued
+Skipper,0.388149776590864,1509,Overvalued,Overvalued,Fairly Valued,Overvalued
+MRF,0.3881235448960056,1510,Overvalued,Overvalued,Fairly Valued,Overvalued
+Colab Platforms,0.38791280690230456,1511,Overvalued,Overvalued,Fairly Valued,Overvalued
+Parth Electrical,0.3876568331729269,1512,Overvalued,Overvalued,Fairly Valued,Overvalued
+Finolex Cables,0.3872809086155612,1513,Overvalued,Overvalued,Overvalued,Overvalued
+Meenakshi (I),0.3872609001418232,1514,Overvalued,Overvalued,Fairly Valued,Overvalued
+Vikran Engg.,0.3870260036020168,1515,Overvalued,Overvalued,Overvalued,Overvalued
+Madhav Infra,0.38665275767346247,1516,Overvalued,Overvalued,Fairly Valued,Overvalued
+Anlon Healthcare,0.3866413492166501,1517,Overvalued,Overvalued,Fairly Valued,Overvalued
+Integrated Perso,0.38658412286355626,1518,Overvalued,Overvalued,Fairly Valued,Overvalued
+DOMS Industries,0.38638888301836716,1519,Overvalued,Overvalued,Fairly Valued,Overvalued
+A B B,0.38637048552776243,1520,Overvalued,Overvalued,Fairly Valued,Overvalued
+Scoda Tubes,0.386354610249631,1521,Overvalued,Overvalued,Overvalued,Overvalued
+Shanthi Gears,0.38580859628607167,1522,Overvalued,Overvalued,Fairly Valued,Overvalued
+Megatherm Indu.,0.3854867598384663,1523,Overvalued,Overvalued,Overvalued,Overvalued
+Lumax Auto Tech.,0.3854860937266813,1524,Overvalued,Overvalued,Fairly Valued,Overvalued
+Rappid Valves,0.3852902223526721,1525,Overvalued,Overvalued,Fairly Valued,Overvalued
+Thomas Cook (I),0.385140720703268,1526,Overvalued,Overvalued,Fairly Valued,Overvalued
+Aztec Fluids,0.3851177196580608,1527,Overvalued,Overvalued,Fairly Valued,Overvalued
+KSB,0.3850509548703867,1528,Overvalued,Overvalued,Overvalued,Overvalued
+VMS TMT,0.38496505356150706,1529,Overvalued,Overvalued,Fairly Valued,Overvalued
+Padmanabh Inds.,0.3838533312844656,1530,Overvalued,Overvalued,Fairly Valued,Overvalued
+Rama Vision,0.3836829850259562,1531,Overvalued,Overvalued,Fairly Valued,Overvalued
+Advanced Enzyme,0.3834238141397175,1532,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mahamaya Lifesc.,0.3832532549966853,1533,Overvalued,Overvalued,Overvalued,Overvalued
+India Nipp.Elec.,0.3832134263706783,1534,Overvalued,Overvalued,Overvalued,Overvalued
+Suraj Estate,0.3831998156299617,1535,Overvalued,Overvalued,Fairly Valued,Overvalued
+Denis Chem Lab,0.38309054237225787,1536,Overvalued,Overvalued,Fairly Valued,Overvalued
+Zeal Aqua,0.3828723392980748,1537,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kamat Hotels,0.3826826759389175,1538,Overvalued,Overvalued,Overvalued,Overvalued
+Unicommerce,0.3824894382478777,1539,Overvalued,Overvalued,Fairly Valued,Overvalued
+Jakharia Fabric,0.38185300982540066,1540,Overvalued,Overvalued,Overvalued,Overvalued
+GLEN Industries,0.38152189293675504,1541,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sejal Glass,0.3810402185879752,1542,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kirl. Brothers,0.3805812407701691,1543,Overvalued,Overvalued,Fairly Valued,Overvalued
+Guj. Themis Bio.,0.3805399861942367,1544,Overvalued,Overvalued,Fairly Valued,Overvalued
+Karamtara Engg.,0.3804955764504467,1545,Overvalued,Overvalued,Overvalued,Overvalued
+Interiors & More,0.3803502659282602,1546,Overvalued,Overvalued,Fairly Valued,Overvalued
+Foseco India,0.38032561839525386,1547,Overvalued,Overvalued,Overvalued,Overvalued
+Silverstorm Parks,0.3797169706329588,1548,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kewal Kir.Cloth.,0.3797061701449955,1549,Overvalued,Overvalued,Fairly Valued,Overvalued
+Supreme Inds.,0.3796684639065813,1550,Overvalued,Overvalued,Overvalued,Overvalued
+Avio Smart Market,0.37950419272010905,1551,Overvalued,Overvalued,Fairly Valued,Overvalued
+Deepak Builders,0.37943838393049756,1552,Overvalued,Overvalued,Fairly Valued,Overvalued
+Garware Hi Tech,0.3793321602240868,1553,Overvalued,Overvalued,Overvalued,Overvalued
+Ganesh Benzopl.,0.3793106274602244,1554,Overvalued,Overvalued,Fairly Valued,Overvalued
+CEAT,0.3782366817259117,1555,Overvalued,Overvalued,Overvalued,Overvalued
+Bharat Gears,0.3775739307712888,1556,Overvalued,Overvalued,Overvalued,Overvalued
+Creative Newtech,0.3774479822451381,1557,Overvalued,Overvalued,Fairly Valued,Overvalued
+Vilas Transcore,0.37710767988760574,1558,Overvalued,Overvalued,Fairly Valued,Overvalued
+Nilachal Carbo,0.3766093533082423,1559,Overvalued,Overvalued,Fairly Valued,Overvalued
+Talbros Engg.,0.3763244958995912,1560,Overvalued,Overvalued,Fairly Valued,Overvalued
+Data Pattern,0.3761936230626465,1561,Overvalued,Overvalued,Overvalued,Overvalued
+Sakthi Sugars,0.37594545033630317,1562,Overvalued,Overvalued,Fairly Valued,Overvalued
+GNG Electronics,0.37570201390505237,1563,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cinevista,0.3754652808214195,1564,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cont. Securities,0.3752189970007433,1565,Overvalued,Overvalued,Fairly Valued,Overvalued
+Paradeep Phosph.,0.37493394575068134,1566,Overvalued,Overvalued,Overvalued,Overvalued
+Ramco Systems,0.3747980668698422,1567,Overvalued,Overvalued,Fairly Valued,Overvalued
+Network People,0.374029524386004,1568,Overvalued,Overvalued,Fairly Valued,Overvalued
+Patel Retail,0.37386942638260834,1569,Overvalued,Overvalued,Fairly Valued,Overvalued
+Madhusudan Masa,0.37324182773021697,1570,Overvalued,Overvalued,Fairly Valued,Overvalued
+Filatex India,0.37315498319859336,1571,Overvalued,Overvalued,Fairly Valued,Overvalued
+WPIL,0.37250970403717343,1572,Overvalued,Overvalued,Overvalued,Overvalued
+J.G.Chemicals,0.37248762255571066,1573,Overvalued,Overvalued,Fairly Valued,Overvalued
+Radix Industries,0.37215992840451806,1574,Overvalued,Overvalued,Fairly Valued,Overvalued
+Indo-MIM,0.37143706479681754,1575,Overvalued,Overvalued,Fairly Valued,Overvalued
+Dolphin Offshore,0.371322353036443,1576,Overvalued,Overvalued,Fairly Valued,Overvalued
+Bodhi Tree,0.371101533599668,1577,Overvalued,Overvalued,Overvalued,Overvalued
+M.V.K. Agro,0.37086547497948946,1578,Overvalued,Overvalued,Fairly Valued,Overvalued
+Latent View,0.37076178154503464,1579,Overvalued,Overvalued,Overvalued,Overvalued
+Prime Industries,0.37027168185273607,1580,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sh. Ajit Pulp,0.3700437949856457,1581,Overvalued,Overvalued,Fairly Valued,Overvalued
+JSW Dulux,0.36921920560794885,1582,Overvalued,Overvalued,Fairly Valued,Overvalued
+CitiPort Fin.,0.36913064225139053,1583,Overvalued,Overvalued,Overvalued,Overvalued
+Indegene,0.3690260356202945,1584,Overvalued,Overvalued,Fairly Valued,Overvalued
+Elgi Equipments,0.36850684904549147,1585,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mayank Cattle Fo,0.3682911257977716,1586,Overvalued,Overvalued,Overvalued,Overvalued
+N S D L,0.36825894584546254,1587,Overvalued,Overvalued,Overvalued,Overvalued
+Syschem (India),0.36809912027704994,1588,Overvalued,Overvalued,Overvalued,Overvalued
+KPI Green Energy,0.36791106563228454,1589,Overvalued,Overvalued,Overvalued,Overvalued
+Affle 3i,0.36695433947405853,1590,Overvalued,Overvalued,Overvalued,Overvalued
+Mitsu Chem Plast,0.36632784725071577,1591,Overvalued,Overvalued,Fairly Valued,Overvalued
+ARCL Organics,0.3658512911440233,1592,Overvalued,Overvalued,Overvalued,Overvalued
+Dollar Industrie,0.3658493406397924,1593,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kreon Finnancial,0.3652878256949753,1594,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sanjiv.Parant.,0.36523605683563404,1595,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cords Cable,0.3648801728858117,1596,Overvalued,Overvalued,Fairly Valued,Overvalued
+Hindustan Motors,0.36464900053647714,1597,Overvalued,Overvalued,Fairly Valued,Overvalued
+Mangalam Global,0.3643447425999278,1598,Overvalued,Overvalued,Overvalued,Overvalued
+ZF Commercial,0.36385267211879396,1599,Overvalued,Overvalued,Overvalued,Overvalued
+Source Natural,0.36382730826206416,1600,Overvalued,Overvalued,Fairly Valued,Overvalued
+KEI Industries,0.36372857432854,1601,Overvalued,Overvalued,Overvalued,Overvalued
+Schneider APW,0.36359355367662705,1602,Overvalued,Overvalued,Fairly Valued,Overvalued
+Oberoi Realty,0.3635234574676181,1603,Overvalued,Overvalued,Fairly Valued,Overvalued
+National Plastic,0.3632636550387001,1604,Overvalued,Overvalued,Overvalued,Overvalued
+SPR Auto Technologies,0.3626713914105742,1605,Overvalued,Overvalued,Overvalued,Overvalued
+Intellect Design,0.3625889901235521,1606,Overvalued,Overvalued,Overvalued,Overvalued
+Sambhv Steel,0.3615769296846826,1607,Overvalued,Overvalued,Overvalued,Overvalued
+Century Extrus.,0.36139164277420044,1608,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cantabil Retail,0.3609178641077528,1609,Overvalued,Overvalued,Fairly Valued,Overvalued
+Indigo Paints,0.3604914508985106,1610,Overvalued,Overvalued,Overvalued,Overvalued
+Remus Pharma.,0.3600749713305966,1611,Overvalued,Overvalued,Fairly Valued,Overvalued
+UTI AMC,0.35992655113094213,1612,Overvalued,Overvalued,Overvalued,Overvalued
+M R Maniveni,0.3598994219606695,1613,Overvalued,Overvalued,Fairly Valued,Overvalued
+Garware Tech.,0.3597471322027588,1614,Overvalued,Overvalued,Fairly Valued,Overvalued
+AWL Agri Busine.,0.3597197336102708,1615,Overvalued,Overvalued,Overvalued,Overvalued
+Dabur India,0.35950243411288124,1616,Overvalued,Overvalued,Overvalued,Overvalued
+KN Agri Resource,0.3592208531246209,1617,Overvalued,Overvalued,Overvalued,Overvalued
+Safari Inds.,0.3591836400523451,1618,Overvalued,Overvalued,Overvalued,Overvalued
+Ironwood Educa,0.3587445235894934,1619,Overvalued,Overvalued,Overvalued,Overvalued
+JOJO,0.3585599359911164,1620,Overvalued,Overvalued,Fairly Valued,Overvalued
+SRF,0.3584676648733524,1621,Overvalued,Overvalued,Fairly Valued,Overvalued
+Five-Star Bus.Fi,0.35836939395316325,1622,Overvalued,Overvalued,Fairly Valued,Overvalued
+Vidhi Specialty,0.3581471736429663,1623,Overvalued,Overvalued,Fairly Valued,Overvalued
+DJ Mediaprint,0.35753742648951203,1624,Overvalued,Overvalued,Fairly Valued,Overvalued
+Apar Inds.,0.3574449996404509,1625,Overvalued,Overvalued,Overvalued,Overvalued
+Kimia Bioscien.,0.3572941970085261,1626,Overvalued,Overvalued,Fairly Valued,Overvalued
+Bella Casa Fashi,0.35708462904804505,1627,Overvalued,Overvalued,Fairly Valued,Overvalued
+KVS Castings,0.356479321585963,1628,Overvalued,Overvalued,Overvalued,Overvalued
+Honasa Consumer,0.3563549219860872,1629,Overvalued,Overvalued,Fairly Valued,Overvalued
+Varun Beverages,0.3563165165328534,1630,Overvalued,Overvalued,Overvalued,Overvalued
+O N G C,0.35605273256434283,1631,Overvalued,Overvalued,Overvalued,Overvalued
+Roto Pumps,0.3553807039874997,1632,Overvalued,Overvalued,Overvalued,Overvalued
+IFB Industries,0.355170358445298,1633,Overvalued,Overvalued,Fairly Valued,Overvalued
+IIFL Capital,0.35489139583610735,1634,Overvalued,Overvalued,Overvalued,Overvalued
+GPT Healthcare,0.35486074612887863,1635,Overvalued,Overvalued,Fairly Valued,Overvalued
+Grindwell Norton,0.35462409056213967,1636,Overvalued,Overvalued,Overvalued,Overvalued
+K P R Mill Ltd,0.3541504722043685,1637,Overvalued,Overvalued,Fairly Valued,Overvalued
+Amines & Plast.,0.3539077335098048,1638,Overvalued,Overvalued,Overvalued,Overvalued
+Diffusion Eng,0.35354254666918994,1639,Overvalued,Overvalued,Overvalued,Overvalued
+Jayant Infratech,0.35340126489923,1640,Overvalued,Overvalued,Overvalued,Overvalued
+Suyog Telematics,0.35315543464378824,1641,Overvalued,Overvalued,Fairly Valued,Overvalued
+HRS Aluglaze,0.3529699382749218,1642,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sai Life,0.35291863232492,1643,Overvalued,Overvalued,Fairly Valued,Overvalued
+Anuh Pharma,0.35269951230910257,1644,Overvalued,Overvalued,Overvalued,Overvalued
+Campus Activewe.,0.3520802931861186,1645,Overvalued,Overvalued,Fairly Valued,Overvalued
+IIRM Holdings,0.35164178004330787,1646,Overvalued,Overvalued,Fairly Valued,Overvalued
+NCC,0.35163535534337315,1647,Overvalued,Overvalued,Overvalued,Overvalued
+Ipca Labs.,0.35114445671236233,1648,Overvalued,Overvalued,Overvalued,Overvalued
+Punjab Chemicals,0.35044624999168417,1649,Overvalued,Overvalued,Fairly Valued,Overvalued
+Carysil,0.3503936441680479,1650,Overvalued,Overvalued,Fairly Valued,Overvalued
+Styrenix Perfor.,0.35039278076325653,1651,Overvalued,Overvalued,Fairly Valued,Overvalued
+Atul,0.3499304522505787,1652,Overvalued,Overvalued,Fairly Valued,Overvalued
+Gravita India,0.3497928147080641,1653,Overvalued,Overvalued,Fairly Valued,Overvalued
+V2 Retail,0.34921027494175366,1654,Overvalued,Overvalued,Overvalued,Overvalued
+Supreme Power,0.3486960455700505,1655,Overvalued,Overvalued,Fairly Valued,Overvalued
+Sangani Hospital,0.34868490886692793,1656,Overvalued,Overvalued,Overvalued,Overvalued
+Sanghvi Movers,0.3486438058420799,1657,Overvalued,Overvalued,Fairly Valued,Overvalued
+Redington,0.34801690200995566,1658,Overvalued,Overvalued,Overvalued,Overvalued
+Digilogic Systems,0.3476270721454409,1659,Overvalued,Overvalued,Overvalued,Overvalued
+Fabtech Cleanrooms,0.3465715780464362,1660,Overvalued,Overvalued,Overvalued,Overvalued
+Anand Rathi Shar,0.34645486000669645,1661,Overvalued,Overvalued,Fairly Valued,Overvalued
+NRB Bearings,0.3461320327556055,1662,Overvalued,Overvalued,Overvalued,Overvalued
+Modern Dairies,0.3458184268226915,1663,Overvalued,Overvalued,Overvalued,Overvalued
+Donear Inds.,0.345407890661159,1664,Overvalued,Overvalued,Overvalued,Overvalued
+Siemens,0.3452741898704231,1665,Overvalued,Overvalued,Overvalued,Overvalued
+Ajmera Realty,0.34479263820593536,1666,Overvalued,Overvalued,Overvalued,Overvalued
+AGI Infra,0.34474014066008074,1667,Overvalued,Overvalued,Overvalued,Overvalued
+Eureka Industrie,0.3446666666666667,1668,Overvalued,Overvalued,Fairly Valued,Overvalued
+Pradeep Metals,0.3444709281615543,1669,Overvalued,Overvalued,Fairly Valued,Overvalued
+Nitin Castings,0.34429089758689774,1670,Overvalued,Overvalued,Overvalued,Overvalued
+Rashi Peripheral,0.34418635202630365,1671,Overvalued,Overvalued,Overvalued,Overvalued
+Ecoline Exim,0.3441644845924194,1672,Overvalued,Overvalued,Overvalued,Overvalued
+Hariom Pipe,0.34401324343627626,1673,Overvalued,Overvalued,Overvalued,Overvalued
+Weizmann,0.34379666990449553,1674,Overvalued,Overvalued,Overvalued,Overvalued
+KEC International,0.3434746189973973,1675,Overvalued,Overvalued,Overvalued,Overvalued
+Ram Ratna Wires,0.3429231563757811,1676,Overvalued,Overvalued,Overvalued,Overvalued
+Tube Investments,0.34264148640362274,1677,Overvalued,Overvalued,Overvalued,Overvalued
+Aartech Solonics,0.3413472985965623,1678,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kross Ltd,0.3411021263442525,1679,Overvalued,Overvalued,Fairly Valued,Overvalued
+V-Guard Industri,0.34029388318460274,1680,Overvalued,Overvalued,Fairly Valued,Overvalued
+RNIT AI Solution,0.3402758674795872,1681,Overvalued,Overvalued,Overvalued,Overvalued
+Powerica Ltd,0.34018684549611033,1682,Overvalued,Overvalued,Fairly Valued,Overvalued
+IVP,0.34003493049962413,1683,Overvalued,Overvalued,Overvalued,Overvalued
+Fortis Malar,0.3397388569883001,1684,Overvalued,Overvalued,Overvalued,Overvalued
+Berger Paints,0.33955743244082554,1685,Overvalued,Overvalued,Overvalued,Overvalued
+P S Raj Steels,0.3392697013294157,1686,Overvalued,Overvalued,Overvalued,Overvalued
+Globe Intl. Car.,0.3391768836715946,1687,Overvalued,Overvalued,Overvalued,Overvalued
+Bharti Hexacom,0.3391252322075099,1688,Overvalued,Overvalued,Fairly Valued,Overvalued
+Astrazeneca Phar,0.3384727681316892,1689,Overvalued,Overvalued,Fairly Valued,Overvalued
+Cipla,0.338315584703113,1690,Overvalued,Overvalued,Overvalued,Overvalued
+Kontor Space,0.3381211624805368,1691,Overvalued,Overvalued,Overvalued,Overvalued
+Technocraf.Inds.,0.3380163163960611,1692,Overvalued,Overvalued,Overvalued,Overvalued
+Thejo Engg.,0.337501190834545,1693,Overvalued,Overvalued,Overvalued,Overvalued
+Mangalam World.,0.3372772803919215,1694,Overvalued,Overvalued,Overvalued,Overvalued
+Digicontent,0.33717051630239925,1695,Overvalued,Overvalued,Fairly Valued,Overvalued
+Captain Pipes,0.33643409057044954,1696,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kaycee Inds.,0.3363208366912137,1697,Overvalued,Overvalued,Overvalued,Overvalued
+Winsome Textile,0.3362154806817347,1698,Overvalued,Overvalued,Overvalued,Overvalued
+C.E. Info System,0.3361592743274574,1699,Overvalued,Overvalued,Overvalued,Overvalued
+Sollfege Smart Electronics,0.33574802656393826,1700,Overvalued,Overvalued,Fairly Valued,Overvalued
+Signet Industrie,0.33559800727376254,1701,Overvalued,Overvalued,Fairly Valued,Overvalued
+Shreeoswal Seeds,0.33520162880022175,1702,Overvalued,Overvalued,Overvalued,Overvalued
+GDL Leasing,0.3344981375089232,1703,Overvalued,Overvalued,Overvalued,Overvalued
+Park Medi World,0.3337636471780267,1704,Overvalued,Overvalued,Overvalued,Overvalued
+Creative Graphic,0.33371399118218836,1705,Overvalued,Overvalued,Overvalued,Overvalued
+OBSC Perfection,0.3334178348356662,1706,Overvalued,Overvalued,Overvalued,Overvalued
+Blue Dart Expres,0.33336712979185534,1707,Overvalued,Overvalued,Overvalued,Overvalued
+Chalet Hotels,0.33333509700438724,1708,Overvalued,Overvalued,Fairly Valued,Overvalued
+La Tim Metal & I,0.33326704169868593,1709,Overvalued,Overvalued,Overvalued,Overvalued
+Bharat Seats,0.33305650843948525,1710,Overvalued,Overvalued,Overvalued,Overvalued
+Kahan Packaging,0.3325824008867678,1711,Overvalued,Overvalued,Overvalued,Overvalued
+Heidelberg Cem.,0.3321575612359977,1712,Overvalued,Overvalued,Overvalued,Overvalued
+Fineotex Chem,0.3321497305470829,1713,Overvalued,Overvalued,Overvalued,Overvalued
+Saakshi Medtech,0.3305919997495265,1714,Overvalued,Overvalued,Overvalued,Overvalued
+Ceigall India,0.3304940962105508,1715,Overvalued,Overvalued,Overvalued,Overvalued
+Navin Fluo.Intl.,0.3302890119840721,1716,Overvalued,Overvalued,Overvalued,Overvalued
+Scan Projects,0.33004237187222885,1717,Overvalued,Overvalued,Overvalued,Overvalued
+Parnax Lab,0.3297052506879413,1718,Overvalued,Overvalued,Overvalued,Overvalued
+L T Foods,0.3289251359610819,1719,Overvalued,Overvalued,Overvalued,Overvalued
+ICICI Lombard,0.32860354772797645,1720,Overvalued,Overvalued,Overvalued,Overvalued
+Delton Cables,0.3279508129485634,1721,Overvalued,Overvalued,Overvalued,Overvalued
+Piccadily Agro,0.32732467946032623,1722,Overvalued,Overvalued,Fairly Valued,Overvalued
+Zenith Steel,0.32662351380287513,1723,Overvalued,Overvalued,Fairly Valued,Overvalued
+Kalpataru Proj.,0.32632592947063965,1724,Overvalued,Overvalued,Overvalued,Overvalued
+Timken India,0.32578314081798837,1725,Overvalued,Overvalued,Overvalued,Overvalued
+Magna Electrocas,0.324149161383444,1726,Overvalued,Overvalued,Overvalued,Overvalued
+Vadilal Enterp.,0.3238064230979122,1727,Overvalued,Overvalued,Overvalued,Overvalued
+Kusumgar,0.3231491329864089,1728,Overvalued,Overvalued,Overvalued,Overvalued
+Gala Precis. Eng,0.32305087546194994,1729,Overvalued,Overvalued,Overvalued,Overvalued
+Lloyds Engineeri,0.3229912637052033,1730,Overvalued,Overvalued,Overvalued,Overvalued
+Gujarat Kidney,0.32155693125144685,1731,Overvalued,Overvalued,Fairly Valued,Overvalued
+Godrej Agrovet,0.32099291975853594,1732,Overvalued,Overvalued,Overvalued,Overvalued
+Sobhagya Mercant,0.3208297128530104,1733,Overvalued,Overvalued,Overvalued,Overvalued
+A C J K Exports,0.32071451952608193,1734,Overvalued,Overvalued,Overvalued,Overvalued
+Vardhman Special,0.3201270949298612,1735,Overvalued,Overvalued,Overvalued,Overvalued
+Endurance Tech.,0.3187883071422714,1736,Overvalued,Overvalued,Overvalued,Overvalued
+Bosch,0.3184309683705908,1737,Overvalued,Overvalued,Overvalued,Overvalued
+Concord Biotech,0.31835212626883547,1738,Overvalued,Overvalued,Overvalued,Overvalued
+Prem. Explosives,0.3181861761774572,1739,Overvalued,Overvalued,Fairly Valued,Overvalued
+National Fitting,0.31726780833247314,1740,Overvalued,Overvalued,Overvalued,Overvalued
+Pune e-Stock Broking,0.31722769811845974,1741,Overvalued,Overvalued,Overvalued,Overvalued
+Marco Cables,0.31612778329164426,1742,Overvalued,Overvalued,Overvalued,Overvalued
+Jyoti CNC Auto.,0.3160800637708938,1743,Overvalued,Overvalued,Fairly Valued,Overvalued
+Windlas Biotech,0.3160094757955893,1744,Overvalued,Overvalued,Overvalued,Overvalued
+Transpact Enter.,0.31526814165127826,1745,Overvalued,Overvalued,Overvalued,Overvalued
+Lodha Developers,0.31510577386276417,1746,Overvalued,Overvalued,Overvalued,Overvalued
+M & M,0.3151049182904493,1747,Overvalued,Overvalued,Overvalued,Overvalued
+Orient Electric,0.31285066489858754,1748,Overvalued,Overvalued,Overvalued,Overvalued
+Tempsens Instruments,0.31200929921707526,1749,Overvalued,Overvalued,Overvalued,Overvalued
+Meghna Infracon,0.3119555544349977,1750,Overvalued,Overvalued,Fairly Valued,Overvalued
+Midwest,0.3118999606312251,1751,Overvalued,Overvalued,Overvalued,Overvalued
+Revathi Equip,0.31182526067734617,1752,Overvalued,Overvalued,Overvalued,Overvalued
+Remsons Ind,0.31176789130806115,1753,Overvalued,Overvalued,Overvalued,Overvalued
+Venus Pipes,0.31165361289730065,1754,Overvalued,Overvalued,Overvalued,Overvalued
+Raj Oil Mills,0.3115750663831803,1755,Overvalued,Overvalued,Fairly Valued,Overvalued
+Tanfac Inds.,0.31156444192370303,1756,Overvalued,Overvalued,Fairly Valued,Overvalued
+Bombay Super Hyb,0.31154617135094986,1757,Overvalued,Overvalued,Overvalued,Overvalued
+Axis Solution,0.31131487007484526,1758,Overvalued,Overvalued,Overvalued,Overvalued
+Kalyan Jewellers,0.311172761408186,1759,Overvalued,Overvalued,Overvalued,Overvalued
+eMudhra,0.3111524834807148,1760,Overvalued,Overvalued,Overvalued,Overvalued
+Sundram Fasten.,0.31065497295498723,1761,Overvalued,Overvalued,Overvalued,Overvalued
+DMCC Speciality,0.3105055713502617,1762,Overvalued,Overvalued,Overvalued,Overvalued
+Firstsour.Solu.,0.31037839250004634,1763,Overvalued,Overvalued,Overvalued,Overvalued
+Pearl Global Ind,0.30982780091382534,1764,Overvalued,Overvalued,Overvalued,Overvalued
+Taneja Aerospace,0.30975469623861257,1765,Overvalued,Overvalued,Overvalued,Overvalued
+Mewar Hi-Tech,0.30966128800445525,1766,Overvalued,Overvalued,Overvalued,Overvalued
+ERIS Lifescience,0.3093412162854682,1767,Overvalued,Overvalued,Overvalued,Overvalued
+Adani Power,0.30891077614617235,1768,Overvalued,Overvalued,Overvalued,Overvalued
+Kotyark Indust.,0.30830662812206444,1769,Overvalued,Overvalued,Overvalued,Overvalued
+Blue Cloud Soft.,0.30802072179351286,1770,Overvalued,Overvalued,Overvalued,Overvalued
+Afcons Infrastr.,0.30778784529920766,1771,Overvalued,Overvalued,Overvalued,Overvalued
+Shri Venkatesh,0.30727632375172476,1772,Overvalued,Overvalued,Overvalued,Overvalued
+Tata Comm,0.30666518589292074,1773,Overvalued,Overvalued,Overvalued,Overvalued
+BLS E-Services,0.3058206871539582,1774,Overvalued,Overvalued,Overvalued,Overvalued
+United Polyfab,0.305672194463995,1775,Overvalued,Overvalued,Overvalued,Overvalued
+Garware Synth,0.3053328473417621,1776,Overvalued,Overvalued,Overvalued,Overvalued
+Pind Hospitality,0.30511632860040566,1777,Overvalued,Overvalued,Overvalued,Overvalued
+Dr Agarwal's Eye,0.3046508502456375,1778,Overvalued,Overvalued,Overvalued,Overvalued
+Happy Forgings,0.30411771845827396,1779,Overvalued,Overvalued,Overvalued,Overvalued
+Uno Minda,0.3039830324539737,1780,Overvalued,Overvalued,Overvalued,Overvalued
+Olatech Solution,0.3033242580409522,1781,Overvalued,Overvalued,Overvalued,Overvalued
+Phaarmasia,0.30239273324138116,1782,Overvalued,Overvalued,Overvalued,Overvalued
+Aayush Art,0.30116230983249537,1783,Overvalued,Overvalued,Overvalued,Overvalued
+Symphony,0.30061907109722813,1784,Overvalued,Overvalued,Overvalued,Overvalued
+Bliss GVS Pharma,0.3005485179351418,1785,Overvalued,Overvalued,Overvalued,Overvalued
+Krishival Foods,0.3004049371508775,1786,Overvalued,Overvalued,Overvalued,Overvalued
+Molbio Diagnosti,0.30022926239054204,1787,Overvalued,Overvalued,Overvalued,Overvalued
+Aeroflex,0.299121999880077,1788,Overvalued,Overvalued,Overvalued,Overvalued
+ION Exchange,0.29904512704995295,1789,Overvalued,Overvalued,Overvalued,Overvalued
+Cosmic CRF,0.2984096192888361,1790,Overvalued,Overvalued,Overvalued,Overvalued
+NGL Fine Chem,0.2979430649075221,1791,Overvalued,Overvalued,Overvalued,Overvalued
+East India Drums,0.2963840952406612,1792,Overvalued,Overvalued,Overvalued,Overvalued
+Zen Technologies,0.2960024003426049,1793,Overvalued,Overvalued,Overvalued,Overvalued
+Lumax Industries,0.29562850176320526,1794,Overvalued,Overvalued,Overvalued,Overvalued
+M B Agro Prod.,0.29526500602035644,1795,Overvalued,Overvalued,Overvalued,Overvalued
+Loyal Equipments,0.2949436869337307,1796,Overvalued,Overvalued,Overvalued,Overvalued
+Fredun Pharma,0.29459734911176705,1797,Overvalued,Overvalued,Overvalued,Overvalued
+Veljan Denison,0.2939107342576183,1798,Overvalued,Overvalued,Overvalued,Overvalued
+Veegaland Developers,0.29354909919171845,1799,Overvalued,Overvalued,Overvalued,Overvalued
+Schneider Elect.,0.29345527575276686,1800,Overvalued,Overvalued,Overvalued,Overvalued
+Rishabh Instrum.,0.2929413681613005,1801,Overvalued,Overvalued,Overvalued,Overvalued
+V R Infraspace,0.29254737949252746,1802,Overvalued,Overvalued,Overvalued,Overvalued
+Asian Energy,0.29227559082265164,1803,Overvalued,Overvalued,Overvalued,Overvalued
+Pennar Industrie,0.2918190624706985,1804,Overvalued,Overvalued,Overvalued,Overvalued
+B&B Triplewall,0.29169820076393815,1805,Overvalued,Overvalued,Overvalued,Overvalued
+Kiduja India,0.29000000000000004,1806,Overvalued,Overvalued,Fairly Valued,Overvalued
+Astra Microwave,0.28963339284149914,1807,Overvalued,Overvalued,Overvalued,Overvalued
+Saregama India,0.2894103514633392,1808,Overvalued,Overvalued,Overvalued,Overvalued
+G S Auto Intl.,0.2892425009089376,1809,Overvalued,Overvalued,Overvalued,Overvalued
+Vijaya Diagnost.,0.28924039739514507,1810,Overvalued,Overvalued,Overvalued,Overvalued
+VST Till. Tract.,0.28922692954102686,1811,Overvalued,Overvalued,Overvalued,Overvalued
+Olectra Greentec,0.2880586372401468,1812,Overvalued,Overvalued,Overvalued,Overvalued
+D & H India,0.28735130757081534,1813,Overvalued,Overvalued,Overvalued,Overvalued
+Manika Plastech,0.2871131461524689,1814,Overvalued,Overvalued,Overvalued,Overvalued
+Jash Engineering,0.28698149113101995,1815,Overvalued,Overvalued,Overvalued,Overvalued
+Titan Company,0.28582491078375455,1816,Overvalued,Overvalued,Overvalued,Overvalued
+Heritage Foods,0.28557851545737906,1817,Overvalued,Overvalued,Overvalued,Overvalued
+Ellen.Indl.Gas,0.28524452137126005,1818,Overvalued,Overvalued,Overvalued,Overvalued
+AVG Logistics,0.2851541990312218,1819,Overvalued,Overvalued,Overvalued,Overvalued
+Srivasavi Adhes.,0.2850821217333118,1820,Overvalued,Overvalued,Overvalued,Overvalued
+Knowledge Marine,0.28482654055259243,1821,Overvalued,Overvalued,Overvalued,Overvalued
+Nuvama Wealth,0.2839857232550423,1822,Overvalued,Overvalued,Overvalued,Overvalued
+Black Box,0.2831142785807817,1823,Overvalued,Overvalued,Overvalued,Overvalued
+Manaksia Coated,0.28272496156035964,1824,Overvalued,Overvalued,Overvalued,Overvalued
+DRS Dilip Road,0.28255142668690364,1825,Overvalued,Overvalued,Overvalued,Overvalued
+Metro Brands,0.2824594038802842,1826,Overvalued,Overvalued,Overvalued,Overvalued
+Laser Power,0.28236856530989035,1827,Overvalued,Overvalued,Overvalued,Overvalued
+Gujjubhai Industries,0.2807800386840803,1828,Overvalued,Overvalued,Overvalued,Overvalued
+Relicab Cable,0.28066895532973274,1829,Overvalued,Overvalued,Overvalued,Overvalued
+Astral,0.2800533729229339,1830,Overvalued,Overvalued,Overvalued,Overvalued
+Simran Farms,0.2787743646527853,1831,Overvalued,Overvalued,Overvalued,Overvalued
+Energy Devl.Co.,0.2783257594117819,1832,Overvalued,Overvalued,Overvalued,Overvalued
+Ashok Leyland,0.27745510039693494,1833,Overvalued,Overvalued,Overvalued,Overvalued
+JNK,0.275314485341606,1834,Overvalued,Overvalued,Overvalued,Overvalued
+Honeywell Auto,0.27483987488256345,1835,Overvalued,Overvalued,Overvalued,Overvalued
+Moneyview,0.2740902853585967,1836,Overvalued,Overvalued,Overvalued,Overvalued
+Linde India,0.27291816188583246,1837,Overvalued,Overvalued,Overvalued,Overvalued
+Godrej Consumer,0.2724186508748193,1838,Overvalued,Overvalued,Overvalued,Overvalued
+Commerl. Synbags,0.270727899674999,1839,Overvalued,Overvalued,Overvalued,Overvalued
+Hemant Surgical,0.27050499530168187,1840,Overvalued,Overvalued,Overvalued,Overvalued
+Jay Jalaram Tech,0.2679253801815462,1841,Overvalued,Overvalued,Overvalued,Overvalued
+Senores Pharma.,0.26790362595280753,1842,Overvalued,Overvalued,Overvalued,Overvalued
+Accord Transformer,0.26722332058649767,1843,Overvalued,Overvalued,Overvalued,Overvalued
+Nikhil Adhesives,0.26720776603723756,1844,Overvalued,Overvalued,Overvalued,Overvalued
+Balaji Phos.,0.2669421388246204,1845,Overvalued,Overvalued,Overvalued,Overvalued
+BASF India,0.2667740005411036,1846,Overvalued,Overvalued,Overvalued,Overvalued
+Hester Bios,0.2659332489726924,1847,Overvalued,Overvalued,Overvalued,Overvalued
+Keltech Energies,0.26535021961090866,1848,Overvalued,Overvalued,Overvalued,Overvalued
+Metropolis Healt,0.26525267800572944,1849,Overvalued,Overvalued,Overvalued,Overvalued
+Brady & Morris,0.26497555165380304,1850,Overvalued,Overvalued,Overvalued,Overvalued
+Apis India,0.26485892045972675,1851,Overvalued,Overvalued,Overvalued,Overvalued
+CCL Products,0.2637600966769183,1852,Overvalued,Overvalued,Overvalued,Overvalued
+Adani Ports,0.263567457477581,1853,Overvalued,Overvalued,Overvalued,Overvalued
+Pasari Spinning,0.2634148017207443,1854,Overvalued,Overvalued,Overvalued,Overvalued
+Akums Drugs,0.2627537717672602,1855,Overvalued,Overvalued,Overvalued,Overvalued
+Logica Infoway,0.2626701378771713,1856,Overvalued,Overvalued,Overvalued,Overvalued
+Kody Technolab,0.2626655165888417,1857,Overvalued,Overvalued,Overvalued,Overvalued
+Man Industries,0.26198725050439176,1858,Overvalued,Overvalued,Overvalued,Overvalued
+Latteys Industri,0.26189524567008154,1859,Overvalued,Overvalued,Overvalued,Overvalued
+Indian Hotels Co,0.2611801183925247,1860,Overvalued,Overvalued,Overvalued,Overvalued
+Mahasagar Travel,0.2608471576785752,1861,Overvalued,Overvalued,Overvalued,Overvalued
+Shree Refrigerat,0.2606305252559175,1862,Overvalued,Overvalued,Overvalued,Overvalued
+B C C Fuba India,0.26034881871364685,1863,Overvalued,Overvalued,Overvalued,Overvalued
+Centum Electron,0.26031656486685206,1864,Overvalued,Overvalued,Overvalued,Overvalued
+Trishakti Indus,0.2600426361393361,1865,Overvalued,Overvalued,Overvalued,Overvalued
+Vivekanand Cots.,0.259775179309856,1866,Overvalued,Overvalued,Overvalued,Overvalued
+Beta Drugs Ltd,0.25912997616919514,1867,Overvalued,Overvalued,Overvalued,Overvalued
+Gland Pharma,0.2590471982613351,1868,Overvalued,Overvalued,Overvalued,Overvalued
+Sudal Industries,0.2589565183044139,1869,Overvalued,Overvalued,Overvalued,Overvalued
+Avenue Super.,0.2587708450914264,1870,Overvalued,Overvalued,Overvalued,Overvalued
+Bharti Airtel,0.2584236676147957,1871,Overvalued,Overvalued,Overvalued,Overvalued
+Alkosign,0.2582819371292327,1872,Overvalued,Overvalued,Overvalued,Overvalued
+Wheels India,0.25800188324481393,1873,Overvalued,Overvalued,Overvalued,Overvalued
+Divine Hira Jew.,0.25688996379515167,1874,Overvalued,Overvalued,Overvalued,Overvalued
+Kapston Services,0.2565413127441047,1875,Overvalued,Overvalued,Overvalued,Overvalued
+Granules India,0.25644002037222263,1876,Overvalued,Overvalued,Overvalued,Overvalued
+CMR Green Tech.,0.25568999122583164,1877,Overvalued,Overvalued,Overvalued,Overvalued
+Global Health,0.2551579300459398,1878,Overvalued,Overvalued,Overvalued,Overvalued
+Tankup Engi.,0.2542454883438065,1879,Overvalued,Overvalued,Overvalued,Overvalued
+Ashiana Housing,0.2539836812044323,1880,Overvalued,Overvalued,Overvalued,Overvalued
+MTAR Technologie,0.25332393291098504,1881,Overvalued,Overvalued,Overvalued,Overvalued
+GRM Overseas,0.2531883367593123,1882,Overvalued,Overvalued,Overvalued,Overvalued
+Blue Star,0.2523904570194674,1883,Overvalued,Overvalued,Overvalued,Overvalued
+Aaron Industries,0.2518137939159377,1884,Overvalued,Overvalued,Overvalued,Overvalued
+SIS,0.25171934166953497,1885,Overvalued,Overvalued,Overvalued,Overvalued
+Suraksha Diagno.,0.2516827022507033,1886,Overvalued,Overvalued,Overvalued,Overvalued
+Goodluck India,0.25068873870378044,1887,Overvalued,Overvalued,Overvalued,Overvalued
+S P Apparels,0.24772404485252503,1888,Overvalued,Overvalued,Overvalued,Overvalued
+Gretex Corporate,0.2472417732780112,1889,Overvalued,Overvalued,Overvalued,Overvalued
+Vinyas Innovativ,0.24683908918348413,1890,Overvalued,Overvalued,Overvalued,Overvalued
+Edelweiss.Fin.,0.2467013331713331,1891,Overvalued,Overvalued,Overvalued,Overvalued
+Avalon Tech,0.24596816875224164,1892,Overvalued,Overvalued,Overvalued,Overvalued
+Galaxy Supermarket,0.24494466230936815,1893,Overvalued,Overvalued,Overvalued,Overvalued
+A R C I,0.24443172370612884,1894,Overvalued,Overvalued,Overvalued,Overvalued
+Shivam Chemicals,0.2442854137896607,1895,Overvalued,Overvalued,Overvalued,Overvalued
+Welspun Enterp,0.2441977759322487,1896,Overvalued,Overvalued,Overvalued,Overvalued
+Apollo Hospitals,0.24355098772865838,1897,Overvalued,Overvalued,Overvalued,Overvalued
+Setco Automotive,0.243125,1898,Overvalued,Overvalued,Overvalued,Overvalued
+Nephrocare Health Services,0.2427498789685445,1899,Overvalued,Overvalued,Overvalued,Overvalued
+Bansal Wire Inds,0.2425554193267286,1900,Overvalued,Overvalued,Overvalued,Overvalued
+Paras Defence,0.2422828145244687,1901,Overvalued,Overvalued,Overvalued,Overvalued
+Aveer Foods,0.24193906983900693,1902,Overvalued,Overvalued,Overvalued,Overvalued
+Allied Blenders,0.24171777803804328,1903,Overvalued,Overvalued,Overvalued,Overvalued
+Vishnu Chemicals,0.24123084732008188,1904,Overvalued,Overvalued,Overvalued,Overvalued
+Sona BLW Precis.,0.24074390639749366,1905,Overvalued,Overvalued,Overvalued,Overvalued
+Foce India,0.2386268030928738,1906,Overvalued,Overvalued,Overvalued,Overvalued
+Hirect,0.23844772186880092,1907,Overvalued,Overvalued,Overvalued,Overvalued
+Swadeshi Inds,0.23619005942546115,1908,Overvalued,Overvalued,Overvalued,Overvalued
+Jupiter Life Lin,0.23577462743633656,1909,Overvalued,Overvalued,Overvalued,Overvalued
+Innova Captab,0.23558086036228051,1910,Overvalued,Overvalued,Overvalued,Overvalued
+Rainbow Child.,0.23549532887475863,1911,Overvalued,Overvalued,Overvalued,Overvalued
+Varroc Engineer,0.23514495795506035,1912,Overvalued,Overvalued,Overvalued,Overvalued
+Riddhi Steel,0.23339657172960296,1913,Overvalued,Overvalued,Overvalued,Overvalued
+Sonam,0.2325079011089202,1914,Overvalued,Overvalued,Overvalued,Overvalued
+Trident Techlabs,0.23140902883418418,1915,Overvalued,Overvalued,Overvalued,Overvalued
+Ravindra Energy,0.23092826871644517,1916,Overvalued,Overvalued,Overvalued,Overvalued
+Iris Clothings,0.2304663226823329,1917,Overvalued,Overvalued,Overvalued,Overvalued
+TVS Motor Co.,0.23029584568435105,1918,Overvalued,Overvalued,Overvalued,Overvalued
+India Homes,0.22913068227275632,1919,Overvalued,Overvalued,Overvalued,Overvalued
+GMM Pfaudler,0.2280432635309292,1920,Overvalued,Overvalued,Overvalued,Overvalued
+Arvind Fashions.,0.22689079643661536,1921,Overvalued,Overvalued,Overvalued,Overvalued
+Artemis Medicare,0.22650975250911193,1922,Overvalued,Overvalued,Overvalued,Overvalued
+Choice Intl.,0.2257829398796511,1923,Overvalued,Overvalued,Overvalued,Overvalued
+Kirl. Electric,0.22529249058408224,1924,Overvalued,Overvalued,Overvalued,Overvalued
+Rategain Travel,0.2249464935576763,1925,Overvalued,Overvalued,Overvalued,Overvalued
+CWD,0.22433458793643832,1926,Overvalued,Overvalued,Overvalued,Overvalued
+RACL Geartech,0.2234706878438911,1927,Overvalued,Overvalued,Overvalued,Overvalued
+Thaai,0.2230760510445784,1928,Overvalued,Overvalued,Overvalued,Overvalued
+Rane (Madras),0.2223894480441336,1929,Overvalued,Overvalued,Overvalued,Overvalued
+Aditya Vision,0.22174741732533412,1930,Overvalued,Overvalued,Overvalued,Overvalued
+Yaan Enterprises,0.2211507182857429,1931,Overvalued,Overvalued,Overvalued,Overvalued
+KRN Heat Exchan,0.22114781900714017,1932,Overvalued,Overvalued,Overvalued,Overvalued
+Lemon Tree Hotel,0.22093279947951697,1933,Overvalued,Overvalued,Overvalued,Overvalued
+SBI Life Insuran,0.22087103885649986,1934,Overvalued,Overvalued,Overvalued,Overvalued
+Omnitech Engg.,0.22055042738084257,1935,Overvalued,Overvalued,Overvalued,Overvalued
+A B Infrabuild,0.22035567777606216,1936,Overvalued,Overvalued,Overvalued,Overvalued
+Dolfin Rubbers,0.22027524496376,1937,Overvalued,Overvalued,Overvalued,Overvalued
+Vishal Mega Mart,0.21997753325474023,1938,Overvalued,Overvalued,Overvalued,Overvalued
+Focus Business,0.2197805666773476,1939,Overvalued,Overvalued,Overvalued,Overvalued
+Maitri Enterp.,0.21865971166250772,1940,Overvalued,Overvalued,Overvalued,Overvalued
+Narayana Hrudaya,0.21789086056970777,1941,Overvalued,Overvalued,Overvalued,Overvalued
+E to E Transportation,0.21630268828720345,1942,Overvalued,Overvalued,Overvalued,Overvalued
+Belrise Industri,0.21579246282788772,1943,Overvalued,Overvalued,Overvalued,Overvalued
+SBC Exports,0.21524415713653003,1944,Overvalued,Overvalued,Overvalued,Overvalued
+Marine Electric.,0.2151569214226591,1945,Overvalued,Overvalued,Overvalued,Overvalued
+Syrma SGS Tech.,0.21431531998423187,1946,Overvalued,Overvalued,Overvalued,Overvalued
+TCPL Packaging,0.21119051480680073,1947,Overvalued,Overvalued,Overvalued,Overvalued
+Laurus Labs,0.21001428086312962,1948,Overvalued,Overvalued,Overvalued,Overvalued
+Steel Str. Wheel,0.20943267502439294,1949,Overvalued,Overvalued,Overvalued,Overvalued
+DCM,0.20921467627701715,1950,Overvalued,Overvalued,Overvalued,Overvalued
+Pitti Engg.,0.20856088114556978,1951,Overvalued,Overvalued,Overvalued,Overvalued
+Spectrum Electr.,0.20731636336811857,1952,Overvalued,Overvalued,Overvalued,Overvalued
+J K Cements,0.20507963839691717,1953,Overvalued,Overvalued,Overvalued,Overvalued
+Wework India,0.20341388331161434,1954,Overvalued,Overvalued,Overvalued,Overvalued
+Max Healthcare,0.20327108794657173,1955,Overvalued,Overvalued,Overvalued,Overvalued
+Larsen & Toubro,0.20255969181330732,1956,Overvalued,Overvalued,Overvalued,Overvalued
+Sudarshan Pharma,0.20182610907112938,1957,Overvalued,Overvalued,Overvalued,Overvalued
+Arvind Ltd,0.19913810957233066,1958,Overvalued,Overvalued,Overvalued,Overvalued
+Torrent Power,0.19216493041119187,1959,Overvalued,Overvalued,Overvalued,Overvalued
+Ameenji Rubber,0.19190637122204499,1960,Overvalued,Overvalued,Overvalued,Overvalued
+JSW Infrast,0.19172773496771525,1961,Overvalued,Overvalued,Overvalued,Overvalued
+TBO Tek,0.19123647382225892,1962,Overvalued,Overvalued,Overvalued,Overvalued
+Petro Carbon,0.19087851866048983,1963,Overvalued,Overvalued,Overvalued,Overvalued
+Nupur Recyclers,0.1902317576822289,1964,Overvalued,Overvalued,Overvalued,Overvalued
+Shree Ganesh Rem,0.189411456931961,1965,Overvalued,Overvalued,Overvalued,Overvalued
+Steamhouse India,0.18846966167871781,1966,Overvalued,Overvalued,Overvalued,Overvalued
+Torrent Pharma.,0.18664054774521954,1967,Overvalued,Overvalued,Overvalued,Overvalued
+Suprajit Engg.,0.18634982902404576,1968,Overvalued,Overvalued,Overvalued,Overvalued
+Angel One,0.18363383222162463,1969,Overvalued,Overvalued,Overvalued,Overvalued
+Milky Mist Dairy,0.1796100735782299,1970,Overvalued,Overvalued,Overvalued,Overvalued
+Sansera Enginee.,0.17920176994202192,1971,Overvalued,Overvalued,Overvalued,Overvalued
+Hatsun Agro,0.1778932066886533,1972,Overvalued,Overvalued,Overvalued,Overvalued
+Tasty Bite Eat.,0.17775768614282225,1973,Overvalued,Overvalued,Overvalued,Overvalued
+Cochin Shipyard,0.17638098237382557,1974,Overvalued,Overvalued,Overvalued,Overvalued
+Bharat Dynamics,0.1759784758329032,1975,Overvalued,Overvalued,Overvalued,Overvalued
+Laxmipati Engg,0.17501145172210644,1976,Overvalued,Overvalued,Overvalued,Overvalued
+Prabhhans Inds,0.1739501455663739,1977,Overvalued,Overvalued,Overvalued,Overvalued
+Standard Engineering Technology,0.17220573862086913,1978,Overvalued,Overvalued,Overvalued,Overvalued
+Greenply Industr,0.1661250121669658,1979,Overvalued,Overvalued,Overvalued,Overvalued
+Hindustan Foods,0.16087690216739498,1980,Overvalued,Overvalued,Overvalued,Overvalued
+Aplab,0.15719889033657375,1981,Overvalued,Overvalued,Overvalued,Overvalued
+Permanent Magnet,0.15422184688883564,1982,Overvalued,Overvalued,Overvalued,Overvalued
+Kirloskar Oil,0.1439067706030515,1983,Overvalued,Overvalued,Overvalued,Overvalued
+A B Lifestyle,0.1406070194491257,1984,Overvalued,Overvalued,Overvalued,Overvalued
+Adani Total Gas,0.1391018406952864,1985,Overvalued,Overvalued,Overvalued,Overvalued
+Jubilant Food.,0.13903822703266538,1986,Overvalued,Overvalued,Overvalued,Overvalued
+Indus Finance,0.13861013061589114,1987,Overvalued,Overvalued,Overvalued,Overvalued
+Apollo Micro Sys,0.13673072974050987,1988,Overvalued,Overvalued,Overvalued,Overvalued
+JBM Auto,0.1284999611680429,1989,Overvalued,Overvalued,Overvalued,Overvalued
+FSN E-Commerce,0.12717340821168355,1990,Overvalued,Overvalued,Overvalued,Overvalued
+Homre,0.12121755509569415,1991,Overvalued,Overvalued,Overvalued,Overvalued
+Shree Vasu Logis,0.11912863188945708,1992,Overvalued,Overvalued,Overvalued,Overvalued
+AXISCADES Tech.,0.1128237025022496,1993,Overvalued,Overvalued,Overvalued,Overvalued
+Thermax,0.10764480651652601,1994,Overvalued,Overvalued,Overvalued,Overvalued
+Inv.& Prec.Cast.,0.09665750225204021,1995,Overvalued,Overvalued,Overvalued,Overvalued
+Craftsman Auto,0.09507823395418333,1996,Overvalued,Overvalued,Overvalued,Overvalued
+Marble City,0.09082410267173667,1997,Overvalued,Overvalued,Overvalued,Overvalued
+JITF Infra Logis,0.076875,1998,Overvalued,Overvalued,Overvalued,Overvalued
+Arfin India,0.05765936255425682,1999,Overvalued,Overvalued,Overvalued,Overvalued
+D S Kulkarni Dev,0.013125000000000001,2000,Overvalued,Overvalued,Overvalued,Overvalued
