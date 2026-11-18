@@ -87,10 +87,26 @@ class ModelLoader:
         path = self._find_file(filename)
         if path and os.path.exists(path):
             try:
-                return joblib.load(path)
+                artifact = joblib.load(path)
+                self._patch_imputer_compatibility(artifact)
+                return artifact
             except Exception as e:
                 print(f"Error loading {filename} from {path}: {e}")
         return None
+
+    def _patch_imputer_compatibility(self, artifact):
+        imputer_objects = []
+        if hasattr(artifact, "named_steps"):
+            imputer_objects.extend(
+                step for step in artifact.named_steps.values()
+                if step.__class__.__name__ == "SimpleImputer"
+            )
+        elif artifact.__class__.__name__ == "SimpleImputer":
+            imputer_objects.append(artifact)
+
+        for imputer in imputer_objects:
+            if not hasattr(imputer, "_fill_dtype"):
+                imputer._fill_dtype = getattr(imputer, "_fit_dtype", np.dtype("float64"))
 
     MODEL_KEY_MAP = {
         "randomforest": "RandomForest",
