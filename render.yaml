@@ -1,7 +1,9 @@
+
 services:
   - type: web
     name: finlearn-api
     runtime: python
+    plan: free
     rootDir: finlearn-backend
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn --bind 0.0.0.0:$PORT server:app
