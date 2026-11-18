@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 
-const ML_BACKEND = '/api/ml';
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+const ML_BACKEND = `${API_BASE_URL}/api/ml`;
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface ModelMetrics {

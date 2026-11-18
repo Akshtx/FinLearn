@@ -1,209 +1,217 @@
-# FinLearn AI: Machine Learning Framework for Indian Equity Valuation
+# FinLearn AI
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![React 19](https://img.shields.io/badge/react-19-cyan.svg)](https://react.dev/)
-[![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.4+-orange.svg)](https://scikit-learn.org/)
-[![XGBoost](https://img.shields.io/badge/xgboost-2.0+-green.svg)](https://xgboost.readthedocs.io/)
-[![Dataset](https://img.shields.io/badge/dataset-2%2C001%20Indian%20Stocks-purple.svg)](https://www.screener.in/)
+FinLearn AI is a React and Flask application for exploring Indian equity data and
+classifying stocks as **Undervalued**, **Fairly Valued**, or **Overvalued**. It
+combines an interactive frontend, Gemini-powered explanations, stock data views,
+and a machine-learning valuation API backed by trained scikit-learn and XGBoost
+pipelines.
 
-## Abstract & Research Overview
-**FinLearn AI** is an end-to-end machine learning framework designed for automated fundamental valuation and financial health classification of Indian equities listed on the NSE and BSE. 
+> **Important:** This project is for education and research. Its classifications
+> are not investment advice, and the market data and model outputs should be
+> independently verified.
 
-Traditional valuation methods often rely on isolated single-variable multiples (such as P/E or P/B), which fail to capture multidimensional trade-offs between capital efficiency, leverage, and growth. This project implements a **4-Pillar Composite Financial Scoring Methodology** combined with three machine learning classifiers (**XGBoost**, **Random Forest**, and **AdaBoost**) trained on a deduplicated universe of **2,001 Indian companies** sourced from Screener.in.
+## Current project snapshot
 
----
+| Item | Current value |
+|---|---:|
+| Raw records in the trained dataset | 2,000 |
+| Usable unique stocks | 1,997 |
+| Training / holdout split | 1,597 / 400 |
+| Input indicators | 8 |
+| Classes | 3 |
+| Best model | XGBoost |
+| XGBoost holdout accuracy | 91.00% |
+| XGBoost balanced accuracy | 90.83% |
+| XGBoost weighted F1 | 0.9104 |
+| XGBoost 5-fold CV mean | 91.14% |
+| Last recorded training run | 2026-10-11 |
 
-## 1. Dataset & Market Universe
+The figures above are read from [`models/model_stats.json`](models/model_stats.json).
+Regenerate the artifacts with `npm run train` after changing the training data or
+pipeline.
 
-- **Data Source**: Screener.in comprehensive financial query export ([`Screener_Query_Results_Page1.xlsx`](file:///Users/akshathsugandhi/Desktop/finlearn-ai-main/finlearn-backend/models_store/Screener_Query_Results_Page1.xlsx)).
-- **Raw Records**: 2,650 company rows.
-- **Deduplication**: 649 duplicate ticker/company records eliminated $\rightarrow$ **2,001 unique companies**.
-- **Data Partitioning**: Leakage-resistant **80:20 Stratified Split**:
-  - **Training Set**: 1,600 companies (80%)
-  - **Testing Holdout**: 401 companies (20%)
-- **Target Classes**:
-  - **Undervalued**: Top 30% composite financial score ($\ge 0.3655$) — 601 companies.
-  - **Fairly Valued**: Interquartile range ($-0.2131 < \text{Score} < 0.3655$) — 799 companies.
-  - **Overvalued**: Bottom 30% composite financial score ($\le -0.2131$) — 601 companies.
+## Features
 
----
+- Search and inspect Indian stocks through the frontend.
+- View valuation, fundamentals, charts, and model-backed classifications.
+- Submit custom financial indicators to the ML prediction endpoint.
+- Compare XGBoost, Random Forest, and AdaBoost results.
+- Generate Gemini explanations when a Gemini API key is configured.
+- Use local fallback data for supported demo stocks when external services are
+  unavailable.
 
-## 2. Methodology & Feature Engineering
+## Architecture
 
-### 2.1 Data Cleaning & Preprocessing (Weeks 2–3)
-1. **Placeholder & Infinity Handling**: Screener dash placeholders (`—`), `N/A`, and $\pm\infty$ coerced to `NaN`.
-2. **Outlier Detection via Interquartile Range (IQR)**:
-   $$\text{Lower Bound} = Q_1 - 1.5 \times \text{IQR}, \quad \text{Upper Bound} = Q_3 + 1.5 \times \text{IQR}$$
-   Extreme financial multiples (e.g. P/E $> 1,600$, P/B $> 10,000$) bound-checked across all features ([`reports/eda_outlier_summary.csv`](file:///Users/akshathsugandhi/Desktop/finlearn-ai-main/finlearn-backend/models_store/reports/eda_outlier_summary.csv)).
-3. **Leakage-Resistant Preprocessing**:
-   - Imputation: Median imputation fitted strictly on the 1,600 training samples.
-   - Normalization: `RobustScaler` (median-centered and scaled by IQR) to prevent high-skew multiples from distorting gradient updates.
-
-### 2.2 The 4-Pillar Financial Health Metric Formulation (Week 4)
-Each company is evaluated across four core fundamental dimensions:
-
-$$\text{Valuation Score} = \text{mean}\left(-\text{P/E}, -\text{P/B}, -\text{PEG}\right)$$
-
-$$\text{Profitability Score} = \text{mean}\left(\text{ROE}, \text{ROA}, \text{OPM}, \text{ROCE}\right)$$
-
-$$\text{Growth Score} = \text{mean}\left(\text{Profit Growth}, \text{EPS 5Y Variation}\right)$$
-
-$$\text{Financial Health Score} = -\text{Debt-to-Equity}$$
-
-$$\text{Composite Financial Score} = \frac{\text{Valuation} + \text{Profitability} + \text{Growth} + \text{Health}}{4}$$
-
----
-
-## 3. Experimental Results & Model Evaluation
-
-### 3.1 Model Performance Benchmarks (401 Holdout Test Samples)
-
-| Metric | Random Forest | XGBoost (Champion) | AdaBoost |
-|---|:---:|:---:|:---:|
-| **Test Accuracy** | **84.54%** | **85.29%** | **81.05%** |
-| **Balanced Accuracy** | 85.03% | 85.05% | 80.35% |
-| **Weighted Precision** | 84.65% | 85.70% | 82.41% |
-| **Weighted Recall** | 84.54% | 85.29% | 81.05% |
-| **Weighted F1-Score** | 0.8453 | **0.8535** | 0.8118 |
-| **Macro F1-Score** | 0.8492 | **0.8558** | 0.8139 |
-| **5-Fold Stratified CV Mean** | 86.26% ($\pm$ 0.44%) | **86.31% ($\pm$ 0.97%)** | 81.26% ($\pm$ 0.85%) |
-| **Agreement with Formula** | 84.54% (339 / 401) | **85.29% (342 / 401)** | 81.05% (325 / 401) |
-| **Training Latency** | 0.251s | 0.581s | 0.478s |
-
-*Generated benchmark table:* [`finlearn-backend/models_store/outputs/model_comparison.csv`](file:///Users/akshathsugandhi/Desktop/finlearn-ai-main/finlearn-backend/models_store/outputs/model_comparison.csv)
-
-### 3.2 5-Fold Stratified Cross-Validation Breakdown
-
-| Model | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean Accuracy |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **XGBoost** | 87.03% | 87.25% | 85.25% | 85.00% | 87.00% | **86.31%** |
-| **Random Forest** | 86.03% | 85.75% | 86.00% | 86.50% | 87.00% | **86.26%** |
-| **AdaBoost** | 80.80% | 82.75% | 81.00% | 80.25% | 81.50% | **81.26%** |
-
-*Generated CV table:* [`finlearn-backend/models_store/outputs/cross_validation_results.csv`](file:///Users/akshathsugandhi/Desktop/finlearn-ai-main/finlearn-backend/models_store/outputs/cross_validation_results.csv)
-
----
-
-## 4. Repository Structure & Directory Map
-
-The project is structured into clear, self-contained directories so you can immediately find models, outputs, data, notebooks, and runner scripts:
-
-```
-finlearn-ai/
-│
-├── 📁 data/                           # All Market Datasets (Raw & Processed)
-│   ├── raw/
-│   │   └── Screener_Query_Results_Page1.xlsx   # 2,650 Indian stock snapshot from Screener.in
-│   ├── processed/
-│   │   ├── Final_Project_Data.csv             # 2,001 Unique deduplicated Indian stocks with 4-pillar scores
-│   │   └── Labelled_Financial_Data.csv        # Scored intermediate dataset
-│   └── README.md
-│
-├── 📁 models/                         # Trained ML Models, Pipelines & Schemas
-│   ├── XGBoost_Model.pkl                      # Champion Classifier (~85.3% accuracy, ~86.3% CV)
-│   ├── RandomForest_Model.pkl                 # 300 Balanced Trees Classifier (~84.5% accuracy)
-│   ├── AdaBoost_Model.pkl                     # Adaptive Boosting Classifier (~81.1% accuracy)
-│   ├── LabelEncoder.pkl                       # Class mappings (Undervalued, Fairly Valued, Overvalued)
-│   ├── scaler.pkl & imputer.pkl               # Leakage-resistant RobustScaler & SimpleImputer
-│   ├── feature_schema.json                    # 8 Fundamental indicators, weights, & percentile thresholds
-│   ├── model_stats.json                       # Comprehensive evaluation metrics & CV splits
-│   └── README.md
-│
-├── 📁 outputs/                        # Experimental Results, Metrics & Visualizations
-│   ├── tables/                                # Evaluation CSV tables & prediction logs
-│   │   ├── model_comparison.csv               # Head-to-head performance benchmarks
-│   │   ├── cross_validation_results.csv       # 5-fold stratified CV breakdown per fold
-│   │   ├── classification_reports.csv         # Class-level precision, recall, and F1
-│   │   ├── all_model_predictions.csv          # Holdout test set predictions & agreement flags
-│   │   ├── model_disagreements.csv            # Test samples where models differ from heuristic
-│   │   ├── feature_availability_report.csv    # Indicator coverage and missingness audit
-│   │   ├── feature_importance_xgboost.csv     # Champion XGBoost feature weightings
-│   │   └── feature_importance_randomforest.csv
-│   ├── charts/                                # 13 High-resolution publication figures & EDA plots
-│   │   ├── confusion_matrix_xgboost.png       # Normalized confusion matrices
-│   │   ├── confusion_matrix_randomforest.png
-│   │   ├── confusion_matrix_adaboost.png
-│   │   ├── model_comparison.png               # Multi-metric comparative bar plot
-│   │   ├── eda_correlation_heatmap.png        # Correlation matrix of financial indicators
-│   │   ├── score_distribution.png             # Directional percentile threshold distributions
-│   │   └── ... (boxplots, histograms, pairplots)
-│   └── README.md
-│
-├── 📁 notebooks/                      # Research Notebooks, Milestone Reports & Documentation
-│   ├── FinLearn_Minor_Project_Detailed_Three_Models.ipynb          # Master clean research notebook
-│   ├── FinLearn_Minor_Project_Detailed_Three_Models_Executed.ipynb # Pre-executed validation run
-│   ├── docs/FinLearn_10_Week_Project_Plan.docx                     # Official 10-week project plan
-│   ├── milestone_reports/                                          # Week 2 through Week 9 CSV reports
-│   └── README.md
-│
-├── 📁 scripts/                        # 1-Click Execution Runner Scripts
-│   ├── run_all.sh                             # Starts backend (:5001) + frontend (:3000) concurrently
-│   ├── run_frontend.sh                        # Starts React Vite dev server
-│   ├── run_backend.sh                         # Starts Flask REST API
-│   ├── run_training.sh                        # Retrains models & syncs all outputs
-│   └── README.md
-│
-├── 📁 finlearn-backend/               # Flask REST API Server & ML Pipelines
-│   ├── server.py                              # Flask application entry point
-│   ├── requirements.txt                       # Python dependencies
-│   ├── config/                                # API configurations
-│   └── modules/ml_valuation/                  # Indian market training pipeline, routes, loader
-│
-├── 📁 src/                            # Frontend React 19 + TypeScript + Vite UI
-│   ├── App.tsx                         # Application shell and routes
-│   ├── main.tsx                         # Frontend entrypoint
-│   ├── components/                      # Reusable UI components by feature
-│   ├── hooks/                           # Shared React hooks
-│   ├── pages/                           # Route-level screens
-│   ├── services/                        # API and integration services
-│   ├── constants.ts                     # Shared application constants
-│   └── types.ts                         # Shared TypeScript types
-├── QUICKSTART.md                      # Fast navigation and single-command cheat sheet
-└── README.md                          # Full academic & framework documentation
+```text
+React 19 + TypeScript + Vite
+        |
+        | /api (development proxy)
+        v
+Flask REST API + Flask-CORS
+        |
+        v
+Trained ML pipelines in models/
 ```
 
----
+### Input indicators
 
-## 5. How to Run the Application
+The prediction pipeline expects these eight fields:
 
-For a quick cheat-sheet, see [`QUICKSTART.md`](file:///Users/akshathsugandhi/Desktop/finlearn-ai-main/QUICKSTART.md).
+`PE_Ratio`, `Price_to_Book`, `PEG`, `ROE_pct`, `ROA_12M_pct`,
+`Profit_Growth_pct`, `Debt_to_Equity`, and `ROCE_pct`.
 
-### 5.1 Run Full Stack (Backend + Frontend Concurrently)
+The model artifacts and label thresholds are documented in
+[`models/feature_schema.json`](models/feature_schema.json).
+
+## Repository layout
+
+```text
+.
+├── data/                 # Raw and processed datasets
+├── finlearn-backend/     # Flask API, routes, configuration, and model store
+├── models/               # Runtime model artifacts used by the API
+├── notebooks/            # Research notebooks and milestone material
+├── outputs/              # Generated tables and charts
+├── scripts/              # Frontend, backend, training, and full-stack runners
+├── src/                  # React application
+├── QUICKSTART.md         # Short command and file navigation guide
+└── package.json          # Frontend scripts and dependencies
+```
+
+The API loads runtime models from `models/`. The duplicate files under
+`finlearn-backend/models_store/` are retained with the backend research assets.
+
+## Local development
+
+### Prerequisites
+
+- Node.js 18 or newer
+- Python 3.10 or newer
+- npm
+- Python packages listed in [`finlearn-backend/requirements.txt`](finlearn-backend/requirements.txt)
+
+### Install
+
+```bash
+npm install
+python3 -m venv finlearn-backend/venv
+source finlearn-backend/venv/bin/activate
+pip install -r finlearn-backend/requirements.txt
+```
+
+### Configure environment variables
+
+Create `.env.local` in the repository root for frontend build-time variables:
+
+```dotenv
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-3.6-flash
+FMP_API_KEY=your_fmp_api_key
+VITE_API_BASE_URL=http://localhost:5001
+```
+
+For the backend, create `finlearn-backend/.env` when needed:
+
+```dotenv
+PORT=5001
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-3.6-flash
+```
+
+Never commit either environment file or expose private API keys in the frontend
+for a public deployment. Prefer a server-side proxy for production secrets.
+
+### Run the full stack
+
 ```bash
 npm start
-# OR: bash scripts/run_all.sh
 ```
-- **Backend API**: `http://localhost:5001`
-- **Frontend App**: `http://localhost:3000`
-- **ML Valuation Layer**: `http://localhost:3000/#/ml-model`
 
-### 5.2 Run Frontend Only
+This starts:
+
+- Frontend: `http://localhost:3000`
+- Backend health check: `http://localhost:5001/health`
+- ML page: `http://localhost:3000/#/ml-model`
+
+The Vite development server proxies `/api` requests to port `5001`.
+
+### Run components separately
+
 ```bash
-npm run dev
-# OR: bash scripts/run_frontend.sh
+npm run dev       # frontend only
+npm run backend   # Flask API only
+npm run train     # retrain models and regenerate outputs
+npm run build     # production frontend build
 ```
 
-### 5.3 Run Backend API Only
-```bash
-npm run backend
-# OR: bash scripts/run_backend.sh
-```
+Equivalent shell runners are available in [`scripts/`](scripts/).
 
-### 5.4 Re-Train Models & Regenerate All Outputs
-To re-run the research pipeline from scratch (EDA, 4-pillar formulation, 3-model training, 5-fold CV, and 13 plots):
-```bash
-npm run train
-# OR: bash scripts/run_training.sh
-```
+## API endpoints
 
----
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/health` | API and model-load health |
+| GET | `/api/ml/valuation/<ticker>` | Valuation for a ticker |
+| POST | `/api/ml/valuation/predict` | Predict from eight indicators |
+| POST | `/api/ml/valuation/batch` | Batch predictions |
+| GET | `/api/ml/valuation/stats` | Model metrics and metadata |
+| GET | `/api/ml/reports/plot/<file>` | Generated report images |
 
-## 6. Citation & Academic Reference
-If you are writing a research paper using this codebase or dataset, cite this framework as:
+## Model evaluation
+
+| Model | Holdout accuracy | Balanced accuracy | Weighted F1 | 5-fold CV mean |
+|---|---:|---:|---:|---:|
+| Random Forest | 88.00% | 87.71% | 0.8806 | 89.83% |
+| XGBoost | **91.00%** | **90.83%** | **0.9104** | **91.14%** |
+| AdaBoost | 79.75% | 77.85% | 0.7948 | 80.82% |
+
+Detailed reports are available in [`outputs/tables/`](outputs/tables/) and
+[`outputs/charts/`](outputs/charts/).
+
+## Deployment
+
+The application has two services that must be deployed together:
+
+1. **Frontend:** build with `npm run build` and serve the generated `dist/`
+   directory with Vercel, Netlify, or another static host.
+2. **Backend:** run the Flask API with a Python host such as Render, Railway,
+   Fly.io, or a container platform. The service must expose `/health` and keep
+   the `models/` artifacts available.
+
+This repository includes [`netlify.toml`](netlify.toml) and
+[`render.yaml`](render.yaml) for a Netlify + Render deployment. Set
+`VITE_API_BASE_URL` on Netlify to the public Render backend URL, for example
+`https://finlearn-api.onrender.com` (without a trailing slash). The Vite
+development proxy is only used locally.
+
+Before going live, configure CORS to allow only the deployed frontend origin
+and store Gemini/FMP credentials as host-managed secrets.
+
+To complete a deployment, provide:
+
+- The hosting provider you want to use (Vercel + Render is a simple option).
+- The GitHub repository and branch to deploy.
+- The frontend and backend public URLs, if either service already exists.
+- Production environment variable names and values through the provider's secret
+  manager; do **not** paste API keys into chat.
+- The custom domain, if one is required.
+
+Once those details are available, the deployment URLs can be verified through
+the frontend and the backend `/health` endpoint.
+
+## Data and research references
+
+- [`data/`](data/) contains the raw and processed datasets.
+- [`notebooks/`](notebooks/) contains the training and analysis notebooks.
+- [`models/README.md`](models/README.md) describes the model artifacts.
+- [`outputs/README.md`](outputs/README.md) describes generated outputs.
+
+## Citation
+
 ```bibtex
 @misc{finlearn_ai_2026,
   author = {Sugandhi, Akshath and Contributors},
-  title = {FinLearn AI: A Multidimensional Machine Learning Framework for Indian Equity Fundamental Valuation},
+  title = {FinLearn AI: Machine Learning for Indian Equity Valuation},
   year = {2026},
   publisher = {GitHub},
   howpublished = {\url{https://github.com/Akshtx/FinLearn}}

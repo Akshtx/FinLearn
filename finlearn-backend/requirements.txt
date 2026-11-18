@@ -9,3 +9,4 @@ xgboost>=2.0.0
 matplotlib>=3.8.0
 seaborn>=0.13.0
 joblib>=1.4.0
+gunicorn>=23.0.0

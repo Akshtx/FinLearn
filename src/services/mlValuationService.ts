@@ -1,5 +1,8 @@
 import { MLValuationResponse, BatchMLValuationResponse, MLValuationMetrics } from '../types';
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+const mlApiUrl = (path: string) => `${API_BASE_URL}/api/ml${path}`;
+
 // Deterministic client-side fallbacks in case backend is offline
 const CLIENT_FALLBACKS: { [ticker: string]: MLValuationResponse } = {
   RELIANCE: {
@@ -103,7 +106,7 @@ const getClientFallback = (ticker: string): MLValuationResponse => {
  */
 export const getMLValuation = async (ticker: string): Promise<MLValuationResponse> => {
   try {
-    let res = await fetch(`/api/ml/valuation/${ticker}`).catch(() => null);
+    let res = await fetch(mlApiUrl(`/valuation/${ticker}`)).catch(() => null);
     if (!res || !res.ok) {
       res = await fetch(`http://127.0.0.1:5001/api/ml/valuation/${ticker}`).catch(() => null);
     }
@@ -126,7 +129,7 @@ export const getMLValuation = async (ticker: string): Promise<MLValuationRespons
  */
 export const getBatchMLValuations = async (tickers: string[]): Promise<BatchMLValuationResponse> => {
   try {
-    let res = await fetch(`/api/ml/valuation/batch`, {
+    let res = await fetch(mlApiUrl('/valuation/batch'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tickers }),
@@ -163,7 +166,7 @@ export const getBatchMLValuations = async (tickers: string[]): Promise<BatchMLVa
  */
 export const predictCustomValuation = async (metrics: MLValuationMetrics): Promise<MLValuationResponse> => {
   try {
-    const res = await fetch(`/api/ml/valuation/predict`, {
+    const res = await fetch(mlApiUrl('/valuation/predict'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
