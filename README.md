@@ -178,9 +178,9 @@ The application has two services that must be deployed together:
    Fly.io, or a container platform. The service must expose `/health` and keep
    the `models/` artifacts available.
 
-This repository includes [`netlify.toml`](netlify.toml) and
-[`render.yaml`](render.yaml) for a Netlify + Render deployment. Set
-`VITE_API_BASE_URL` on Netlify to the public Render backend URL, for example
+This repository includes [`vercel.json`](vercel.json) and
+[`render.yaml`](render.yaml) for a Vercel + Render deployment. Set
+`VITE_API_BASE_URL` on Vercel to the public Render backend URL, for example
 `https://finlearn-api.onrender.com` (without a trailing slash). The Vite
 development proxy is only used locally.
 
