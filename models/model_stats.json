@@ -69,10 +69,10 @@
         "Debt_to_Equity": 0.06382235869185515,
         "ROCE_pct": 0.16346180968128313
       },
-      "training_time_seconds": 0.1941,
+      "training_time_seconds": 0.2268,
       "train_dataset_size": 1597,
       "test_dataset_size": 400,
-      "last_trained": "2026-10-11 16:15:38",
+      "last_trained": "2026-11-19 01:31:30",
       "cv_scores": [
         0.8875,
         0.905,
@@ -152,10 +152,10 @@
         "Debt_to_Equity": 0.06433311214332742,
         "ROCE_pct": 0.12673246767817992
       },
-      "training_time_seconds": 0.2549,
+      "training_time_seconds": 0.252,
       "train_dataset_size": 1597,
       "test_dataset_size": 400,
-      "last_trained": "2026-10-11 16:15:38",
+      "last_trained": "2026-11-19 01:31:30",
       "cv_scores": [
         0.825,
         0.795,
@@ -235,10 +235,10 @@
         "Debt_to_Equity": 0.06392871588468552,
         "ROCE_pct": 0.23109053075313568
       },
-      "training_time_seconds": 0.6465,
+      "training_time_seconds": 0.6234,
       "train_dataset_size": 1597,
       "test_dataset_size": 400,
-      "last_trained": "2026-10-11 16:15:39",
+      "last_trained": "2026-11-19 01:31:31",
       "cv_scores": [
         0.92,
         0.9175,
@@ -323,5 +323,5 @@
     "Debt_to_Equity": 0.06392871588468552,
     "ROCE_pct": 0.23109053075313568
   },
-  "last_trained": "2026-10-11 16:15:44"
+  "last_trained": "2026-11-19 01:31:36"
 }
