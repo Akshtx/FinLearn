@@ -2,10 +2,12 @@ import { GoogleGenAI, GenerateContentResponse, Type } from "@google/genai";
 import { StockBasicData, NewsItemRaw, AIAnalysisResponse, ScreenerCriteria, PortfolioHolding, AIPortfolioAnalysis, ComparisonData, AIComparisonResponse, AIScreenerAnalysis } from '../types';
 import { GEMINI_TEXT_MODEL_FALLBACKS } from '../constants';
 
-// Initialize the Google AI client.
-// The API key is sourced from the `process.env.API_KEY` environment variable.
-// This environment variable must be set for the application to function.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getGeminiClient = (): GoogleGenAI | null => {
+  if (!process.env.API_KEY) {
+    return null;
+  }
+  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+};
 
 const isModelNotFoundError = (error: unknown): boolean => {
   if (!error || typeof error !== 'object') {
@@ -27,6 +29,10 @@ const generateWithFallbackModels = async (
   config: { systemInstruction?: string; responseMimeType?: string; temperature?: number },
 ): Promise<GenerateContentResponse> => {
   let lastError: unknown = null;
+  const ai = getGeminiClient();
+  if (!ai) {
+    throw new Error("Gemini API key is missing.");
+  }
 
   for (const model of GEMINI_TEXT_MODEL_FALLBACKS) {
     try {

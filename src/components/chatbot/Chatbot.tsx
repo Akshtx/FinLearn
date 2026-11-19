@@ -45,6 +45,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ stockData }) => {
   useEffect(scrollToBottom, [messages]);
 
   const createChatWithFallbacks = () => {
+    if (!process.env.API_KEY) {
+      throw new Error("Gemini API key is missing.");
+    }
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const systemInstruction = `You are Finlearn AI, a helpful and friendly chatbot assistant for the stock ${stockData.name} (${stockData.symbol}). The stock's current price is ₹${stockData.currentPrice.toFixed(2)}. Its sector is ${stockData.sector}. The 52-week high is ₹${stockData.fiftyTwoWeekHigh.toFixed(2)} and the low is ₹${stockData.fiftyTwoWeekLow.toFixed(2)}. The P/E ratio is ${stockData.peRatio || 'N/A'}. Promoter holding is ${stockData.promoterHolding ? stockData.promoterHolding.toFixed(2) + '%' : 'N/A'}. Your role is to answer user questions about this specific stock based on the data provided and general market knowledge. Be concise and clear. Explain financial terms simply if asked. You MUST NOT give direct financial advice (e.g., "you should buy this stock now"). Instead, you can provide data-driven information to help the user make their own decision (e.g., "The stock is trading closer to its 52-week high, which can indicate positive momentum."). Keep the conversation strictly focused on the stock: ${stockData.name}.`;
 
